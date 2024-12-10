@@ -1,0 +1,46 @@
+
+import torch
+import torch.autograd as autograd         # computation graph
+from torch import Tensor                  # tensor node in the computation graph
+import torch.nn as nn                     # neural networks
+import torch.optim as optim               # optimizers e.g. gradient descent, ADAM, etc.
+
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.ticker
+from sklearn.model_selection import train_test_split
+from scipy.interpolate import CubicSpline
+import numpy as np
+import time
+from pyDOE import lhs         #Latin Hypercube Sampling
+import scipy.io
+import pandas as pd
+
+#Set default dtype to float32
+torch.set_default_dtype(torch.float)
+
+#PyTorch random number generator
+torch.manual_seed(1234)
+
+# Random number generators in other libraries
+np.random.seed(1234)
+
+# Device configuration
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+print(device)
+
+if device == 'cuda':
+    print(torch.cuda.get_device_name())
+
+
+steps=10000
+N_train = 5000
+lr = 1e-1
+lr1 = 0.001
+layers1 = np.array([1, 64, 64, 64, 64, 8])
+layers2 = np.array([1, 64, 64, 64, 64, 1])
+epoches = 100000
+NN = 100
