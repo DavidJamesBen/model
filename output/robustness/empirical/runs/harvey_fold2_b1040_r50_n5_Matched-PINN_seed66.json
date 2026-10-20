@@ -1,0 +1,53 @@
+{
+  "run": {
+    "event": "harvey",
+    "fold": 2,
+    "model": "Matched-PINN",
+    "seed": 66,
+    "epochs_completed": 1040,
+    "parameter_count": 18619,
+    "best_epoch": 30,
+    "validation_score": 0.8501889109611511,
+    "runtime_seconds": 0.5192552421885921,
+    "runtime_kind": "amortized_gpu_batch",
+    "batch_id": "stage2_harvey_fold2_b1040_Matched-PINN_batch0",
+    "batch_size": 64,
+    "batch_runtime_seconds": 33.232335500069894,
+    "test_nrmse": 0.33160579394589956,
+    "test_nmae": 0.2716440469828216,
+    "parameters": [
+      2.441122531890869,
+      1.2311047315597534,
+      0.07324091345071793,
+      0.992443323135376,
+      0.9938941597938538,
+      1.0415942668914795,
+      0.8215087652206421,
+      0.8200746178627014
+    ]
+  },
+  "split": [
+    237,
+    276,
+    315
+  ],
+  "metric_denominator": [
+    16.087098245350095,
+    1373.1231557169524
+  ],
+  "scales": [
+    2060.4426357236894,
+    141557.5358710262
+  ],
+  "retention": 0.5,
+  "noise": 0.05,
+  "budget": 1040,
+  "condition": "r50_n5",
+  "mask_seed": 1984761441,
+  "noise_seed": 3579012730,
+  "input_sha256": "f4b00b0d24917a2659b1f63d07c1b1743471d6fc9d7e37eae9ae198c809522d5",
+  "quadrature": [
+    1.0
+  ],
+  "reporting_bounds": null
+}

@@ -1,0 +1,25 @@
+{
+  "epochs": 800,
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "models": [
+    "PINN",
+    "LSTM-PINN",
+    "TimePINN",
+    "NoAttn-PINN",
+    "TransPINN"
+  ],
+  "events": [
+    "sydney"
+  ],
+  "fold": 2,
+  "device": "cuda",
+  "torch": "2.11.0+cu128",
+  "loss": "12*(train_rms_normalized_activity_MSE + log1p_activity_MSE + 0.1*train_sum_normalized_cumulative_MSE) + original physics/history penalties",
+  "selection": "validation normalized activity MSE + log1p MSE; shared rule for all methods; original seeds included as fallback candidates",
+  "test_use": "final evaluation only",
+  "source_sha256": "aa92a5dd7555bcf7df1449445010ffae8f907c06fa6d8e94a5f2447367cf0ce8"
+}

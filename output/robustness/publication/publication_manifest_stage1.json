@@ -1,0 +1,11 @@
+{
+  "stage": "stage1",
+  "font": "Times New Roman",
+  "font_file": "C:\\Windows\\Fonts\\times.ttf",
+  "source_sha256": {
+    "output\\robustness\\empirical\\analysis\\stage1_b260\\summary.csv": "2333a2bab46eed9b210534206b012672df38f9b561438cab54cc9de3864b2869",
+    "output\\robustness\\empirical\\analysis\\stage1_b1040\\summary.csv": "60c052822e29924970b547dc7975cec385553122b7a25c67b43cd2cf1d670602"
+  },
+  "publication_script_sha256": "049dea398cfa5cc8e74e10313426b0ecdcfc4b25b7b0492304809123fa0a1ad1",
+  "note": "Only complete audited groups are rendered. No training or analysis results are modified."
+}

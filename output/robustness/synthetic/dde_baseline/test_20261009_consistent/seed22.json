@@ -1,0 +1,38 @@
+{
+  "seed": 22,
+  "parameters": {
+    "beta_1": 0.8252344695430076,
+    "beta_2": 0.3933882735347951,
+    "tau_normalized": 0.06016390146788506,
+    "q_R": 0.326590047429893,
+    "q_D": 1.380489421392251,
+    "chi": 0.39291160918510026,
+    "reporting_R": 4.713850703052472,
+    "reporting_D": 1.2271587182917738
+  },
+  "initial_parameters": {
+    "beta_1": 0.527991013977994,
+    "beta_2": 0.14378106204133537,
+    "tau_normalized": 0.014931919021377842,
+    "q_R": 0.8182741052913571,
+    "q_D": 0.3809502484431561,
+    "chi": 2.3360952150870284,
+    "reporting_R": 5.8955495045387805,
+    "reporting_D": 5.603025154096328
+  },
+  "runtime_seconds": 1.5710042999126017,
+  "success": false,
+  "status": 0,
+  "message": "The maximum number of function evaluations is exceeded.",
+  "nfev": 400,
+  "njev": 298,
+  "actual_residual_calls": 2784,
+  "optimality": 2.080147815716759e-05,
+  "training_rss": 9.409026619320324e-11,
+  "training_nrmse": 6.254075766556184e-07,
+  "validation_nrmse": 4.732370620403245e-06,
+  "relative_observation_mesh_refinement": 1.637640659436654e-10,
+  "maximum_state_mesh_refinement": 2.8330462975567627e-12,
+  "minimum_predicted_state": 0.005,
+  "mass_error": 1.887379141862766e-15
+}

@@ -1,0 +1,41 @@
+{
+  "models": [
+    "TransPINN",
+    "Matched-PINN",
+    "NoAttn-PINN",
+    "Data-Transformer"
+  ],
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "config": {
+    "epochs": 260,
+    "min_epochs": 260,
+    "patience_checks": 1000,
+    "check_every": 10,
+    "learning_rate": 0.002,
+    "collocation_points": 96,
+    "sequence_length": 16,
+    "finite_difference_step": 0.0025,
+    "data_weight": 12.0,
+    "physics_weight": 0.2,
+    "history_weight": 4.0,
+    "gradient_clip": 5.0,
+    "causal_epsilon": 2.0,
+    "causal_chunks": 8
+  },
+  "parameter_count": 18619,
+  "device": "CPU",
+  "threads": 4,
+  "torch": "2.13.0+cpu",
+  "python": "3.12.10",
+  "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+  "selection": "validation only",
+  "data_only": "No DDE, history loss, latent compartments or structural coefficients",
+  "source_sha256": {
+    "run_fair_benchmark.py": "544ad397d1db566af9672050b83280b85fac642db1a12196b01fd1472444fd28",
+    "run_multievent_baselines.py": "6a853f1769e1c79743752fb5bf08ad5f33d5c99559d49f113b3e240f4885eda1"
+  }
+}

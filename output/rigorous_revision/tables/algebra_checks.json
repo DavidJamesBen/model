@@ -1,0 +1,6 @@
+{
+  "complex_determinant_cases": 100,
+  "maximum_relative_error": 4.47545209131181e-16,
+  "threshold_identity_maximum_error": 2.220446049250313e-16,
+  "symbolic_derivative_checks": 8
+}

@@ -1,0 +1,13 @@
+{
+  "event": "sydney",
+  "fold": 2,
+  "model": "LSTM-PINN",
+  "seed": 33,
+  "best_epoch": 60,
+  "validation_score": 0.2536822557449341,
+  "physics_residual_rms": 0.9497465491294861,
+  "runtime_seconds": 13.158576899964828,
+  "training_source_sha256": "629d26af528ecb06399556893217a33df9800cade5c872845346f4c05d3fb686",
+  "execution": "combined forward batch",
+  "epochs_budget": 800
+}

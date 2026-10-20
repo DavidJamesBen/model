@@ -1,0 +1,13 @@
+{
+  "event": "sydney",
+  "fold": 2,
+  "model": "TransPINN",
+  "seed": 11,
+  "best_epoch": 50,
+  "validation_score": 0.2978913187980652,
+  "physics_residual_rms": 0.5911931991577148,
+  "runtime_seconds": 21.36404399998719,
+  "training_source_sha256": "629d26af528ecb06399556893217a33df9800cade5c872845346f4c05d3fb686",
+  "execution": "combined forward batch",
+  "epochs_budget": 800
+}

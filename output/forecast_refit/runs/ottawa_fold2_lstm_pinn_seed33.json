@@ -1,0 +1,13 @@
+{
+  "event": "ottawa",
+  "fold": 2,
+  "model": "LSTM-PINN",
+  "seed": 33,
+  "best_epoch": 10,
+  "validation_score": 0.19103965163230896,
+  "physics_residual_rms": 0.20478326082229614,
+  "runtime_seconds": 13.54510470002424,
+  "training_source_sha256": "629d26af528ecb06399556893217a33df9800cade5c872845346f4c05d3fb686",
+  "execution": "combined forward batch",
+  "epochs_budget": 800
+}

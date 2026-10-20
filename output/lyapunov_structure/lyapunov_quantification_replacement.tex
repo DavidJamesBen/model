@@ -1,0 +1,204 @@
+\subsection{Lyapunov quantification of the closed model}
+\begingroup\color{red}
+We quantify sensitivity to initial histories in the underlying DDE.
+The calculation concerns the closed model with fixed coefficients,
+not the neural network or the observed activity series.
+Time uses the normalized units of the empirical implementation.
+For $\tau>0$, a perturbation satisfies
+\begin{equation}
+\dot v(t)=A(t)v(t)+B(t)v(t-\tau),
+\label{eq:lyapunov_variation}
+\end{equation}
+where $A(t)=\partial_1 f$ and $B(t)=\partial_2 f$ are evaluated
+along the DDE solution.
+The seven human components of the initial perturbation sum to zero
+at every history time.
+For $v_t(s)=v(t+s)$, use
+\[
+\|v_t\|_\tau^2
+=\frac{1}{\tau}\int_{-\tau}^{0}\|v(t+s)\|_2^2\,ds.
+\]
+Let $\mathcal T$ denote this space of perturbation histories.
+The maximal upper growth exponent is
+\[
+\overline\lambda_{\max}(X)
+=\sup_{v_0\in\mathcal T\setminus\{0\}}
+\limsup_{T\to\infty}
+\frac{1}{T}\log\frac{\|v_T\|_\tau}{\|v_0\|_\tau}.
+\]
+This definition does not assume convergence of a finite duration estimate.
+We estimate the dominant rate by propagating several initial directions.
+At each normalization time $t_k$, we divide the complete perturbation
+history by its norm $g_k$~\cite{ansmann2018lyapunov}.
+For $t_j=b$ and $t_K=T$, the estimate is
+\begin{equation}
+\widehat\lambda_{b,T}
+=\frac{1}{T-b}\sum_{k=j+1}^{K}\log g_k.
+\label{eq:lyapunov_growth_identity}
+\end{equation}
+Linearity makes this sum equal to the logarithmic growth of the
+corresponding history without normalization.
+It is a directional estimate, not a maximum over all histories
+at finite $T$.
+
+\begin{theorem}[Extinction and Lyapunov growth in the closed model]
+\label{thm:lyapunov_quantification}
+Consider the closed model with $N=1$ and $\Lambda=d_h=0$.
+Use the fixed empirical coefficients
+\[
+\begin{gathered}
+\gamma_E=0.2,\quad \mu=\alpha=0.25,\quad q_U=0.3,\\
+\xi_E=0.8,\quad \sigma_E=0.4,\quad
+\kappa_1=0.4,\quad \kappa_2=0.25,\\
+\eta_1=\eta_2=0.6,\quad v_1=v_2=0.2,\quad
+d_{M_1}=d_{M_2}=1,\\
+\delta_1=0.5,\quad \delta_2=0.25,\quad
+\varepsilon=0.55,\quad \rho=5,\quad
+\varpi_1=\varpi_2=1.
+\end{gathered}
+\]
+All remaining coefficients are finite and nonnegative, with $\chi>0$.
+Initial histories are nonnegative and satisfy the cohort compatibility
+condition in Theorem~III.1.
+Every solution converges to an equilibrium
+\begin{equation}
+X^*(s)=
+(5s/13,8s/13,0,0,0,0,1-s,0.2,0.2),
+\qquad 0\le s\le1.
+\label{eq:closed_equilibrium_family}
+\end{equation}
+Thus, this closed model has no sustained chaotic attractor.
+
+At $X^*(s)$, set
+\[
+\begin{gathered}
+\psi_s=\frac{47s}{65},\qquad
+k_\tau=\frac{e^{-1.4\tau}}{6},\\
+a_s=\min\left\{0.2,\frac{0.12}{\chi+0.4},
+0.25-\psi_s\beta_1,0.25-\psi_s\beta_2\right\},\\
+b_s=2k_\tau\psi_s\max\{\beta_1,\beta_2\}.
+\end{gathered}
+\]
+If $a_s>b_s$, the linearization on the space of fixed total population
+has exactly one neutral direction.
+Its maximal Lyapunov exponent equals zero.
+Every other exponent is at most
+$-\min\{0.13,1,\eta_s\}<0$, where $\eta_s$ is the unique positive solution of
+\begin{equation}
+\eta_s=a_s-b_s e^{\eta_s\tau}.
+\label{eq:lyapunov_decay_rate}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Define $V(t)=1-U(t)$ and $P(t)=E(t)+H(t)+R(t)+D(t)$.
+Population conservation gives $V(t)\ge0$.
+The withdrawal equation gives
+\[
+\dot V(t)
+=-0.2E-0.25R-0.25D
+-\frac{0.3(M_1+M_2)}{\chi+M_1+M_2}H.
+\]
+The media equations imply $M_i(t)\ge0.2(1-e^{-t})$.
+For $t\ge t_0=\log 2$, both media variables are at least $0.1$.
+Hence
+\[
+\dot V(t)\le-c_\chi P(t),\qquad
+c_\chi=\min\left\{0.2,0.25,\frac{0.06}{\chi+0.2}\right\}>0.
+\]
+Integration yields the quantitative bound
+\begin{equation}
+\int_{t_0}^{T}P(t)\,dt
+\le\frac{V(t_0)-V(T)}{c_\chi}
+\le\frac{1}{c_\chi}.
+\label{eq:lyapunov_activity_bound}
+\end{equation}
+All states and their derivatives are bounded.
+Thus $P$ is uniformly continuous.
+A nonnegative, uniformly continuous function with a finite integral
+converges to zero.
+Therefore $E,H,R,D\to0$.
+
+The media equations then give $M_1,M_2\to0.2$.
+Let $S=S_u+S_e$.
+Since $\dot S=-\mathcal I\le0$, we have $S\to s$ for some $s\in[0,1]$.
+The susceptible equation takes the form
+\[
+\dot S_u=-c(t)S_u+0.25M_2S,\qquad
+c(t)=0.4M_1+0.25M_2+\beta_1R+\beta_2D.
+\]
+Here $c(t)\to0.13$ and $0.25M_2S\to0.05s$.
+Scalar linear stability gives $S_u\to5s/13$.
+Population conservation gives the remaining limits in
+\eqref{eq:closed_equilibrium_family}.
+Convergence to a single equilibrium excludes sustained chaotic motion.
+
+For the exponent claim, let $z=(v_E,v_H,v_R,v_D)^T$.
+At $X^*(s)$, this subsystem is independent of the remaining perturbations.
+It satisfies $\dot z=A_s z+B_s z(t-\tau)$, where
+\[
+A_s=
+\begin{pmatrix}
+-1.4&0&\psi_s\beta_1&\psi_s\beta_2\\
+0&-h_*&0&0\\
+0.8&\Gamma_R^*&-0.35&0.05\\
+0.4&\Gamma_D^*&0.10&-0.30
+\end{pmatrix},
+\]
+\[
+B_s=k_\tau\psi_s
+\begin{pmatrix}
+0&0&-\beta_1&-\beta_2\\
+0&0&\beta_1&\beta_2\\
+0&0&0&0\\
+0&0&0&0
+\end{pmatrix}.
+\]
+Here $h_*=\Gamma_R^*+\Gamma_D^*+\Gamma_U^*$ and
+$\Gamma_U^*=0.12/(\chi+0.4)$.
+The logarithmic $1$-norm of $A_s$ is $-a_s$.
+The induced $1$-norm of $B_s$ is $b_s$.
+Consequently,
+\[
+D^+\|z(t)\|_1
+\le-a_s\|z(t)\|_1
++b_s\sup_{u\in[t-\tau,t]}\|z(u)\|_1.
+\]
+When $a_s>b_s$, comparison with $C e^{-\eta_s t}$ gives
+exponential decay with the rate in~\eqref{eq:lyapunov_decay_rate}.
+The media perturbations have decay rate $1$ and receive only decaying input.
+The susceptible block has eigenvalues $0$ and $-0.13$.
+Its input from the active states and media decays exponentially.
+The fixed population condition determines $v_U$.
+Thus the only neutral direction is
+\[
+w=(5/13,8/13,0,0,0,0,-1,0,0)^T.
+\]
+Its constant history has exponent zero.
+All remaining exponents satisfy the stated negative bound.
+\end{proof}
+
+We apply~\eqref{eq:lyapunov_growth_identity} to 12 neural parameter sets
+and four independent DDE fits.
+The 116 runs check mesh size, duration, perturbation direction,
+initial history, and delay.
+Each run extends to normalized time $500$.
+We omit the first $100$ time units from the main estimate.
+All estimates satisfy $|\widehat\lambda_{100,500}|<2.95\times10^{-8}$.
+The estimates over $[300,500]$ are zero at the recorded numerical precision.
+
+We also evaluate $a_s-b_s$ at the numerical terminal equilibria
+from all 116 runs.
+Its minimum is $0.0138776$.
+The minimum value of $\eta_s$ is $0.0138124$.
+Thus the sufficient decay condition holds at every evaluated equilibrium.
+The resulting upper bound for all nonneutral exponents is
+$-0.01381$ in inverse normalized time units.
+This is a bound from the equilibrium linearization, not a computed
+full Lyapunov spectrum or an interval certificate.
+The near-zero dominant estimates agree with the neutral equilibrium direction.
+They do not indicate sustained chaos.
+The convergence theorem applies to this closed model with its stated coefficients.
+It does not establish the dynamics of the open model or the observed events.
+The supplement provides the numerical methods and convergence tables.
+\endgroup

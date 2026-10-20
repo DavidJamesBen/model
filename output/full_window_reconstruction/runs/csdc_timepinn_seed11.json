@@ -1,0 +1,25 @@
+{
+  "event": "csdc",
+  "model": "TimePINN",
+  "seed": 11,
+  "observed_bins": 43,
+  "reconstruction_score": 5.720357938853333e-07,
+  "best_step": "lbfgs_240",
+  "physics_residual_rms": 0.07934464514255524,
+  "metrics": [
+    {
+      "channel": "rumor",
+      "nrmse": 0.00018233093412650813,
+      "log_rmse": 0.0008413489981202654
+    },
+    {
+      "channel": "debunk",
+      "nrmse": 0.000373127209837792,
+      "log_rmse": 0.000513551328371285
+    }
+  ],
+  "adam_updates": 1200,
+  "lbfgs_max_iterations": 300,
+  "objective_evaluations": 1519,
+  "runtime_seconds": 24.39824559999397
+}

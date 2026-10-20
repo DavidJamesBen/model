@@ -1,0 +1,202 @@
+[
+  {
+    "event": "harvey",
+    "model": "PINN",
+    "path": "output\\forecast_refit\\selected_predictions\\harvey_fold2_pinn.csv",
+    "sha256": "955dcfcfc9f0b07f37f93e1c80745f8575b9ce7319e7cafb1fd3b287415329a0",
+    "prediction_source": "output\\predictions\\harvey_fold2_pinn_seed22.csv",
+    "prediction_source_sha256": "c61ab1e8d4458a73e306e73caaed8459088626de34287d094559dc359833209b",
+    "observation_source": "output\\predictions\\harvey_fold2_pinn_seed33.csv",
+    "observation_source_sha256": "8b21f4278412d33178d21b43086fda2820feb7aaf5ef5b66fc1e1bc9f83bfc83"
+  },
+  {
+    "event": "harvey",
+    "model": "LSTM-PINN",
+    "path": "output\\forecast_refit\\selected_predictions\\harvey_fold2_lstm_pinn.csv",
+    "sha256": "57ccfcaedb4bbe81670b3919ed4ef63d0ec402fccb0c3ed1c2defcd3f94ba076",
+    "prediction_source": "output\\forecast_refit\\runs\\harvey_fold2_lstm_pinn_seed22.csv",
+    "prediction_source_sha256": "5bd5c344d62c608a67c1a6309d80a687bc45e453381113fab0103b069f8c8bd1",
+    "observation_source": "output\\predictions\\harvey_fold2_lstm_pinn_seed33.csv",
+    "observation_source_sha256": "811e254589146f9b21a788089385739b816340ab83365255b18d63b7ed256d22"
+  },
+  {
+    "event": "harvey",
+    "model": "TimePINN",
+    "path": "output\\forecast_refit\\selected_predictions\\harvey_fold2_timepinn.csv",
+    "sha256": "c64f321fba4509c2e412eab1cdda24f94abaa0643a758e58f16e61a4a2659fed",
+    "prediction_source": "output\\predictions\\harvey_fold2_timepinn_seed22.csv",
+    "prediction_source_sha256": "6ddf6b89f7663d7b43462f439d3f6c2661e39fc4bd164bdd2420e5c61e32fdc7",
+    "observation_source": "output\\predictions\\harvey_fold2_timepinn_seed33.csv",
+    "observation_source_sha256": "e7af924779a739373dc9e5adbdd785f8aaee8a7f3195db3c1cf5f53a66c9f220"
+  },
+  {
+    "event": "harvey",
+    "model": "NoAttn-PINN",
+    "path": "output\\forecast_refit\\selected_predictions\\harvey_fold2_noattn_pinn.csv",
+    "sha256": "4a5f03a58fa775b3643a614815da965d90959a41a2924c87a57efdd9ca8feec5",
+    "prediction_source": "output\\forecast_refit\\runs\\harvey_fold2_noattn_pinn_seed33.csv",
+    "prediction_source_sha256": "e265508970f82751e0d94b08044467d5db0169b823b33e43c20c0310eea9fbc1",
+    "observation_source": "output\\predictions\\harvey_fold2_noattn_pinn_seed22.csv",
+    "observation_source_sha256": "ab85334be196018bddd97ce67201df23da7f6b10f32ddbbce88481e9b2a2cc08"
+  },
+  {
+    "event": "harvey",
+    "model": "TransPINN",
+    "path": "output\\forecast_refit\\selected_predictions\\harvey_fold2_transpinn.csv",
+    "sha256": "706c50228ed78ce0daa8054b3852ffb69e408371a8b26238f139bd4136792ec9",
+    "prediction_source": "output\\forecast_refit\\runs\\harvey_fold2_transpinn_seed11.csv",
+    "prediction_source_sha256": "7fda23d8f5c0904bf0f3b962d88766970c3e06669c021b5c29afee3b3d073e45",
+    "observation_source": "output\\predictions\\harvey_fold2_transpinn_seed11.csv",
+    "observation_source_sha256": "a9c86254bc3c63dd20291df098326dc490ba5c9c1a35d215ce3e5385332055fa"
+  },
+  {
+    "event": "csdc",
+    "model": "PINN",
+    "path": "output\\forecast_refit\\selected_predictions\\csdc_fold2_pinn.csv",
+    "sha256": "d973d4452379a1a0656ecfd28f2c6bb937f2867dbbff569e9a98c368bc831ea2",
+    "prediction_source": "output\\forecast_refit\\runs\\csdc_fold2_pinn_seed22.csv",
+    "prediction_source_sha256": "d973d4452379a1a0656ecfd28f2c6bb937f2867dbbff569e9a98c368bc831ea2",
+    "observation_source": "output\\predictions\\csdc_fold2_pinn_seed11.csv",
+    "observation_source_sha256": "9fb5b8a83402abc9b62c4dc3ec962b2f22190b05266d9e2d8a19459e0ea9b872"
+  },
+  {
+    "event": "csdc",
+    "model": "LSTM-PINN",
+    "path": "output\\forecast_refit\\selected_predictions\\csdc_fold2_lstm_pinn.csv",
+    "sha256": "6258cfdf89baf5c2ffc5d2b4e99d2eb24b192da8122a1033287b78901cf75c12",
+    "prediction_source": "output\\forecast_refit\\runs\\csdc_fold2_lstm_pinn_seed11.csv",
+    "prediction_source_sha256": "6258cfdf89baf5c2ffc5d2b4e99d2eb24b192da8122a1033287b78901cf75c12",
+    "observation_source": "output\\predictions\\csdc_fold2_lstm_pinn_seed33.csv",
+    "observation_source_sha256": "696f04ae07d8477cc33791295d36222cdd12b10fe11ae46c39f16f0d184f50ca"
+  },
+  {
+    "event": "csdc",
+    "model": "TimePINN",
+    "path": "output\\forecast_refit\\selected_predictions\\csdc_fold2_timepinn.csv",
+    "sha256": "be3cc4bd536ec1a0485980c305d02f53574eaee6c84a35c20213ae82c865fc7e",
+    "prediction_source": "output\\forecast_refit\\runs\\csdc_fold2_timepinn_seed22.csv",
+    "prediction_source_sha256": "be3cc4bd536ec1a0485980c305d02f53574eaee6c84a35c20213ae82c865fc7e",
+    "observation_source": "output\\predictions\\csdc_fold2_timepinn_seed11.csv",
+    "observation_source_sha256": "a6e18e222cdb0abbd78842a1745560ae42d6c7629024e7c77cfa11a02b5e1f8b"
+  },
+  {
+    "event": "csdc",
+    "model": "NoAttn-PINN",
+    "path": "output\\forecast_refit\\selected_predictions\\csdc_fold2_noattn_pinn.csv",
+    "sha256": "7463bee59c6cab42c39fb782e00195fe7958066eafc6aa23d5ddad081f41aea1",
+    "prediction_source": "output\\forecast_refit\\runs\\csdc_fold2_noattn_pinn_seed11.csv",
+    "prediction_source_sha256": "7463bee59c6cab42c39fb782e00195fe7958066eafc6aa23d5ddad081f41aea1",
+    "observation_source": "output\\predictions\\csdc_fold2_noattn_pinn_seed33.csv",
+    "observation_source_sha256": "45c4d877d7b57f97358eabeb7cd869673d76be0996b1e3a02c5a492759cccdf0"
+  },
+  {
+    "event": "csdc",
+    "model": "TransPINN",
+    "path": "output\\forecast_refit\\selected_predictions\\csdc_fold2_transpinn.csv",
+    "sha256": "47b6ddc08a60744dbb36b43717e2e1fe5d8328627d2cbe5cf77b9e141df55355",
+    "prediction_source": "output\\forecast_refit\\runs\\csdc_fold2_transpinn_seed11.csv",
+    "prediction_source_sha256": "47b6ddc08a60744dbb36b43717e2e1fe5d8328627d2cbe5cf77b9e141df55355",
+    "observation_source": "output\\predictions\\csdc_fold2_transpinn_seed11.csv",
+    "observation_source_sha256": "a5ba95c6b5d9defda2a8a52692edc33ef4eef3c6c9923aaa50d9beb87adb6132"
+  },
+  {
+    "event": "ottawa",
+    "model": "PINN",
+    "path": "output\\forecast_refit\\selected_predictions\\ottawa_fold2_pinn.csv",
+    "sha256": "9a5e5ad06a605317fc97298676898b03f2ed60852e918625c252f56111dac9ce",
+    "prediction_source": "output\\forecast_refit\\runs\\ottawa_fold2_pinn_seed11.csv",
+    "prediction_source_sha256": "9a5e5ad06a605317fc97298676898b03f2ed60852e918625c252f56111dac9ce",
+    "observation_source": "output\\predictions\\ottawa_fold2_pinn_seed33.csv",
+    "observation_source_sha256": "e7e0d0004ba4b384bfe9ed2ded32acf056f9b22db672528955473246e0b8cbfd"
+  },
+  {
+    "event": "ottawa",
+    "model": "LSTM-PINN",
+    "path": "output\\forecast_refit\\selected_predictions\\ottawa_fold2_lstm_pinn.csv",
+    "sha256": "6cd80edec5d7e4cb0b31a90c7100387129b61a63f0de5861c4a8c4c3f574c559",
+    "prediction_source": "output\\forecast_refit\\runs\\ottawa_fold2_lstm_pinn_seed33.csv",
+    "prediction_source_sha256": "6cd80edec5d7e4cb0b31a90c7100387129b61a63f0de5861c4a8c4c3f574c559",
+    "observation_source": "output\\predictions\\ottawa_fold2_lstm_pinn_seed11.csv",
+    "observation_source_sha256": "9a59b7a2a4d101a2900fa178a6b3cfe59a6a2ed9002324e17685a008975c33e4"
+  },
+  {
+    "event": "ottawa",
+    "model": "TimePINN",
+    "path": "output\\forecast_refit\\selected_predictions\\ottawa_fold2_timepinn.csv",
+    "sha256": "bbdb1f3d42c950bc31ef586cf5da256827951b8b3af8a60782826384bfff3967",
+    "prediction_source": "output\\predictions\\ottawa_fold2_timepinn_seed11.csv",
+    "prediction_source_sha256": "faf6fe05e401894c665fd8cf7f8908b39d0f4e6d08b91371f8fb0977fa831b71",
+    "observation_source": "output\\predictions\\ottawa_fold2_timepinn_seed33.csv",
+    "observation_source_sha256": "5c5e1f7788ff01533b26034169f8005482e6c742dd3d1d7726d46936559188ac"
+  },
+  {
+    "event": "ottawa",
+    "model": "NoAttn-PINN",
+    "path": "output\\forecast_refit\\selected_predictions\\ottawa_fold2_noattn_pinn.csv",
+    "sha256": "f743dc6d261c49c334c258fe6abc99148ce8b779f3b7a87d355a9fb50cf26100",
+    "prediction_source": "output\\forecast_refit\\runs\\ottawa_fold2_noattn_pinn_seed22.csv",
+    "prediction_source_sha256": "f743dc6d261c49c334c258fe6abc99148ce8b779f3b7a87d355a9fb50cf26100",
+    "observation_source": "output\\predictions\\ottawa_fold2_noattn_pinn_seed33.csv",
+    "observation_source_sha256": "ecf6bdb8be5aa429fe03b0ec05fe244151d534593c37a9c442568206cca0b910"
+  },
+  {
+    "event": "ottawa",
+    "model": "TransPINN",
+    "path": "output\\forecast_refit\\selected_predictions\\ottawa_fold2_transpinn.csv",
+    "sha256": "543e595dc9bab9eb80ff87eaa0e480d9261986c9e03c8b9af99a5411cf1ee97e",
+    "prediction_source": "output\\forecast_refit\\runs\\ottawa_fold2_transpinn_seed11.csv",
+    "prediction_source_sha256": "543e595dc9bab9eb80ff87eaa0e480d9261986c9e03c8b9af99a5411cf1ee97e",
+    "observation_source": "output\\predictions\\ottawa_fold2_transpinn_seed22.csv",
+    "observation_source_sha256": "dccabd118fe472261f4dc63ab92d3c00591a681b2ee687c979de0be26f619d33"
+  },
+  {
+    "event": "sydney",
+    "model": "PINN",
+    "path": "output\\forecast_refit\\selected_predictions\\sydney_fold2_pinn.csv",
+    "sha256": "1e727f4c6d96bb427cc0fb11d3c00618f9928d7f4dfe24dbb415a34f6ee1f24f",
+    "prediction_source": "output\\forecast_refit\\runs\\sydney_fold2_pinn_seed22.csv",
+    "prediction_source_sha256": "1e727f4c6d96bb427cc0fb11d3c00618f9928d7f4dfe24dbb415a34f6ee1f24f",
+    "observation_source": "output\\predictions\\sydney_fold2_pinn_seed22.csv",
+    "observation_source_sha256": "b478c89ca9775ab8f53dcc1a4fe646ea01d1b5641f8383a2f485a4284bd5e99e"
+  },
+  {
+    "event": "sydney",
+    "model": "LSTM-PINN",
+    "path": "output\\forecast_refit\\selected_predictions\\sydney_fold2_lstm_pinn.csv",
+    "sha256": "d9a76093025ac6d79278a71a8d2468ff22a17c5d4bb74352d395db5f725a3e1e",
+    "prediction_source": "output\\forecast_refit\\runs\\sydney_fold2_lstm_pinn_seed11.csv",
+    "prediction_source_sha256": "d9a76093025ac6d79278a71a8d2468ff22a17c5d4bb74352d395db5f725a3e1e",
+    "observation_source": "output\\predictions\\sydney_fold2_lstm_pinn_seed33.csv",
+    "observation_source_sha256": "4f5bf87bb0556d9e4d605f7a7507bf054757827ab4bc9d0a325d0f792f53ae7a"
+  },
+  {
+    "event": "sydney",
+    "model": "TimePINN",
+    "path": "output\\forecast_refit\\selected_predictions\\sydney_fold2_timepinn.csv",
+    "sha256": "154e842d1b0ee59022ddb15f8d2fd51b08c3d0a328fd64df746cb630bf204521",
+    "prediction_source": "output\\forecast_refit\\runs\\sydney_fold2_timepinn_seed22.csv",
+    "prediction_source_sha256": "154e842d1b0ee59022ddb15f8d2fd51b08c3d0a328fd64df746cb630bf204521",
+    "observation_source": "output\\predictions\\sydney_fold2_timepinn_seed22.csv",
+    "observation_source_sha256": "6e08c6cb7167794dca4b182f5ffdc9a93a9ac8967d33797825a86554d6282ad3"
+  },
+  {
+    "event": "sydney",
+    "model": "NoAttn-PINN",
+    "path": "output\\forecast_refit\\selected_predictions\\sydney_fold2_noattn_pinn.csv",
+    "sha256": "ef62c3de1e48a5c05bbb8ec8f4035c169e971058f6bfe8cdc82a2b6702760703",
+    "prediction_source": "output\\forecast_refit\\runs\\sydney_fold2_noattn_pinn_seed33.csv",
+    "prediction_source_sha256": "ef62c3de1e48a5c05bbb8ec8f4035c169e971058f6bfe8cdc82a2b6702760703",
+    "observation_source": "output\\predictions\\sydney_fold2_noattn_pinn_seed22.csv",
+    "observation_source_sha256": "af414e286cfd21281ea97660d2abab5e7b5076da191af8d1d18626574f7cb20e"
+  },
+  {
+    "event": "sydney",
+    "model": "TransPINN",
+    "path": "output\\forecast_refit\\selected_predictions\\sydney_fold2_transpinn.csv",
+    "sha256": "5c16784d37595898116d195299a4f2d99f9ec2e353cbd59e702a7c588c7d2c9e",
+    "prediction_source": "output\\forecast_refit\\runs\\sydney_fold2_transpinn_seed33.csv",
+    "prediction_source_sha256": "5c16784d37595898116d195299a4f2d99f9ec2e353cbd59e702a7c588c7d2c9e",
+    "observation_source": "output\\predictions\\sydney_fold2_transpinn_seed11.csv",
+    "observation_source_sha256": "0383a85c03c5684407e38e968aee5ea61d663eb32ccb0225f86acefa181bf82f"
+  }
+]

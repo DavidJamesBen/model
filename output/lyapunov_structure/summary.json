@@ -1,0 +1,19 @@
+{
+  "archived_runs": 116,
+  "all_sufficient_conditions_pass": true,
+  "minimum_margin": 0.013877608507269937,
+  "maximum_margin": 0.15861788590951786,
+  "minimum_eta": 0.0138124304385938,
+  "maximum_eta": 0.15858200764149907,
+  "largest_transverse_upper_bound": -0.0138124304385938,
+  "jacobian_check_max_error": 1.1102230246251565e-16,
+  "max_absolute_generic_estimate": 2.9415828222487562e-08,
+  "later_window_max_absolute_estimate": 0.0,
+  "units": "inverse normalized time",
+  "scope": "Sufficient exponential decay condition at numerical terminal equilibria of archived runs, not a full spectrum or interval certification.",
+  "source_sha256": {
+    "output\\lyapunov\\lyapunov_runs.csv": "051f9856be0e2922a8f4211f94454d69035eef7a5d2e0836d728aa1957d1259a",
+    "output\\lyapunov\\parameter_sets.csv": "2bfb74c7180b1e3d7605d47154ab1db1ec7e68ff2d4e902a1a603d853d438b6c",
+    "experiments\\identifiability_solver.py": "4a468d35183da13160751514daa4ddc83a0ced8c8871688a58c4648162fe5da5"
+  }
+}

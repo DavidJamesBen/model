@@ -1,0 +1,13 @@
+{
+  "event": "ottawa",
+  "fold": 2,
+  "model": "NoAttn-PINN",
+  "seed": 11,
+  "best_epoch": 10,
+  "validation_score": 0.7481789588928223,
+  "physics_residual_rms": 0.5173510909080505,
+  "runtime_seconds": 35.17654139996739,
+  "training_source_sha256": "629d26af528ecb06399556893217a33df9800cade5c872845346f4c05d3fb686",
+  "execution": "combined forward batch",
+  "epochs_budget": 800
+}

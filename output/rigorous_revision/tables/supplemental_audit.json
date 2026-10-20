@@ -1,0 +1,8 @@
+{
+  "fits": 144,
+  "scored_rows": 288,
+  "selection": "minimum validation objective, ties lower seed; no test selection",
+  "full_rerun_maximum_nrmse_difference": 2.220446049250313e-16,
+  "synthetic_converged": 2,
+  "synthetic_fits": 18
+}

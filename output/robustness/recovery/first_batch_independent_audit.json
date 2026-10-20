@@ -1,0 +1,28 @@
+{
+  "old_json_hashes_unchanged": 1230,
+  "frozen_sources_and_protocols_unchanged": true,
+  "new_batch": "recovery_20260918T144718417634Z_stage2_harvey_fold3_b1040_TransPINN_batch0",
+  "new_fits_audited": 32,
+  "conditions": {
+    "r100_n0": 7,
+    "r100_n10": 10,
+    "r100_n5": 10,
+    "r50_n0": 5
+  },
+  "checks": [
+    "same original data hash",
+    "same chronological split",
+    "same seed formulas",
+    "exact reconstructed input sha256",
+    "retained mask and noisy labels",
+    "normalization and reporting scales",
+    "18619 parameter count",
+    "1040 updates",
+    "complete 104-point validation trace",
+    "validation-only saved checkpoint",
+    "recomputed prediction metrics"
+  ],
+  "gpu_weights_loaded": false,
+  "cross_model_pairing_audited_fits": 160,
+  "all_five_models_share_original_case_inputs": true
+}

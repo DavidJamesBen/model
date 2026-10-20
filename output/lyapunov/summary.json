@@ -1,0 +1,10 @@
+{
+  "runs": 116,
+  "max_abs_late": 2.9415828222487562e-08,
+  "max_abs_tail": 0.0,
+  "max_step_spread": 1.0219787666348365e-10,
+  "max_mass_error": 2.2570834090629435e-13,
+  "minimum_state": 3.328526737743899e-58,
+  "max_final_active": 1.2505812459581247e-45,
+  "max_final_rhs": 2.4980018054066022e-14
+}

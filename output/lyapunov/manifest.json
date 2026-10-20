@@ -1,0 +1,20 @@
+{
+  "scope": "Conditional numerical dynamics of the normalized closed empirical DDE, not of all open-population parameter regimes or measured events",
+  "runs": 116,
+  "baseline_parameter_sets": 16,
+  "method": "RK4 method of steps with linear delayed interpolation; complex-step variational JVP; full history L2 normalization; sum-zero human perturbations enforced",
+  "duration": 500,
+  "burn_in": 100,
+  "units": "inverse normalized time",
+  "source_sha256": {
+    "experiments\\lyapunov_dde.py": "c1d8873b1c45ab5cfe9362a7414a825a4049d0410f7d9560393110c15f83ac11",
+    "experiments\\identifiability_solver.py": "4a468d35183da13160751514daa4ddc83a0ced8c8871688a58c4648162fe5da5",
+    "experiments\\revision_dde.py": "ca6e4e7de576285d83af10864b4f654ea241e13554fec7439b16c4a74f464fa9",
+    "experiments\\run_lyapunov_analysis.py": "c810fda3e3335225d971843f79c61adeb736dc48819102ad4c10c5305b658584",
+    "output\\identifiability\\neural_parameter_estimates.csv": "00506a6e3d3fc6294facc96043c5c4547776eb89315505f18e2fed751e21618d",
+    "output\\identifiability\\fit_harvey.json": "0f6a96e510fffe7717a4102e0dbea5de40d87a4c37e6daeabf037d966025d0dc",
+    "output\\identifiability\\fit_csdc.json": "497bb592c93f7d5bb3851ca2c9dc5c22cf04fcdafe5386bc7aa47600f760120c",
+    "output\\identifiability\\fit_ottawa.json": "3977bb039e3e5f09d10ef0d6243e4a16b3cbe264b8e3261c0351fa307f636d84",
+    "output\\identifiability\\fit_sydney.json": "f0b3f37b7777e1bd9e9cc893c26aa87371eb03b3db5ae7a31d02bf35da973aca"
+  }
+}

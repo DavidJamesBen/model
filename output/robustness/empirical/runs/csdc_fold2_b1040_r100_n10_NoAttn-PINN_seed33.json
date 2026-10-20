@@ -1,0 +1,53 @@
+{
+  "run": {
+    "event": "csdc",
+    "fold": 2,
+    "model": "NoAttn-PINN",
+    "seed": 33,
+    "epochs_completed": 1040,
+    "parameter_count": 18619,
+    "best_epoch": 70,
+    "validation_score": 0.19480246305465698,
+    "runtime_seconds": 1.927231428122468,
+    "runtime_kind": "amortized_gpu_batch",
+    "batch_id": "recovery_20260918T144718417634Z_stage2_csdc_fold2_b1040_NoAttn-PINN_batch36",
+    "batch_size": 32,
+    "batch_runtime_seconds": 61.67140569991898,
+    "test_nrmse": 0.33890907958651045,
+    "test_nmae": 0.23616851712426876,
+    "parameters": [
+      2.3244717121124268,
+      1.2092437744140625,
+      0.07667075842618942,
+      1.0068130493164062,
+      1.0096012353897095,
+      1.0654163360595703,
+      0.8737671971321106,
+      0.8423857092857361
+    ]
+  },
+  "split": [
+    33,
+    38,
+    43
+  ],
+  "metric_denominator": [
+    2675.8783774508684,
+    2.9644356609443876
+  ],
+  "scales": [
+    27326.0,
+    82.0
+  ],
+  "retention": 1.0,
+  "noise": 0.1,
+  "budget": 1040,
+  "condition": "r100_n10",
+  "mask_seed": 2681343988,
+  "noise_seed": 298124722,
+  "input_sha256": "f66694dcb5d2c7fb6d0857ab5d967284ecede07d8a1892aa2034921356a15aa1",
+  "quadrature": [
+    1.0
+  ],
+  "reporting_bounds": null
+}

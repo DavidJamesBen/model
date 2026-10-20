@@ -1,0 +1,28 @@
+{
+  "event": "harvey",
+  "model": "TransPINN",
+  "seed": 11,
+  "observed_bins": 315,
+  "reconstruction_score": 0.05007131506705137,
+  "selection_score": 0.6105154156684875,
+  "physics_weight": 2.0,
+  "select_total": true,
+  "best_step": "adam_400",
+  "physics_residual_rms": 0.06236543878912926,
+  "metrics": [
+    {
+      "channel": "rumor",
+      "nrmse": 0.1119796862592233,
+      "log_rmse": 0.20483419055789256
+    },
+    {
+      "channel": "debunk",
+      "nrmse": 0.14399527536391282,
+      "log_rmse": 0.15783375763996926
+    }
+  ],
+  "adam_updates": 400,
+  "lbfgs_max_iterations": 0,
+  "objective_evaluations": 420,
+  "runtime_seconds": 10.626999799977057
+}

@@ -1,0 +1,32 @@
+% Generated from complete audited results by experiments/publish_robustness.py
+\begin{table*}[t]
+\centering
+\caption{Independent synthetic development forecasting with integrated-bin observations.}
+\label{tab:synthetic_development}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccc@{}}
+\toprule
+Model & 20 bins & 40 bins & 80 bins \\
+\midrule
+\multicolumn{4}{l}{\textit{Model-consistent data}} \\
+TransPINN & $0.1258\pm0.0110\;[0.1166]$ & $0.1628\pm0.0100\;[0.1579]$ & $0.2378\pm0.0105\;[0.2406]$ \\
+Matched-PINN & $0.1862\pm0.0337\;[0.1631]$ & $0.2385\pm0.0426\;[0.2120]$ & $0.3072\pm0.0357\;[0.2847]$ \\
+NoAttn-PINN & $0.1048\pm0.0246\;[0.0703]$ & $0.1376\pm0.0397\;[0.0922]$ & $0.2131\pm0.0505\;[0.1575]$ \\
+Data-Transformer & $0.1302\pm0.0169\;[0.1206]$ & $0.1589\pm0.0136\;[0.1466]$ & $0.2258\pm0.0085\;[0.2243]$ \\
+Data-MLP & $0.0781\pm0.0382\;[0.0397]$ & $0.1355\pm0.0401\;[0.0965]$ & $0.2473\pm0.0265\;[0.2208]$ \\
+DDE-LS & $(1.31\pm1.14)\times10^{-5}\;[1.25\times10^{-6}]$ & $(2.00\pm1.73)\times10^{-5}\;[2.07\times10^{-6}]$ & $(4.15\pm3.54)\times10^{-5}\;[4.91\times10^{-6}]$ \\
+\midrule
+\multicolumn{4}{l}{\textit{Media-decay mismatch}} \\
+TransPINN & $0.1260\pm0.0110\;[0.1150]$ & $0.1632\pm0.0099\;[0.1549]$ & $0.2406\pm0.0087\;[0.2389]$ \\
+Matched-PINN & $0.1881\pm0.0334\;[0.1646]$ & $0.2411\pm0.0422\;[0.2141]$ & $0.3110\pm0.0354\;[0.2880]$ \\
+NoAttn-PINN & $0.1063\pm0.0238\;[0.0718]$ & $0.1396\pm0.0401\;[0.0958]$ & $0.2168\pm0.0516\;[0.1636]$ \\
+Data-Transformer & $0.1335\pm0.0213\;[0.1174]$ & $0.1637\pm0.0162\;[0.1650]$ & $0.2344\pm0.0068\;[0.2490]$ \\
+Data-MLP & $0.0798\pm0.0388\;[0.0379]$ & $0.1379\pm0.0404\;[0.0955]$ & $0.2518\pm0.0265\;[0.2251]$ \\
+DDE-LS & $(5.98\pm4.36)\times10^{-4}\;[3.45\times10^{-4}]$ & $(7.50\pm4.63)\times10^{-4}\;[4.80\times10^{-4}]$ & $0.0011\pm4.70\times10^{-4}\;[8.55\times10^{-4}]$ \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}\footnotesize NRMSE is averaged over 3 trajectories per scenario. Mean and sample SD span three seeds. Brackets show validation-selected results. Paired scenarios share trajectory parameters. Media decay is 1.2 in the mismatch generator and fixed at 1 in the physics-informed and numerical DDE fits. DDE-LS independently estimates eight coefficients with known history and fixed nuisance terms. Numerical and neural optimization budgets differ. Development trajectories are reported separately and do not enter held-out test inference.\end{minipage}
+\end{table*}

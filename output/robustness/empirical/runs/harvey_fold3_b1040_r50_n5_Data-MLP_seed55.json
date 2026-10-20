@@ -1,0 +1,44 @@
+{
+  "run": {
+    "event": "harvey",
+    "fold": 3,
+    "model": "Data-MLP",
+    "seed": 55,
+    "epochs_completed": 1040,
+    "parameter_count": 18619,
+    "best_epoch": 210,
+    "validation_score": 0.28287824988365173,
+    "runtime_seconds": 0.14796809062318061,
+    "runtime_kind": "amortized_gpu_batch",
+    "batch_id": "recovery_20260918T144718417634Z_stage2_harvey_fold3_b1040_Data-MLP_batch13",
+    "batch_size": 32,
+    "batch_runtime_seconds": 4.73497889994178,
+    "test_nrmse": 0.37338156088593594,
+    "test_nmae": 0.2946266103350737,
+    "parameters": null
+  },
+  "split": [
+    276,
+    315,
+    354
+  ],
+  "metric_denominator": [
+    12.306973316662278,
+    1267.3937155196652
+  ],
+  "scales": [
+    1868.2410718173335,
+    167175.11006885
+  ],
+  "retention": 0.5,
+  "noise": 0.05,
+  "budget": 1040,
+  "condition": "r50_n5",
+  "mask_seed": 339502144,
+  "noise_seed": 2901261582,
+  "input_sha256": "2374d34c097a1bfc449a5e4381690206f189fda917720d71128c1f387236bd6d",
+  "quadrature": [
+    1.0
+  ],
+  "reporting_bounds": null
+}

@@ -1,0 +1,27 @@
+\begin{table*}[t]
+\centering
+\caption{独立合成测试轨迹上的条件参数与隐状态恢复结果。}
+\label{tab:synthetic_recovery}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcc@{}}
+\toprule
+模型 & 参数log-RMSE & 隐状态NRMSE \\
+\midrule
+\multicolumn{3}{l}{\textit{模型一致数据}} \\
+TransPINN & $1.0332\pm0.0222\;[1.0115]$ & $0.7743\pm0.3387\;[0.3165]$ \\
+Matched-PINN & $0.9969\pm0.0359\;[1.0146]$ & $1.6430\pm1.3343\;[1.9356]$ \\
+NoAttn-PINN & $1.0238\pm0.0375\;[0.9949]$ & $0.4584\pm0.3223\;[0.3050]$ \\
+DDE-LS & $0.1887\pm0.1713\;[0.0653]$ & $0.0073\pm0.0094\;[0.0013]$ \\
+\midrule
+\multicolumn{3}{l}{\textit{媒体衰减失配}} \\
+TransPINN & $1.0277\pm0.0127\;[1.0298]$ & $0.9709\pm0.1132\;[1.6386]$ \\
+Matched-PINN & $0.9971\pm0.0357\;[1.0256]$ & $1.6615\pm1.3299\;[2.5092]$ \\
+NoAttn-PINN & $1.0226\pm0.0319\;[0.9968]$ & $0.4706\pm0.2996\;[0.3068]$ \\
+DDE-LS & $1.4081\pm0.0127\;[1.4228]$ & $0.0926\pm0.0035\;[0.0967]$ \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}\footnotesize 先对10条测试轨迹取平均，再由三个随机种子计算均值和样本标准差；方括号内为验证集选择后的结果。参数log-RMSE先对8个系数计算$\log^2(\widehat\theta_j/\theta_j)$的均值，再取平方根。报告尺度使用原始单位。隐状态NRMSE在80个测试时间箱右端点上汇总$E,H,U,M_1,M_2$的误差，并分别用其真实训练RMS归一化。历史和干扰系数固定。纯数据模型不估计这些量。\end{minipage}
+\end{table*}

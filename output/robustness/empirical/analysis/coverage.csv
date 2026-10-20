@@ -1,0 +1,10 @@
+group,expected_fits,complete_artifact_triples,missing_artifact_triples,complete
+stage2_r100_n0,600,600,0,True
+stage2_r100_n5,600,600,0,True
+stage2_r100_n10,600,600,0,True
+stage2_r50_n0,600,600,0,True
+stage2_r50_n5,600,600,0,True
+stage2_r50_n10,600,600,0,True
+stage2_r25_n0,600,600,0,True
+stage2_r25_n5,600,600,0,True
+stage2_r25_n10,600,600,0,True

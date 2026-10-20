@@ -1,0 +1,28 @@
+{
+  "event": "sydney",
+  "model": "TransPINN",
+  "seed": 11,
+  "observed_bins": 60,
+  "reconstruction_score": 0.002021426736507857,
+  "selection_score": 0.03326379507780075,
+  "physics_weight": 2.0,
+  "select_total": true,
+  "best_step": "adam_400",
+  "physics_residual_rms": 0.0563223659992218,
+  "metrics": [
+    {
+      "channel": "rumor",
+      "nrmse": 0.011192358809954301,
+      "log_rmse": 0.041415673192729235
+    },
+    {
+      "channel": "debunk",
+      "nrmse": 0.020437357553853657,
+      "log_rmse": 0.04224501162852181
+    }
+  ],
+  "adam_updates": 400,
+  "lbfgs_max_iterations": 0,
+  "objective_evaluations": 420,
+  "runtime_seconds": 11.546730900008697
+}

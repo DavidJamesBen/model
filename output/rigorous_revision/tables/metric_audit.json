@@ -1,0 +1,6 @@
+{
+  "verified_rows": 360,
+  "selected_units_per_model": 24,
+  "simple_baselines_use": "training prefix only",
+  "source_manifest": "output/tables/baseline_run_manifest.json"
+}

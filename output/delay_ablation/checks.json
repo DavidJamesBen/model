@@ -1,0 +1,5 @@
+{
+  "zero_delay_exposed_equation": "passed",
+  "human_mass_conservation": "passed",
+  "removed_trainable_scalars": 1
+}

@@ -1,0 +1,53 @@
+{
+  "run": {
+    "event": "ottawa",
+    "fold": 2,
+    "model": "Matched-PINN",
+    "seed": 22,
+    "epochs_completed": 260,
+    "parameter_count": 18619,
+    "best_epoch": 20,
+    "validation_score": 0.46725642681121826,
+    "runtime_seconds": 1.4858946333406493,
+    "runtime_kind": "amortized_gpu_batch",
+    "batch_id": "stage1_ottawa_fold2_b260_Matched-PINN_batch0",
+    "batch_size": 3,
+    "batch_runtime_seconds": 4.457683900021948,
+    "test_nrmse": 0.42821965597785805,
+    "test_nmae": 0.37313711345208944,
+    "parameters": [
+      2.4680495262145996,
+      1.2733607292175293,
+      0.07455018162727356,
+      1.010933756828308,
+      1.0115132331848145,
+      1.059229850769043,
+      0.8475093841552734,
+      0.8468943238258362
+    ]
+  },
+  "split": [
+    26,
+    30,
+    34
+  ],
+  "metric_denominator": [
+    6.076436202501999,
+    3.2640230014272498
+  ],
+  "scales": [
+    128.0,
+    67.0
+  ],
+  "retention": 1.0,
+  "noise": 0.0,
+  "budget": 260,
+  "condition": "r100_n0",
+  "mask_seed": 1094760804,
+  "noise_seed": 3210049598,
+  "input_sha256": "6e6fcf51baff81d26f7579e8d7ba3bf488b91f249efdbd3633256f0f47b46862",
+  "quadrature": [
+    1.0
+  ],
+  "reporting_bounds": null
+}

@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "rng": "NumPy PCG64",
+  "parameter_names": [
+    "beta_1",
+    "beta_2",
+    "tau_normalized",
+    "q_R",
+    "q_D",
+    "chi",
+    "reporting_R",
+    "reporting_D"
+  ],
+  "lower": [
+    0.1,
+    0.05,
+    0.01,
+    0.05,
+    0.05,
+    0.05,
+    0.25,
+    0.25
+  ],
+  "upper": [
+    8.0,
+    5.0,
+    0.22,
+    4.0,
+    4.0,
+    3.0,
+    12.0,
+    12.0
+  ],
+  "parameter_draw": "exp(log(lower) + Uniform(0.2,0.8)*(log(upper)-log(lower)))",
+  "development_seeds": [
+    20260921,
+    20260922,
+    20260923
+  ],
+  "test_seeds": [
+    20261001,
+    20261002,
+    20261003,
+    20261004,
+    20261005,
+    20261006,
+    20261007,
+    20261008,
+    20261009,
+    20261010
+  ],
+  "history": [
+    0.93,
+    0.03,
+    0.015,
+    0.005,
+    0.01,
+    0.005,
+    0.005,
+    0.2,
+    0.2
+  ],
+  "count_scale": 10000.0,
+  "observations": "200 exact-in-model binned integrated rumor/debunking-entry fluxes on [0,1]",
+  "split": {
+    "train": [
+      0,
+      100
+    ],
+    "validation": [
+      100,
+      120
+    ],
+    "test": [
+      120,
+      200
+    ]
+  },
+  "horizons": [
+    20,
+    40,
+    80
+  ],
+  "generator_mesh": 8000,
+  "refinement_mesh": 4000,
+  "maximum_relative_count_refinement": 1e-06,
+  "exclusion_rule": "Only history incompatibility, negative states, or failed refinement. No resampling or performance-based exclusions.",
+  "media_decay": {
+    "consistent": 1.0,
+    "decay_mismatch": 1.2
+  },
+  "source_sha256": "a3e43375d7ae0cfb68c7172e288d694aa8b1be021c990e121aef995e7e754dae"
+}

@@ -1,0 +1,13 @@
+{
+  "event": "harvey",
+  "fold": 2,
+  "model": "PINN",
+  "seed": 22,
+  "best_epoch": 60,
+  "validation_score": 1.4390606880187988,
+  "physics_residual_rms": 0.6380183100700378,
+  "runtime_seconds": 17.149203999957535,
+  "training_source_sha256": "621d1bbf972a8ec7979daa9e96d0be6856cb868a49296961d89e1c2fa7741d2b",
+  "execution": "separate forward batches",
+  "epochs_budget": 800
+}

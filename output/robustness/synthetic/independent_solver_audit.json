@@ -1,0 +1,12 @@
+{
+  "datasets_checked": 26,
+  "independent_solver": "scipy.integrate.solve_ivp adaptive method of steps with the existing revision_dde.rhs; two cumulative observation states appended",
+  "rtol": 1e-11,
+  "atol": 1e-13,
+  "max_step": "min(0.005, tau/3)",
+  "comparison": "Against generated 8000-step RK4 integrated-bin observations and states",
+  "maximum_relative_count_difference": 1.3629918097993676e-10,
+  "maximum_absolute_state_difference": 6.415533035375454e-12,
+  "worst_count_case": "development_20260922_decay_mismatch",
+  "all_passed_relative_count_threshold_1e_6": true
+}

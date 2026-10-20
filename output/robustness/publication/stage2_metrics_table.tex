@@ -1,0 +1,26 @@
+% Generated from complete audited results by experiments/publish_robustness.py
+\begin{table*}[t]
+\centering
+\caption{Forecasting accuracy for all models across the complete perturbation grid.}
+\label{tab:robustness_metrics}
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccc@{}}
+\toprule
+Retained / Noise & TransPINN & Matched-PINN & NoAttn-PINN & Data-Transformer & Data-MLP \\
+\midrule
+100\% / 0\% & $0.4416\pm0.0438\;[0.4304]$ & $0.4345\pm0.0275\;[0.4283]$ & $0.4357\pm0.0485\;[0.4570]$ & $0.4356\pm0.0454\;[0.3888]$ & $0.4579\pm0.0483\;[0.5179]$ \\
+100\% / 5\% & $0.4555\pm0.0500\;[0.4375]$ & $0.4328\pm0.0216\;[0.4401]$ & $0.4401\pm0.0403\;[0.4423]$ & $0.4235\pm0.0373\;[0.3778]$ & $0.4667\pm0.0500\;[0.5483]$ \\
+100\% / 10\% & $0.4472\pm0.0525\;[0.4378]$ & $0.4361\pm0.0240\;[0.4471]$ & $0.4420\pm0.0429\;[0.4648]$ & $0.4271\pm0.0480\;[0.3966]$ & $0.4714\pm0.0346\;[0.4610]$ \\
+50\% / 0\% & $0.4669\pm0.0387\;[0.3192]$ & $0.4940\pm0.0622\;[0.3792]$ & $0.5151\pm0.0502\;[0.3587]$ & $0.4584\pm0.0356\;[0.3820]$ & $0.5465\pm0.0699\;[0.4138]$ \\
+50\% / 5\% & $0.4687\pm0.0326\;[0.3847]$ & $0.4872\pm0.0592\;[0.3920]$ & $0.5222\pm0.0561\;[0.3676]$ & $0.4578\pm0.0322\;[0.3961]$ & $0.5417\pm0.0650\;[0.4279]$ \\
+50\% / 10\% & $0.4773\pm0.0386\;[0.3808]$ & $0.4824\pm0.0446\;[0.3719]$ & $0.5141\pm0.0509\;[0.3769]$ & $0.4651\pm0.0255\;[0.4209]$ & $0.5668\pm0.1246\;[0.3942]$ \\
+25\% / 0\% & $0.5349\pm0.1052\;[0.3697]$ & $0.5983\pm0.1604\;[0.9518]$ & $0.5457\pm0.0837\;[0.3924]$ & $0.5270\pm0.0627\;[0.3852]$ & $0.6661\pm0.1808\;[0.8898]$ \\
+25\% / 5\% & $0.5415\pm0.1022\;[0.3621]$ & $0.5995\pm0.1584\;[1.0329]$ & $0.5486\pm0.0927\;[0.4409]$ & $0.5331\pm0.0767\;[0.3869]$ & $0.6443\pm0.1664\;[0.9403]$ \\
+25\% / 10\% & $0.5262\pm0.0813\;[0.3783]$ & $0.6006\pm0.1693\;[1.0561]$ & $0.5595\pm0.0986\;[0.4121]$ & $0.5411\pm0.0795\;[0.3885]$ & $0.6317\pm0.1416\;[0.9433]$ \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}\footnotesize Each entry gives macro test NRMSE as mean and sample SD across ten paired replicates, followed by the validation-selected result in brackets. A replicate combines initialization, observation-mask and noise seeds. Selection chooses the complete replicate per event/fold. Channels, folds and events receive equal weight. Each replicate uses its retained clean training observations for normalization. All nine conditions use 1040 updates.\end{minipage}
+\end{table*}

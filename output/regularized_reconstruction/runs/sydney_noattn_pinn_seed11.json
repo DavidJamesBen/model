@@ -1,0 +1,28 @@
+{
+  "event": "sydney",
+  "model": "NoAttn-PINN",
+  "seed": 11,
+  "observed_bins": 60,
+  "reconstruction_score": 0.012015491190000135,
+  "selection_score": 0.15294572710990906,
+  "physics_weight": 2.0,
+  "select_total": true,
+  "best_step": "adam_400",
+  "physics_residual_rms": 0.0551171638071537,
+  "metrics": [
+    {
+      "channel": "rumor",
+      "nrmse": 0.012613856513177167,
+      "log_rmse": 0.04565096565743662
+    },
+    {
+      "channel": "debunk",
+      "nrmse": 0.07548210507393588,
+      "log_rmse": 0.1268476020743636
+    }
+  ],
+  "adam_updates": 400,
+  "lbfgs_max_iterations": 0,
+  "objective_evaluations": 420,
+  "runtime_seconds": 10.622331199992914
+}

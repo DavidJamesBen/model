@@ -1,0 +1,13 @@
+{
+  "event": "harvey",
+  "fold": 2,
+  "model": "TransPINN",
+  "seed": 22,
+  "best_epoch": 190,
+  "validation_score": 1.3896037340164185,
+  "physics_residual_rms": 0.12751664221286774,
+  "runtime_seconds": 31.41935340000782,
+  "training_source_sha256": "629d26af528ecb06399556893217a33df9800cade5c872845346f4c05d3fb686",
+  "execution": "combined forward batch",
+  "epochs_budget": 800
+}

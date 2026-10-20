@@ -1,0 +1,3627 @@
+{
+  "config": {
+    "epochs": 260,
+    "min_epochs": 220,
+    "patience_checks": 18,
+    "check_every": 10,
+    "learning_rate": 0.002,
+    "collocation_points": 96,
+    "sequence_length": 16,
+    "finite_difference_step": 0.0025,
+    "data_weight": 12.0,
+    "physics_weight": 0.2,
+    "history_weight": 4.0,
+    "gradient_clip": 5.0,
+    "causal_epsilon": 2.0,
+    "causal_chunks": 8
+  },
+  "active_activity_fraction_per_channel": 0.99,
+  "fold_rule": "L=max(channel-specific 99% cumulative-activity prefix); h=max(2,floor(0.1L)); expanding origins start at ceil(0.5L) and advance by h; retain first three candidates with positive validation and test totals in both channels",
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "runs": [
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.896639883518219,
+      "runtime_seconds": 1.715787700144574,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.0938773155212402,
+        "beta_2": 1.0679415464401245,
+        "tau_normalized": 0.06688785552978516,
+        "q_R": 0.9187853932380676,
+        "q_D": 0.9256933331489563,
+        "chi": 0.9867220520973206,
+        "reporting_R": 0.8257378935813904,
+        "reporting_D": 0.8242679238319397
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.9560748338699341,
+      "runtime_seconds": 1.678551800083369,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.0191848278045654,
+        "beta_2": 1.0614783763885498,
+        "tau_normalized": 0.07260064780712128,
+        "q_R": 0.9323086142539978,
+        "q_D": 0.9248395562171936,
+        "chi": 1.0032122135162354,
+        "reporting_R": 0.8248889446258545,
+        "reporting_D": 0.824063777923584
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.8327909708023071,
+      "runtime_seconds": 1.6562212000135332,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.0261974334716797,
+        "beta_2": 1.0328236818313599,
+        "tau_normalized": 0.07876951992511749,
+        "q_R": 0.9101985096931458,
+        "q_D": 0.9151309132575989,
+        "chi": 0.9783979058265686,
+        "reporting_R": 0.8229661583900452,
+        "reporting_D": 0.823111891746521
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "LSTM-PINN",
+      "seed": 11,
+      "best_epoch": 10,
+      "validation_score": 0.6311736702919006,
+      "runtime_seconds": 6.688943600049242,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.4921810626983643,
+        "beta_2": 1.2993649244308472,
+        "tau_normalized": 0.07380083203315735,
+        "q_R": 1.0233443975448608,
+        "q_D": 1.0233384370803833,
+        "chi": 1.0697046518325806,
+        "reporting_R": 0.8265010714530945,
+        "reporting_D": 0.8264504075050354
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "LSTM-PINN",
+      "seed": 22,
+      "best_epoch": 10,
+      "validation_score": 0.7769201397895813,
+      "runtime_seconds": 6.867003600113094,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.440030097961426,
+        "beta_2": 1.2712383270263672,
+        "tau_normalized": 0.07380963116884232,
+        "q_R": 1.0233162641525269,
+        "q_D": 1.0233491659164429,
+        "chi": 1.0696896314620972,
+        "reporting_R": 0.8264555335044861,
+        "reporting_D": 0.8264926075935364
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "LSTM-PINN",
+      "seed": 33,
+      "best_epoch": 10,
+      "validation_score": 0.737761914730072,
+      "runtime_seconds": 6.8249427000992,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.438707113265991,
+        "beta_2": 1.270770788192749,
+        "tau_normalized": 0.0738014504313469,
+        "q_R": 1.0234955549240112,
+        "q_D": 1.0233551263809204,
+        "chi": 1.0697695016860962,
+        "reporting_R": 0.8265482783317566,
+        "reporting_D": 0.8264780640602112
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "TimePINN",
+      "seed": 11,
+      "best_epoch": 90,
+      "validation_score": 0.7183664441108704,
+      "runtime_seconds": 1.7579248999245465,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.7524776458740234,
+        "beta_2": 1.4514800310134888,
+        "tau_normalized": 0.06754479557275772,
+        "q_R": 0.9707030057907104,
+        "q_D": 0.9695321321487427,
+        "chi": 1.0419284105300903,
+        "reporting_R": 0.8267247676849365,
+        "reporting_D": 0.8237093091011047
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "TimePINN",
+      "seed": 22,
+      "best_epoch": 90,
+      "validation_score": 0.6328246593475342,
+      "runtime_seconds": 1.7252303999848664,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.744356393814087,
+        "beta_2": 1.4334503412246704,
+        "tau_normalized": 0.07428665459156036,
+        "q_R": 1.0383446216583252,
+        "q_D": 1.0199462175369263,
+        "chi": 1.0796960592269897,
+        "reporting_R": 0.8260224461555481,
+        "reporting_D": 0.823948085308075
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "TimePINN",
+      "seed": 33,
+      "best_epoch": 90,
+      "validation_score": 0.5849722027778625,
+      "runtime_seconds": 1.7320006999652833,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.7361505031585693,
+        "beta_2": 1.4347803592681885,
+        "tau_normalized": 0.06898117065429688,
+        "q_R": 0.9529739022254944,
+        "q_D": 0.9416071176528931,
+        "chi": 1.0021930932998657,
+        "reporting_R": 0.8234589099884033,
+        "reporting_D": 0.8230462074279785
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "NoAttn-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 1.0068577527999878,
+      "runtime_seconds": 15.96258719987236,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0581071376800537,
+        "beta_2": 1.070624589920044,
+        "tau_normalized": 0.07155660539865494,
+        "q_R": 0.9964891076087952,
+        "q_D": 1.003029704093933,
+        "chi": 1.0592440366744995,
+        "reporting_R": 0.8265774250030518,
+        "reporting_D": 0.8244909048080444
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "NoAttn-PINN",
+      "seed": 22,
+      "best_epoch": 160,
+      "validation_score": 1.0538491010665894,
+      "runtime_seconds": 15.791080000111833,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.075756549835205,
+        "beta_2": 1.0768036842346191,
+        "tau_normalized": 0.07402265071868896,
+        "q_R": 0.9760172963142395,
+        "q_D": 1.009060025215149,
+        "chi": 1.0910022258758545,
+        "reporting_R": 0.8196231722831726,
+        "reporting_D": 0.8227297067642212
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "NoAttn-PINN",
+      "seed": 33,
+      "best_epoch": 140,
+      "validation_score": 0.9854885935783386,
+      "runtime_seconds": 16.090735599864274,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.111698865890503,
+        "beta_2": 1.0909963846206665,
+        "tau_normalized": 0.07258496433496475,
+        "q_R": 1.0011096000671387,
+        "q_D": 0.9979539513587952,
+        "chi": 1.0599558353424072,
+        "reporting_R": 0.8352606892585754,
+        "reporting_D": 0.8229089379310608
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "TransPINN",
+      "seed": 11,
+      "best_epoch": 130,
+      "validation_score": 0.20033153891563416,
+      "runtime_seconds": 22.25530319986865,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.139585494995117,
+        "beta_2": 1.0954406261444092,
+        "tau_normalized": 0.06663903594017029,
+        "q_R": 0.9899876713752747,
+        "q_D": 0.9931778311729431,
+        "chi": 1.0531429052352905,
+        "reporting_R": 0.8257364630699158,
+        "reporting_D": 0.8251436352729797
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "TransPINN",
+      "seed": 22,
+      "best_epoch": 120,
+      "validation_score": 0.41259995102882385,
+      "runtime_seconds": 21.804976899875328,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.123735189437866,
+        "beta_2": 1.0945154428482056,
+        "tau_normalized": 0.07274792343378067,
+        "q_R": 1.0164902210235596,
+        "q_D": 1.0124199390411377,
+        "chi": 1.060013771057129,
+        "reporting_R": 0.8316783308982849,
+        "reporting_D": 0.8252027630805969
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 1,
+      "model": "TransPINN",
+      "seed": 33,
+      "best_epoch": 100,
+      "validation_score": 0.2968898415565491,
+      "runtime_seconds": 22.17408340005204,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.2871456146240234,
+        "beta_2": 1.1479547023773193,
+        "tau_normalized": 0.07369562238454819,
+        "q_R": 0.9699074625968933,
+        "q_D": 0.9976285696029663,
+        "chi": 1.0436762571334839,
+        "reporting_R": 0.8255854249000549,
+        "reporting_D": 0.8263942003250122
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "PINN",
+      "seed": 11,
+      "best_epoch": 60,
+      "validation_score": 0.0007235210505314171,
+      "runtime_seconds": 1.5616721000988036,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.314645767211914,
+        "beta_2": 1.211000680923462,
+        "tau_normalized": 0.07129251211881638,
+        "q_R": 0.945848286151886,
+        "q_D": 0.9459187388420105,
+        "chi": 1.0001429319381714,
+        "reporting_R": 0.827078104019165,
+        "reporting_D": 0.8240724802017212
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "PINN",
+      "seed": 22,
+      "best_epoch": 40,
+      "validation_score": 0.005163982044905424,
+      "runtime_seconds": 1.3358189000282437,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.332435131072998,
+        "beta_2": 1.2148174047470093,
+        "tau_normalized": 0.07032384723424911,
+        "q_R": 0.981270968914032,
+        "q_D": 0.9826146960258484,
+        "chi": 1.0334919691085815,
+        "reporting_R": 0.8267961740493774,
+        "reporting_D": 0.8244553208351135
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "PINN",
+      "seed": 33,
+      "best_epoch": 60,
+      "validation_score": 0.0006577845779247582,
+      "runtime_seconds": 1.7141813000198454,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.285088300704956,
+        "beta_2": 1.2214049100875854,
+        "tau_normalized": 0.07634235173463821,
+        "q_R": 0.9479373693466187,
+        "q_D": 0.9470126628875732,
+        "chi": 1.0020506381988525,
+        "reporting_R": 0.8246315717697144,
+        "reporting_D": 0.8227468729019165
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "LSTM-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.039530158042907715,
+      "runtime_seconds": 7.734583599958569,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.0752737522125244,
+        "beta_2": 1.0673799514770508,
+        "tau_normalized": 0.08397506177425385,
+        "q_R": 0.8650599122047424,
+        "q_D": 0.8583345413208008,
+        "chi": 0.9384893774986267,
+        "reporting_R": 0.814944326877594,
+        "reporting_D": 0.8097231388092041
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "LSTM-PINN",
+      "seed": 22,
+      "best_epoch": 170,
+      "validation_score": 0.014430791139602661,
+      "runtime_seconds": 7.7217391999438405,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.179083824157715,
+        "beta_2": 1.0928606986999512,
+        "tau_normalized": 0.07560168951749802,
+        "q_R": 0.9232507944107056,
+        "q_D": 0.9241580367088318,
+        "chi": 0.9784688949584961,
+        "reporting_R": 0.8127520084381104,
+        "reporting_D": 0.8128316402435303
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "LSTM-PINN",
+      "seed": 33,
+      "best_epoch": 170,
+      "validation_score": 0.00999545119702816,
+      "runtime_seconds": 7.792872299905866,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 1.9893879890441895,
+        "beta_2": 1.0263088941574097,
+        "tau_normalized": 0.0795455351471901,
+        "q_R": 0.911615788936615,
+        "q_D": 0.8751211166381836,
+        "chi": 0.9670116305351257,
+        "reporting_R": 0.8154171109199524,
+        "reporting_D": 0.8113493919372559
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "TimePINN",
+      "seed": 11,
+      "best_epoch": 110,
+      "validation_score": 0.0019270437769591808,
+      "runtime_seconds": 1.7587443999946117,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.8668196201324463,
+        "beta_2": 1.5116794109344482,
+        "tau_normalized": 0.06526713073253632,
+        "q_R": 0.9777355194091797,
+        "q_D": 0.9700184464454651,
+        "chi": 1.060949444770813,
+        "reporting_R": 0.8271017670631409,
+        "reporting_D": 0.8239907622337341
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "TimePINN",
+      "seed": 22,
+      "best_epoch": 90,
+      "validation_score": 0.0022460741456598043,
+      "runtime_seconds": 1.7255796999670565,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.78064227104187,
+        "beta_2": 1.4526270627975464,
+        "tau_normalized": 0.07042288035154343,
+        "q_R": 1.033257007598877,
+        "q_D": 0.9875926971435547,
+        "chi": 1.0417042970657349,
+        "reporting_R": 0.8269703984260559,
+        "reporting_D": 0.8235240578651428
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "TimePINN",
+      "seed": 33,
+      "best_epoch": 90,
+      "validation_score": 0.0014219314325600863,
+      "runtime_seconds": 1.8522763999644667,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.763167381286621,
+        "beta_2": 1.4582889080047607,
+        "tau_normalized": 0.06726300716400146,
+        "q_R": 0.9483057260513306,
+        "q_D": 0.9294496774673462,
+        "chi": 0.9947044849395752,
+        "reporting_R": 0.8245589733123779,
+        "reporting_D": 0.8224575519561768
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "NoAttn-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.011893457733094692,
+      "runtime_seconds": 16.288757999893278,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.043956995010376,
+        "beta_2": 1.0833697319030762,
+        "tau_normalized": 0.0774523988366127,
+        "q_R": 0.998516857624054,
+        "q_D": 1.000685214996338,
+        "chi": 1.0582956075668335,
+        "reporting_R": 0.8262413144111633,
+        "reporting_D": 0.8242480158805847
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "NoAttn-PINN",
+      "seed": 22,
+      "best_epoch": 60,
+      "validation_score": 0.0052732303738594055,
+      "runtime_seconds": 14.98061230010353,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.2862000465393066,
+        "beta_2": 1.2022196054458618,
+        "tau_normalized": 0.06877726316452026,
+        "q_R": 1.0086815357208252,
+        "q_D": 1.0108853578567505,
+        "chi": 1.0742627382278442,
+        "reporting_R": 0.8256881237030029,
+        "reporting_D": 0.8233460187911987
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "NoAttn-PINN",
+      "seed": 33,
+      "best_epoch": 70,
+      "validation_score": 0.00830117892473936,
+      "runtime_seconds": 15.436596799874678,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.2774252891540527,
+        "beta_2": 1.1895105838775635,
+        "tau_normalized": 0.07109091430902481,
+        "q_R": 1.004209041595459,
+        "q_D": 0.9987256526947021,
+        "chi": 1.0549614429473877,
+        "reporting_R": 0.8351014852523804,
+        "reporting_D": 0.8240388035774231
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "TransPINN",
+      "seed": 11,
+      "best_epoch": 70,
+      "validation_score": 0.0008229158702306449,
+      "runtime_seconds": 21.11470689997077,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.2594141960144043,
+        "beta_2": 1.1688514947891235,
+        "tau_normalized": 0.06837888062000275,
+        "q_R": 0.9948492050170898,
+        "q_D": 0.9886628985404968,
+        "chi": 1.0384361743927002,
+        "reporting_R": 0.8263337016105652,
+        "reporting_D": 0.8249598145484924
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "TransPINN",
+      "seed": 22,
+      "best_epoch": 60,
+      "validation_score": 0.00305581116117537,
+      "runtime_seconds": 20.420811499934644,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.3306758403778076,
+        "beta_2": 1.1998567581176758,
+        "tau_normalized": 0.0750938281416893,
+        "q_R": 1.0109058618545532,
+        "q_D": 1.013043761253357,
+        "chi": 1.0609734058380127,
+        "reporting_R": 0.8321781158447266,
+        "reporting_D": 0.8253613710403442
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 2,
+      "model": "TransPINN",
+      "seed": 33,
+      "best_epoch": 60,
+      "validation_score": 0.0013954135356470942,
+      "runtime_seconds": 20.845763799967244,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.352057933807373,
+        "beta_2": 1.2257518768310547,
+        "tau_normalized": 0.0741020143032074,
+        "q_R": 0.9936798214912415,
+        "q_D": 1.0018519163131714,
+        "chi": 1.049263834953308,
+        "reporting_R": 0.8275587558746338,
+        "reporting_D": 0.8265222907066345
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "PINN",
+      "seed": 11,
+      "best_epoch": 70,
+      "validation_score": 0.003895675064995885,
+      "runtime_seconds": 1.579862899845466,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.284391403198242,
+        "beta_2": 1.1954901218414307,
+        "tau_normalized": 0.07246078550815582,
+        "q_R": 0.9361254572868347,
+        "q_D": 0.9364795684814453,
+        "chi": 0.9915652275085449,
+        "reporting_R": 0.8276771903038025,
+        "reporting_D": 0.8244314193725586
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "PINN",
+      "seed": 22,
+      "best_epoch": 90,
+      "validation_score": 0.002185927703976631,
+      "runtime_seconds": 1.698464100016281,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.160193681716919,
+        "beta_2": 1.1216771602630615,
+        "tau_normalized": 0.07164083421230316,
+        "q_R": 0.9263719916343689,
+        "q_D": 0.9215924143791199,
+        "chi": 0.9828978776931763,
+        "reporting_R": 0.8272180557250977,
+        "reporting_D": 0.8242242336273193
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "PINN",
+      "seed": 33,
+      "best_epoch": 80,
+      "validation_score": 0.0020948422607034445,
+      "runtime_seconds": 1.80230570002459,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.2299764156341553,
+        "beta_2": 1.14793062210083,
+        "tau_normalized": 0.07303162664175034,
+        "q_R": 0.9324738383293152,
+        "q_D": 0.9317030906677246,
+        "chi": 0.9900820851325989,
+        "reporting_R": 0.8253649473190308,
+        "reporting_D": 0.822594165802002
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "LSTM-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.025089552626013756,
+      "runtime_seconds": 7.913970400113612,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.4004552364349365,
+        "beta_2": 1.2422025203704834,
+        "tau_normalized": 0.08783398568630219,
+        "q_R": 0.8210347890853882,
+        "q_D": 0.8256915211677551,
+        "chi": 0.8881502151489258,
+        "reporting_R": 0.8122724294662476,
+        "reporting_D": 0.8104089498519897
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "LSTM-PINN",
+      "seed": 22,
+      "best_epoch": 50,
+      "validation_score": 0.03277604654431343,
+      "runtime_seconds": 7.08428019983694,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.300044059753418,
+        "beta_2": 1.191380500793457,
+        "tau_normalized": 0.0745362862944603,
+        "q_R": 0.9955093264579773,
+        "q_D": 0.9858508110046387,
+        "chi": 1.039391040802002,
+        "reporting_R": 0.8140478730201721,
+        "reporting_D": 0.8133818507194519
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "LSTM-PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.010404039174318314,
+      "runtime_seconds": 7.98353169998154,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 1.9516152143478394,
+        "beta_2": 1.0140990018844604,
+        "tau_normalized": 0.08591058850288391,
+        "q_R": 0.8891147375106812,
+        "q_D": 0.8518391847610474,
+        "chi": 0.9446542263031006,
+        "reporting_R": 0.8148975372314453,
+        "reporting_D": 0.8111608028411865
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "TimePINN",
+      "seed": 11,
+      "best_epoch": 130,
+      "validation_score": 0.008506083860993385,
+      "runtime_seconds": 1.8036193998996168,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.8722658157348633,
+        "beta_2": 1.5156233310699463,
+        "tau_normalized": 0.06334173679351807,
+        "q_R": 0.9325071573257446,
+        "q_D": 0.9268555641174316,
+        "chi": 1.019246220588684,
+        "reporting_R": 0.8280081748962402,
+        "reporting_D": 0.8239263296127319
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "TimePINN",
+      "seed": 22,
+      "best_epoch": 130,
+      "validation_score": 0.004208092577755451,
+      "runtime_seconds": 2.008072800002992,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.8399438858032227,
+        "beta_2": 1.4777201414108276,
+        "tau_normalized": 0.0720604881644249,
+        "q_R": 1.0353187322616577,
+        "q_D": 0.9649806618690491,
+        "chi": 1.0128096342086792,
+        "reporting_R": 0.8273788094520569,
+        "reporting_D": 0.8241437077522278
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "TimePINN",
+      "seed": 33,
+      "best_epoch": 120,
+      "validation_score": 0.00471335556358099,
+      "runtime_seconds": 1.9115619999356568,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.810277223587036,
+        "beta_2": 1.491080641746521,
+        "tau_normalized": 0.06608237326145172,
+        "q_R": 0.9042441248893738,
+        "q_D": 0.8878693580627441,
+        "chi": 0.95936518907547,
+        "reporting_R": 0.8253378868103027,
+        "reporting_D": 0.8224295377731323
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "NoAttn-PINN",
+      "seed": 11,
+      "best_epoch": 70,
+      "validation_score": 0.010669121518731117,
+      "runtime_seconds": 15.3058493998833,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.2736709117889404,
+        "beta_2": 1.189460039138794,
+        "tau_normalized": 0.07134291529655457,
+        "q_R": 0.9982311129570007,
+        "q_D": 1.0030089616775513,
+        "chi": 1.0553501844406128,
+        "reporting_R": 0.8277396559715271,
+        "reporting_D": 0.8260070085525513
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "NoAttn-PINN",
+      "seed": 22,
+      "best_epoch": 60,
+      "validation_score": 0.00097552320221439,
+      "runtime_seconds": 15.099062100052834,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.2852330207824707,
+        "beta_2": 1.1946593523025513,
+        "tau_normalized": 0.06878261268138885,
+        "q_R": 1.006823182106018,
+        "q_D": 1.0145692825317383,
+        "chi": 1.0790963172912598,
+        "reporting_R": 0.8285672664642334,
+        "reporting_D": 0.8243288993835449
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "NoAttn-PINN",
+      "seed": 33,
+      "best_epoch": 50,
+      "validation_score": 0.0006202519871294498,
+      "runtime_seconds": 14.55051780003123,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.3389925956726074,
+        "beta_2": 1.2212361097335815,
+        "tau_normalized": 0.07114356756210327,
+        "q_R": 1.006010890007019,
+        "q_D": 0.9991700649261475,
+        "chi": 1.0556846857070923,
+        "reporting_R": 0.8348801732063293,
+        "reporting_D": 0.8266195058822632
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "TransPINN",
+      "seed": 11,
+      "best_epoch": 70,
+      "validation_score": 0.0031157732009887695,
+      "runtime_seconds": 21.48784980014898,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.2649083137512207,
+        "beta_2": 1.173997163772583,
+        "tau_normalized": 0.06946930289268494,
+        "q_R": 0.9902253150939941,
+        "q_D": 0.9888609647750854,
+        "chi": 1.0378700494766235,
+        "reporting_R": 0.8269442915916443,
+        "reporting_D": 0.8260222673416138
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "TransPINN",
+      "seed": 22,
+      "best_epoch": 50,
+      "validation_score": 0.00753305247053504,
+      "runtime_seconds": 19.59335709991865,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.3509724140167236,
+        "beta_2": 1.220005989074707,
+        "tau_normalized": 0.07510194182395935,
+        "q_R": 1.0087498426437378,
+        "q_D": 1.0109431743621826,
+        "chi": 1.0602092742919922,
+        "reporting_R": 0.8335798382759094,
+        "reporting_D": 0.8271629214286804
+      }
+    },
+    {
+      "event": "harvey",
+      "fold": 3,
+      "model": "TransPINN",
+      "seed": 33,
+      "best_epoch": 70,
+      "validation_score": 0.00042175783892162144,
+      "runtime_seconds": 21.510940300067887,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.305370807647705,
+        "beta_2": 1.2113858461380005,
+        "tau_normalized": 0.07356472313404083,
+        "q_R": 0.9906003475189209,
+        "q_D": 0.997864305973053,
+        "chi": 1.0461441278457642,
+        "reporting_R": 0.8291019201278687,
+        "reporting_D": 0.8293725252151489
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.7227600812911987,
+      "runtime_seconds": 1.6206003001425415,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.049374580383301,
+        "beta_2": 1.0441800355911255,
+        "tau_normalized": 0.07148171216249466,
+        "q_R": 0.9784796237945557,
+        "q_D": 0.9834480881690979,
+        "chi": 1.0530644655227661,
+        "reporting_R": 0.8487488627433777,
+        "reporting_D": 0.8458296060562134
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.632265567779541,
+      "runtime_seconds": 1.4789300998672843,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.062595844268799,
+        "beta_2": 1.073548674583435,
+        "tau_normalized": 0.0771445706486702,
+        "q_R": 0.9628336429595947,
+        "q_D": 0.9841809272766113,
+        "chi": 1.037066102027893,
+        "reporting_R": 0.8482564687728882,
+        "reporting_D": 0.8463820815086365
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "PINN",
+      "seed": 33,
+      "best_epoch": 220,
+      "validation_score": 0.5966081619262695,
+      "runtime_seconds": 1.5742887000087649,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.047316551208496,
+        "beta_2": 1.1183675527572632,
+        "tau_normalized": 0.07731892168521881,
+        "q_R": 0.943897545337677,
+        "q_D": 0.9673531651496887,
+        "chi": 1.0147870779037476,
+        "reporting_R": 0.8476658463478088,
+        "reporting_D": 0.8439264893531799
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "LSTM-PINN",
+      "seed": 11,
+      "best_epoch": 40,
+      "validation_score": 1.5874595642089844,
+      "runtime_seconds": 5.152661100029945,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.5064516067504883,
+        "beta_2": 1.3107671737670898,
+        "tau_normalized": 0.07599300146102905,
+        "q_R": 0.9786742925643921,
+        "q_D": 0.9824540615081787,
+        "chi": 1.0350701808929443,
+        "reporting_R": 0.8542041778564453,
+        "reporting_D": 0.8588723540306091
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "LSTM-PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 1.1944917440414429,
+      "runtime_seconds": 6.0571373999118805,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 1.9866251945495605,
+        "beta_2": 1.0216186046600342,
+        "tau_normalized": 0.07423035800457001,
+        "q_R": 0.955634355545044,
+        "q_D": 1.0016226768493652,
+        "chi": 1.0391820669174194,
+        "reporting_R": 0.8643466234207153,
+        "reporting_D": 0.8561996221542358
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "LSTM-PINN",
+      "seed": 33,
+      "best_epoch": 20,
+      "validation_score": 1.5010002851486206,
+      "runtime_seconds": 5.114913200028241,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.4064197540283203,
+        "beta_2": 1.2520862817764282,
+        "tau_normalized": 0.07479237020015717,
+        "q_R": 1.0100070238113403,
+        "q_D": 1.0081404447555542,
+        "chi": 1.0566308498382568,
+        "reporting_R": 0.8544710278511047,
+        "reporting_D": 0.8587751984596252
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "TimePINN",
+      "seed": 11,
+      "best_epoch": 210,
+      "validation_score": 0.7014625668525696,
+      "runtime_seconds": 1.5823136998806149,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.6375298500061035,
+        "beta_2": 1.3844497203826904,
+        "tau_normalized": 0.06593629717826843,
+        "q_R": 1.1396530866622925,
+        "q_D": 1.0898219347000122,
+        "chi": 1.185866117477417,
+        "reporting_R": 0.8489422798156738,
+        "reporting_D": 0.8459224104881287
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "TimePINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.6290605068206787,
+      "runtime_seconds": 1.632949500111863,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.702052116394043,
+        "beta_2": 1.4120069742202759,
+        "tau_normalized": 0.07324136048555374,
+        "q_R": 0.9826058745384216,
+        "q_D": 0.9809948801994324,
+        "chi": 1.017706274986267,
+        "reporting_R": 0.8487774133682251,
+        "reporting_D": 0.8464800715446472
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "TimePINN",
+      "seed": 33,
+      "best_epoch": 200,
+      "validation_score": 0.5922406911849976,
+      "runtime_seconds": 1.531978800194338,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.699860095977783,
+        "beta_2": 1.4114657640457153,
+        "tau_normalized": 0.07036378234624863,
+        "q_R": 1.0246937274932861,
+        "q_D": 1.143540859222412,
+        "chi": 1.0490418672561646,
+        "reporting_R": 0.8478512763977051,
+        "reporting_D": 0.8440806269645691
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "NoAttn-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.8885875940322876,
+      "runtime_seconds": 12.298535000067204,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.050156831741333,
+        "beta_2": 1.058531403541565,
+        "tau_normalized": 0.07907672971487045,
+        "q_R": 1.022583246231079,
+        "q_D": 1.0901899337768555,
+        "chi": 1.1155446767807007,
+        "reporting_R": 0.8491283655166626,
+        "reporting_D": 0.8430100679397583
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "NoAttn-PINN",
+      "seed": 22,
+      "best_epoch": 120,
+      "validation_score": 0.9482681751251221,
+      "runtime_seconds": 11.990761599969119,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.1420836448669434,
+        "beta_2": 1.0871697664260864,
+        "tau_normalized": 0.0698256641626358,
+        "q_R": 1.1910169124603271,
+        "q_D": 1.220872402191162,
+        "chi": 1.225884199142456,
+        "reporting_R": 0.8479461669921875,
+        "reporting_D": 0.8385971784591675
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "NoAttn-PINN",
+      "seed": 33,
+      "best_epoch": 180,
+      "validation_score": 0.8873199224472046,
+      "runtime_seconds": 11.95887039997615,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0466136932373047,
+        "beta_2": 1.0431127548217773,
+        "tau_normalized": 0.07262513041496277,
+        "q_R": 1.037603497505188,
+        "q_D": 1.1233445405960083,
+        "chi": 1.1365453004837036,
+        "reporting_R": 0.8570013642311096,
+        "reporting_D": 0.8448748588562012
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "TransPINN",
+      "seed": 11,
+      "best_epoch": 160,
+      "validation_score": 0.5715104937553406,
+      "runtime_seconds": 16.725102299824357,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.162324905395508,
+        "beta_2": 1.1169606447219849,
+        "tau_normalized": 0.07016155868768692,
+        "q_R": 1.05922532081604,
+        "q_D": 1.0981706380844116,
+        "chi": 1.1775360107421875,
+        "reporting_R": 0.8550552129745483,
+        "reporting_D": 0.846906840801239
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "TransPINN",
+      "seed": 22,
+      "best_epoch": 140,
+      "validation_score": 0.6934695839881897,
+      "runtime_seconds": 16.7322166999802,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.1319897174835205,
+        "beta_2": 1.0875052213668823,
+        "tau_normalized": 0.07237165421247482,
+        "q_R": 1.0655735731124878,
+        "q_D": 1.075106143951416,
+        "chi": 1.1136125326156616,
+        "reporting_R": 0.8521497845649719,
+        "reporting_D": 0.8422116637229919
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 1,
+      "model": "TransPINN",
+      "seed": 33,
+      "best_epoch": 130,
+      "validation_score": 0.47150781750679016,
+      "runtime_seconds": 16.65325570013374,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.1374080181121826,
+        "beta_2": 1.1069908142089844,
+        "tau_normalized": 0.07420365512371063,
+        "q_R": 1.0213196277618408,
+        "q_D": 1.066705346107483,
+        "chi": 1.0794817209243774,
+        "reporting_R": 0.8473724126815796,
+        "reporting_D": 0.8451783061027527
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "PINN",
+      "seed": 11,
+      "best_epoch": 30,
+      "validation_score": 0.0012629636330530047,
+      "runtime_seconds": 1.3316322001628578,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.3709161281585693,
+        "beta_2": 1.2359566688537598,
+        "tau_normalized": 0.07355373352766037,
+        "q_R": 0.9925301671028137,
+        "q_D": 0.9922349452972412,
+        "chi": 1.0417362451553345,
+        "reporting_R": 0.8457319140434265,
+        "reporting_D": 0.8454039692878723
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.0058340150862932205,
+      "runtime_seconds": 1.5953260997775942,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.0506227016448975,
+        "beta_2": 1.0631487369537354,
+        "tau_normalized": 0.07723163068294525,
+        "q_R": 0.9464001655578613,
+        "q_D": 0.9666345119476318,
+        "chi": 1.0212124586105347,
+        "reporting_R": 0.8453914523124695,
+        "reporting_D": 0.8449253439903259
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "PINN",
+      "seed": 33,
+      "best_epoch": 30,
+      "validation_score": 0.0014256674330681562,
+      "runtime_seconds": 1.3079588001128286,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.3683559894561768,
+        "beta_2": 1.2749671936035156,
+        "tau_normalized": 0.07568764686584473,
+        "q_R": 0.9915886521339417,
+        "q_D": 0.9913650751113892,
+        "chi": 1.040411353111267,
+        "reporting_R": 0.8434558510780334,
+        "reporting_D": 0.8432683944702148
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "LSTM-PINN",
+      "seed": 11,
+      "best_epoch": 180,
+      "validation_score": 0.017143409699201584,
+      "runtime_seconds": 6.078898600069806,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.1896610260009766,
+        "beta_2": 1.1303666830062866,
+        "tau_normalized": 0.07681543380022049,
+        "q_R": 0.9533931016921997,
+        "q_D": 0.9908252954483032,
+        "chi": 1.0313361883163452,
+        "reporting_R": 0.8591718077659607,
+        "reporting_D": 0.8581119775772095
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "LSTM-PINN",
+      "seed": 22,
+      "best_epoch": 90,
+      "validation_score": 0.013731674291193485,
+      "runtime_seconds": 6.284449299797416,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.141186475753784,
+        "beta_2": 1.1068397760391235,
+        "tau_normalized": 0.07509347051382065,
+        "q_R": 0.9532623887062073,
+        "q_D": 0.9724264144897461,
+        "chi": 1.022356629371643,
+        "reporting_R": 0.8669504523277283,
+        "reporting_D": 0.8554177284240723
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "LSTM-PINN",
+      "seed": 33,
+      "best_epoch": 160,
+      "validation_score": 0.009648600593209267,
+      "runtime_seconds": 6.130036599934101,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.0558478832244873,
+        "beta_2": 1.0610226392745972,
+        "tau_normalized": 0.07447422295808792,
+        "q_R": 0.9992396235466003,
+        "q_D": 1.0097992420196533,
+        "chi": 1.0588897466659546,
+        "reporting_R": 0.8606777787208557,
+        "reporting_D": 0.8597843050956726
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "TimePINN",
+      "seed": 11,
+      "best_epoch": 30,
+      "validation_score": 0.0013495698804035783,
+      "runtime_seconds": 1.4873577000107616,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.5581414699554443,
+        "beta_2": 1.337377667427063,
+        "tau_normalized": 0.07269667088985443,
+        "q_R": 1.007871150970459,
+        "q_D": 1.0038779973983765,
+        "chi": 1.094368577003479,
+        "reporting_R": 0.8454716801643372,
+        "reporting_D": 0.8455672264099121
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "TimePINN",
+      "seed": 22,
+      "best_epoch": 20,
+      "validation_score": 0.006508585996925831,
+      "runtime_seconds": 1.3986005999613553,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.5250706672668457,
+        "beta_2": 1.3190102577209473,
+        "tau_normalized": 0.07340521365404129,
+        "q_R": 1.012536644935608,
+        "q_D": 1.0087436437606812,
+        "chi": 1.0570083856582642,
+        "reporting_R": 0.845788300037384,
+        "reporting_D": 0.8453174829483032
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "TimePINN",
+      "seed": 33,
+      "best_epoch": 30,
+      "validation_score": 0.001488611102104187,
+      "runtime_seconds": 1.4294039001688361,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.5499210357666016,
+        "beta_2": 1.3330618143081665,
+        "tau_normalized": 0.0713835135102272,
+        "q_R": 0.9966723918914795,
+        "q_D": 1.0014747381210327,
+        "chi": 1.0558604001998901,
+        "reporting_R": 0.84329754114151,
+        "reporting_D": 0.8433732986450195
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "NoAttn-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.00854155421257019,
+      "runtime_seconds": 12.285558300092816,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0331947803497314,
+        "beta_2": 1.0549088716506958,
+        "tau_normalized": 0.07665836811065674,
+        "q_R": 1.0116976499557495,
+        "q_D": 1.0756893157958984,
+        "chi": 1.0991593599319458,
+        "reporting_R": 0.8535018563270569,
+        "reporting_D": 0.8406541347503662
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "NoAttn-PINN",
+      "seed": 22,
+      "best_epoch": 100,
+      "validation_score": 0.01172415167093277,
+      "runtime_seconds": 12.14983840007335,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.1630749702453613,
+        "beta_2": 1.1230709552764893,
+        "tau_normalized": 0.0697978064417839,
+        "q_R": 1.1594207286834717,
+        "q_D": 1.1799088716506958,
+        "chi": 1.1983741521835327,
+        "reporting_R": 0.852392852306366,
+        "reporting_D": 0.8373084664344788
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "NoAttn-PINN",
+      "seed": 33,
+      "best_epoch": 50,
+      "validation_score": 0.00470734154805541,
+      "runtime_seconds": 10.73074940009974,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.352665901184082,
+        "beta_2": 1.218506932258606,
+        "tau_normalized": 0.07166258245706558,
+        "q_R": 1.0059571266174316,
+        "q_D": 1.0162557363510132,
+        "chi": 1.059957504272461,
+        "reporting_R": 0.8530613780021667,
+        "reporting_D": 0.8424582481384277
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "TransPINN",
+      "seed": 11,
+      "best_epoch": 50,
+      "validation_score": 0.002968145301565528,
+      "runtime_seconds": 14.937087300000712,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.3464531898498535,
+        "beta_2": 1.2229938507080078,
+        "tau_normalized": 0.07262071967124939,
+        "q_R": 1.0041240453720093,
+        "q_D": 1.019769549369812,
+        "chi": 1.0844111442565918,
+        "reporting_R": 0.850068986415863,
+        "reporting_D": 0.8438544869422913
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "TransPINN",
+      "seed": 22,
+      "best_epoch": 110,
+      "validation_score": 0.010980661027133465,
+      "runtime_seconds": 16.855520700104535,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.188201904296875,
+        "beta_2": 1.1246495246887207,
+        "tau_normalized": 0.07345056533813477,
+        "q_R": 1.0440208911895752,
+        "q_D": 1.041060447692871,
+        "chi": 1.0867588520050049,
+        "reporting_R": 0.8559209108352661,
+        "reporting_D": 0.8407201766967773
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 2,
+      "model": "TransPINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.00768415117636323,
+      "runtime_seconds": 17.086698799859732,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.029386520385742,
+        "beta_2": 1.0232224464416504,
+        "tau_normalized": 0.07571257650852203,
+        "q_R": 1.0150333642959595,
+        "q_D": 1.1286884546279907,
+        "chi": 1.0991995334625244,
+        "reporting_R": 0.8520415425300598,
+        "reporting_D": 0.8425792455673218
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "PINN",
+      "seed": 11,
+      "best_epoch": 30,
+      "validation_score": 0.000671860936563462,
+      "runtime_seconds": 1.3322312999516726,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.370879888534546,
+        "beta_2": 1.2344855070114136,
+        "tau_normalized": 0.07354836165904999,
+        "q_R": 0.9920433759689331,
+        "q_D": 0.9919394254684448,
+        "chi": 1.0412741899490356,
+        "reporting_R": 0.8427830934524536,
+        "reporting_D": 0.845306396484375
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.0010290683712810278,
+      "runtime_seconds": 1.6839182002004236,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.0344090461730957,
+        "beta_2": 1.0607167482376099,
+        "tau_normalized": 0.07724510878324509,
+        "q_R": 0.9425776600837708,
+        "q_D": 0.9641188383102417,
+        "chi": 1.0178693532943726,
+        "reporting_R": 0.8426406383514404,
+        "reporting_D": 0.8444833159446716
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "PINN",
+      "seed": 33,
+      "best_epoch": 30,
+      "validation_score": 0.0005990027566440403,
+      "runtime_seconds": 1.3710674999747425,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.368360757827759,
+        "beta_2": 1.279509425163269,
+        "tau_normalized": 0.0756976306438446,
+        "q_R": 0.9914862513542175,
+        "q_D": 0.9910213351249695,
+        "chi": 1.0404741764068604,
+        "reporting_R": 0.84261554479599,
+        "reporting_D": 0.8432496190071106
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "LSTM-PINN",
+      "seed": 11,
+      "best_epoch": 200,
+      "validation_score": 0.005855221301317215,
+      "runtime_seconds": 6.090436000144109,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.1492812633514404,
+        "beta_2": 1.1067500114440918,
+        "tau_normalized": 0.07946858555078506,
+        "q_R": 0.9551085233688354,
+        "q_D": 0.9867164492607117,
+        "chi": 1.038827657699585,
+        "reporting_R": 0.855050802230835,
+        "reporting_D": 0.8569425344467163
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "LSTM-PINN",
+      "seed": 22,
+      "best_epoch": 200,
+      "validation_score": 0.006350330542773008,
+      "runtime_seconds": 6.1350031001493335,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 1.976379156112671,
+        "beta_2": 1.0120447874069214,
+        "tau_normalized": 0.0732034370303154,
+        "q_R": 0.94484543800354,
+        "q_D": 0.9736368656158447,
+        "chi": 1.0287836790084839,
+        "reporting_R": 0.8613945245742798,
+        "reporting_D": 0.8537877798080444
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "LSTM-PINN",
+      "seed": 33,
+      "best_epoch": 100,
+      "validation_score": 0.005984797608107328,
+      "runtime_seconds": 6.1584288000594825,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.1368794441223145,
+        "beta_2": 1.1019060611724854,
+        "tau_normalized": 0.0740358754992485,
+        "q_R": 0.9959009885787964,
+        "q_D": 0.9937027096748352,
+        "chi": 1.0504018068313599,
+        "reporting_R": 0.8504757285118103,
+        "reporting_D": 0.8595443367958069
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "TimePINN",
+      "seed": 11,
+      "best_epoch": 50,
+      "validation_score": 0.000631966395303607,
+      "runtime_seconds": 1.4907461998518556,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.6288788318634033,
+        "beta_2": 1.3774046897888184,
+        "tau_normalized": 0.07077088207006454,
+        "q_R": 0.9824608564376831,
+        "q_D": 0.9775369763374329,
+        "chi": 1.0761960744857788,
+        "reporting_R": 0.8417673707008362,
+        "reporting_D": 0.8455312252044678
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "TimePINN",
+      "seed": 22,
+      "best_epoch": 50,
+      "validation_score": 0.0008494130452163517,
+      "runtime_seconds": 1.4247334999963641,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.6472413539886475,
+        "beta_2": 1.3856903314590454,
+        "tau_normalized": 0.07556701451539993,
+        "q_R": 0.9720077514648438,
+        "q_D": 0.9657915234565735,
+        "chi": 1.034924030303955,
+        "reporting_R": 0.8427943587303162,
+        "reporting_D": 0.845894992351532
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "TimePINN",
+      "seed": 33,
+      "best_epoch": 30,
+      "validation_score": 0.0006188536062836647,
+      "runtime_seconds": 1.3421817999333143,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.5504379272460938,
+        "beta_2": 1.333542823791504,
+        "tau_normalized": 0.0713464543223381,
+        "q_R": 0.995816171169281,
+        "q_D": 1.0057114362716675,
+        "chi": 1.0565613508224487,
+        "reporting_R": 0.8426558971405029,
+        "reporting_D": 0.8433188796043396
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "NoAttn-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.0025597386993467808,
+      "runtime_seconds": 12.485232099890709,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.011965274810791,
+        "beta_2": 1.0525487661361694,
+        "tau_normalized": 0.0754978135228157,
+        "q_R": 1.023017168045044,
+        "q_D": 1.0691840648651123,
+        "chi": 1.0980693101882935,
+        "reporting_R": 0.8502174019813538,
+        "reporting_D": 0.839263916015625
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "NoAttn-PINN",
+      "seed": 22,
+      "best_epoch": 30,
+      "validation_score": 0.0018156802980229259,
+      "runtime_seconds": 10.390127500053495,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.3825981616973877,
+        "beta_2": 1.2366266250610352,
+        "tau_normalized": 0.07076220214366913,
+        "q_R": 1.0591365098953247,
+        "q_D": 1.0573310852050781,
+        "chi": 1.1060912609100342,
+        "reporting_R": 0.8433777093887329,
+        "reporting_D": 0.8368880152702332
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "NoAttn-PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.0024854978546500206,
+      "runtime_seconds": 12.316677399910986,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 1.9915505647659302,
+        "beta_2": 1.0272133350372314,
+        "tau_normalized": 0.07441689819097519,
+        "q_R": 1.0379655361175537,
+        "q_D": 1.1248639822006226,
+        "chi": 1.1475166082382202,
+        "reporting_R": 0.8573505878448486,
+        "reporting_D": 0.8415497541427612
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "TransPINN",
+      "seed": 11,
+      "best_epoch": 30,
+      "validation_score": 0.0014275575522333384,
+      "runtime_seconds": 15.455604899907485,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.377067804336548,
+        "beta_2": 1.2361596822738647,
+        "tau_normalized": 0.07259663939476013,
+        "q_R": 1.0053976774215698,
+        "q_D": 1.0107862949371338,
+        "chi": 1.0708062648773193,
+        "reporting_R": 0.8448904752731323,
+        "reporting_D": 0.8438921570777893
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "TransPINN",
+      "seed": 22,
+      "best_epoch": 130,
+      "validation_score": 0.0013741820584982634,
+      "runtime_seconds": 18.10743059986271,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.134823799133301,
+        "beta_2": 1.1054911613464355,
+        "tau_normalized": 0.06625209748744965,
+        "q_R": 1.0455496311187744,
+        "q_D": 1.03487229347229,
+        "chi": 1.0956504344940186,
+        "reporting_R": 0.8504993915557861,
+        "reporting_D": 0.8387476801872253
+      }
+    },
+    {
+      "event": "csdc",
+      "fold": 3,
+      "model": "TransPINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.0009926644852384925,
+      "runtime_seconds": 18.773181000025943,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.017474412918091,
+        "beta_2": 1.0302846431732178,
+        "tau_normalized": 0.07464133948087692,
+        "q_R": 1.0009472370147705,
+        "q_D": 1.1117432117462158,
+        "chi": 1.0894073247909546,
+        "reporting_R": 0.8491576313972473,
+        "reporting_D": 0.8418398499488831
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.0024121063761413097,
+      "runtime_seconds": 1.6977500999346375,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.0551705360412598,
+        "beta_2": 1.0479134321212769,
+        "tau_normalized": 0.07049723714590073,
+        "q_R": 1.0098568201065063,
+        "q_D": 1.0194698572158813,
+        "chi": 1.105961799621582,
+        "reporting_R": 0.8486910462379456,
+        "reporting_D": 0.8501401543617249
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "PINN",
+      "seed": 22,
+      "best_epoch": 20,
+      "validation_score": 0.0034157936461269855,
+      "runtime_seconds": 1.4460012998897582,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.4110429286956787,
+        "beta_2": 1.2552502155303955,
+        "tau_normalized": 0.07351454347372055,
+        "q_R": 1.011947512626648,
+        "q_D": 1.0157105922698975,
+        "chi": 1.0614991188049316,
+        "reporting_R": 0.8488785624504089,
+        "reporting_D": 0.8499323129653931
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "PINN",
+      "seed": 33,
+      "best_epoch": 50,
+      "validation_score": 0.002290629781782627,
+      "runtime_seconds": 1.491058300016448,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.2948977947235107,
+        "beta_2": 1.2522664070129395,
+        "tau_normalized": 0.07626113295555115,
+        "q_R": 0.9645397067070007,
+        "q_D": 0.9677098989486694,
+        "chi": 1.0224863290786743,
+        "reporting_R": 0.848844587802887,
+        "reporting_D": 0.848845899105072
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "LSTM-PINN",
+      "seed": 11,
+      "best_epoch": 30,
+      "validation_score": 0.005418648011982441,
+      "runtime_seconds": 5.405457200016826,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.513352155685425,
+        "beta_2": 1.3118780851364136,
+        "tau_normalized": 0.07509903609752655,
+        "q_R": 0.9980779886245728,
+        "q_D": 0.998034656047821,
+        "chi": 1.0513325929641724,
+        "reporting_R": 0.8578470349311829,
+        "reporting_D": 0.8599624037742615
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "LSTM-PINN",
+      "seed": 22,
+      "best_epoch": 40,
+      "validation_score": 0.010205366648733616,
+      "runtime_seconds": 5.4016569999512285,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.32486891746521,
+        "beta_2": 1.2066340446472168,
+        "tau_normalized": 0.07547146081924438,
+        "q_R": 0.9869880676269531,
+        "q_D": 0.9921513199806213,
+        "chi": 1.0424140691757202,
+        "reporting_R": 0.8627124428749084,
+        "reporting_D": 0.8627913594245911
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "LSTM-PINN",
+      "seed": 33,
+      "best_epoch": 30,
+      "validation_score": 0.016577966511249542,
+      "runtime_seconds": 5.512501699849963,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.3687705993652344,
+        "beta_2": 1.2311885356903076,
+        "tau_normalized": 0.07507780939340591,
+        "q_R": 1.0068042278289795,
+        "q_D": 1.0021740198135376,
+        "chi": 1.0527912378311157,
+        "reporting_R": 0.8567875623703003,
+        "reporting_D": 0.8665255308151245
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "TimePINN",
+      "seed": 11,
+      "best_epoch": 50,
+      "validation_score": 0.002352615585550666,
+      "runtime_seconds": 1.6338229000102729,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.615757465362549,
+        "beta_2": 1.37017023563385,
+        "tau_normalized": 0.06979288160800934,
+        "q_R": 1.0445274114608765,
+        "q_D": 1.0180649757385254,
+        "chi": 1.103002905845642,
+        "reporting_R": 0.8492178320884705,
+        "reporting_D": 0.8508085012435913
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "TimePINN",
+      "seed": 22,
+      "best_epoch": 20,
+      "validation_score": 0.003129482502117753,
+      "runtime_seconds": 1.6369111000094563,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.5170624256134033,
+        "beta_2": 1.3146551847457886,
+        "tau_normalized": 0.07362742722034454,
+        "q_R": 1.0156352519989014,
+        "q_D": 1.0139524936676025,
+        "chi": 1.0608431100845337,
+        "reporting_R": 0.8489366769790649,
+        "reporting_D": 0.8499338030815125
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "TimePINN",
+      "seed": 33,
+      "best_epoch": 60,
+      "validation_score": 0.002264264039695263,
+      "runtime_seconds": 1.7690672997850925,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.6482391357421875,
+        "beta_2": 1.3864072561264038,
+        "tau_normalized": 0.06908800452947617,
+        "q_R": 1.0639396905899048,
+        "q_D": 1.0535269975662231,
+        "chi": 1.0615670680999756,
+        "reporting_R": 0.8492494821548462,
+        "reporting_D": 0.8492740392684937
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "NoAttn-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.007291659712791443,
+      "runtime_seconds": 13.205834500025958,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.044257879257202,
+        "beta_2": 1.059712290763855,
+        "tau_normalized": 0.07769346982240677,
+        "q_R": 1.111425757408142,
+        "q_D": 1.2395002841949463,
+        "chi": 1.2280550003051758,
+        "reporting_R": 0.8431969285011292,
+        "reporting_D": 0.8433671593666077
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "NoAttn-PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.005434258840978146,
+      "runtime_seconds": 13.919918099883944,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0606772899627686,
+        "beta_2": 1.0253535509109497,
+        "tau_normalized": 0.06330066174268723,
+        "q_R": 1.2702077627182007,
+        "q_D": 1.3000801801681519,
+        "chi": 1.2931839227676392,
+        "reporting_R": 0.8456789255142212,
+        "reporting_D": 0.8386169075965881
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "NoAttn-PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.005817503202706575,
+      "runtime_seconds": 13.577364400029182,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 1.9534974098205566,
+        "beta_2": 1.014870047569275,
+        "tau_normalized": 0.07204833626747131,
+        "q_R": 1.1298798322677612,
+        "q_D": 1.2158946990966797,
+        "chi": 1.2140802145004272,
+        "reporting_R": 0.8517775535583496,
+        "reporting_D": 0.8473537564277649
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "TransPINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.006870202720165253,
+      "runtime_seconds": 18.38990529999137,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0556845664978027,
+        "beta_2": 1.076102375984192,
+        "tau_normalized": 0.06948014348745346,
+        "q_R": 1.1570384502410889,
+        "q_D": 1.1492648124694824,
+        "chi": 1.2289621829986572,
+        "reporting_R": 0.8475619554519653,
+        "reporting_D": 0.8507456183433533
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "TransPINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.0044244276359677315,
+      "runtime_seconds": 18.713973799953237,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0614373683929443,
+        "beta_2": 1.0602809190750122,
+        "tau_normalized": 0.06911955028772354,
+        "q_R": 1.172468662261963,
+        "q_D": 1.170638084411621,
+        "chi": 1.2012476921081543,
+        "reporting_R": 0.8484342694282532,
+        "reporting_D": 0.8455144762992859
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 1,
+      "model": "TransPINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.005483853630721569,
+      "runtime_seconds": 18.590541099896654,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.049410820007324,
+        "beta_2": 1.0465576648712158,
+        "tau_normalized": 0.06689520925283432,
+        "q_R": 1.1144790649414062,
+        "q_D": 1.1992887258529663,
+        "chi": 1.1736294031143188,
+        "reporting_R": 0.8455306887626648,
+        "reporting_D": 0.8475648164749146
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.003078179433941841,
+      "runtime_seconds": 1.8494347999803722,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.0369858741760254,
+        "beta_2": 1.0331588983535767,
+        "tau_normalized": 0.07013863325119019,
+        "q_R": 0.9606652855873108,
+        "q_D": 0.9764750599861145,
+        "chi": 1.0532125234603882,
+        "reporting_R": 0.8477619886398315,
+        "reporting_D": 0.8496330976486206
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "PINN",
+      "seed": 22,
+      "best_epoch": 20,
+      "validation_score": 0.0025053750723600388,
+      "runtime_seconds": 1.6454185999464244,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.41084885597229,
+        "beta_2": 1.255181074142456,
+        "tau_normalized": 0.07350222766399384,
+        "q_R": 1.0117671489715576,
+        "q_D": 1.0154882669448853,
+        "chi": 1.0612413883209229,
+        "reporting_R": 0.8481709361076355,
+        "reporting_D": 0.8492634892463684
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "PINN",
+      "seed": 33,
+      "best_epoch": 50,
+      "validation_score": 0.001403189729899168,
+      "runtime_seconds": 1.7031306000426412,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.297009229660034,
+        "beta_2": 1.258078694343567,
+        "tau_normalized": 0.07643426954746246,
+        "q_R": 0.9622900485992432,
+        "q_D": 0.9649267196655273,
+        "chi": 1.018523097038269,
+        "reporting_R": 0.8483322858810425,
+        "reporting_D": 0.8483144044876099
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "LSTM-PINN",
+      "seed": 11,
+      "best_epoch": 30,
+      "validation_score": 0.005115761887282133,
+      "runtime_seconds": 5.548513600137085,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.516029119491577,
+        "beta_2": 1.313267469406128,
+        "tau_normalized": 0.07511227577924728,
+        "q_R": 0.9975179433822632,
+        "q_D": 0.9973219633102417,
+        "chi": 1.0508558750152588,
+        "reporting_R": 0.8575232625007629,
+        "reporting_D": 0.8589450716972351
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "LSTM-PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.011819281615316868,
+      "runtime_seconds": 6.489502399927005,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 1.9670956134796143,
+        "beta_2": 1.0099886655807495,
+        "tau_normalized": 0.07427529990673065,
+        "q_R": 0.9796642065048218,
+        "q_D": 1.031912088394165,
+        "chi": 1.073070764541626,
+        "reporting_R": 0.8609164953231812,
+        "reporting_D": 0.8636065125465393
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "LSTM-PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.013866368681192398,
+      "runtime_seconds": 6.423440500162542,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 1.9931601285934448,
+        "beta_2": 1.02349054813385,
+        "tau_normalized": 0.06873614341020584,
+        "q_R": 1.0875331163406372,
+        "q_D": 1.0707942247390747,
+        "chi": 1.1173419952392578,
+        "reporting_R": 0.8569160103797913,
+        "reporting_D": 0.866654634475708
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "TimePINN",
+      "seed": 11,
+      "best_epoch": 60,
+      "validation_score": 0.0015289104776456952,
+      "runtime_seconds": 1.9251996001694351,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.6543424129486084,
+        "beta_2": 1.3919166326522827,
+        "tau_normalized": 0.068111851811409,
+        "q_R": 1.0635164976119995,
+        "q_D": 1.0279722213745117,
+        "chi": 1.117741346359253,
+        "reporting_R": 0.8485191464424133,
+        "reporting_D": 0.8500171899795532
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "TimePINN",
+      "seed": 22,
+      "best_epoch": 20,
+      "validation_score": 0.0020985533483326435,
+      "runtime_seconds": 1.6590952000115067,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.517542839050293,
+        "beta_2": 1.3149751424789429,
+        "tau_normalized": 0.07356401532888412,
+        "q_R": 1.015320897102356,
+        "q_D": 1.0136970281600952,
+        "chi": 1.0607495307922363,
+        "reporting_R": 0.8482294082641602,
+        "reporting_D": 0.8492699861526489
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "TimePINN",
+      "seed": 33,
+      "best_epoch": 50,
+      "validation_score": 0.0006285147974267602,
+      "runtime_seconds": 1.64340479997918,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.611830234527588,
+        "beta_2": 1.3671387434005737,
+        "tau_normalized": 0.0702989399433136,
+        "q_R": 1.0594786405563354,
+        "q_D": 1.0474122762680054,
+        "chi": 1.0671950578689575,
+        "reporting_R": 0.8485100865364075,
+        "reporting_D": 0.848488986492157
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "NoAttn-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.009588348679244518,
+      "runtime_seconds": 13.391304800054058,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.032947301864624,
+        "beta_2": 1.0509722232818604,
+        "tau_normalized": 0.0753931775689125,
+        "q_R": 1.0867515802383423,
+        "q_D": 1.2100595235824585,
+        "chi": 1.2076390981674194,
+        "reporting_R": 0.8419097661972046,
+        "reporting_D": 0.842637300491333
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "NoAttn-PINN",
+      "seed": 22,
+      "best_epoch": 80,
+      "validation_score": 0.005383620969951153,
+      "runtime_seconds": 13.388119200011715,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.2542569637298584,
+        "beta_2": 1.1558778285980225,
+        "tau_normalized": 0.06795363873243332,
+        "q_R": 1.13001549243927,
+        "q_D": 1.1521260738372803,
+        "chi": 1.1750574111938477,
+        "reporting_R": 0.8446313142776489,
+        "reporting_D": 0.8375185132026672
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "NoAttn-PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.004713777918368578,
+      "runtime_seconds": 13.378170399926603,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 1.978156566619873,
+        "beta_2": 1.0214039087295532,
+        "tau_normalized": 0.07423658668994904,
+        "q_R": 1.0835916996002197,
+        "q_D": 1.1827549934387207,
+        "chi": 1.1893854141235352,
+        "reporting_R": 0.8511908650398254,
+        "reporting_D": 0.8466489315032959
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "TransPINN",
+      "seed": 11,
+      "best_epoch": 50,
+      "validation_score": 0.005851506721228361,
+      "runtime_seconds": 16.650281500071287,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.3396387100219727,
+        "beta_2": 1.2185885906219482,
+        "tau_normalized": 0.07165034860372543,
+        "q_R": 1.0154976844787598,
+        "q_D": 1.014153003692627,
+        "chi": 1.0971267223358154,
+        "reporting_R": 0.8474393486976624,
+        "reporting_D": 0.8488612174987793
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "TransPINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.0034352631773799658,
+      "runtime_seconds": 18.1466436998453,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0538294315338135,
+        "beta_2": 1.0530850887298584,
+        "tau_normalized": 0.06952749192714691,
+        "q_R": 1.1419086456298828,
+        "q_D": 1.1550761461257935,
+        "chi": 1.1881943941116333,
+        "reporting_R": 0.847369909286499,
+        "reporting_D": 0.8439645171165466
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 2,
+      "model": "TransPINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.0037428736686706543,
+      "runtime_seconds": 18.475232199998572,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.056934118270874,
+        "beta_2": 1.0537666082382202,
+        "tau_normalized": 0.07260771840810776,
+        "q_R": 1.08968985080719,
+        "q_D": 1.1794657707214355,
+        "chi": 1.1603350639343262,
+        "reporting_R": 0.8442412614822388,
+        "reporting_D": 0.8477795720100403
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "PINN",
+      "seed": 11,
+      "best_epoch": 40,
+      "validation_score": 0.0020927528385072947,
+      "runtime_seconds": 1.6835245001129806,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.3361217975616455,
+        "beta_2": 1.2144806385040283,
+        "tau_normalized": 0.07307316362857819,
+        "q_R": 0.9795786738395691,
+        "q_D": 0.9789465069770813,
+        "chi": 1.030702829360962,
+        "reporting_R": 0.8478296399116516,
+        "reporting_D": 0.8486137390136719
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "PINN",
+      "seed": 22,
+      "best_epoch": 40,
+      "validation_score": 0.0022254420910030603,
+      "runtime_seconds": 1.5483209998346865,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.331340789794922,
+        "beta_2": 1.2131842374801636,
+        "tau_normalized": 0.07536152005195618,
+        "q_R": 0.9822475910186768,
+        "q_D": 0.9898102283477783,
+        "chi": 1.0391887426376343,
+        "reporting_R": 0.8487812876701355,
+        "reporting_D": 0.8492111563682556
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "PINN",
+      "seed": 33,
+      "best_epoch": 50,
+      "validation_score": 0.0010316972620785236,
+      "runtime_seconds": 1.599259200040251,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.2995002269744873,
+        "beta_2": 1.2728359699249268,
+        "tau_normalized": 0.07665465027093887,
+        "q_R": 0.960378885269165,
+        "q_D": 0.9620553255081177,
+        "chi": 1.0153396129608154,
+        "reporting_R": 0.8476218581199646,
+        "reporting_D": 0.8476353883743286
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "LSTM-PINN",
+      "seed": 11,
+      "best_epoch": 30,
+      "validation_score": 0.0028928685933351517,
+      "runtime_seconds": 5.537024500081316,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.5169942378997803,
+        "beta_2": 1.3137168884277344,
+        "tau_normalized": 0.07515480369329453,
+        "q_R": 0.9963640570640564,
+        "q_D": 0.9963507652282715,
+        "chi": 1.049902081489563,
+        "reporting_R": 0.8565807342529297,
+        "reporting_D": 0.8587223887443542
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "LSTM-PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.0088815214112401,
+      "runtime_seconds": 6.63283220003359,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 1.9571895599365234,
+        "beta_2": 1.0046719312667847,
+        "tau_normalized": 0.0775190070271492,
+        "q_R": 0.9350538849830627,
+        "q_D": 0.9854768514633179,
+        "chi": 1.0408167839050293,
+        "reporting_R": 0.8591923713684082,
+        "reporting_D": 0.8619440197944641
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "LSTM-PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.0099253598600626,
+      "runtime_seconds": 6.53533779992722,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 1.9768476486206055,
+        "beta_2": 1.014328956604004,
+        "tau_normalized": 0.06863512098789215,
+        "q_R": 1.0589377880096436,
+        "q_D": 1.0655831098556519,
+        "chi": 1.1116529703140259,
+        "reporting_R": 0.855254054069519,
+        "reporting_D": 0.8645321130752563
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "TimePINN",
+      "seed": 11,
+      "best_epoch": 70,
+      "validation_score": 0.0016555259935557842,
+      "runtime_seconds": 2.0616578001063317,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.701010227203369,
+        "beta_2": 1.4185088872909546,
+        "tau_normalized": 0.06771925836801529,
+        "q_R": 1.044554352760315,
+        "q_D": 1.0172604322433472,
+        "chi": 1.1142189502716064,
+        "reporting_R": 0.8479236960411072,
+        "reporting_D": 0.8492315411567688
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "TimePINN",
+      "seed": 22,
+      "best_epoch": 40,
+      "validation_score": 0.0013057520845904946,
+      "runtime_seconds": 1.616151100024581,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.587106943130493,
+        "beta_2": 1.345873475074768,
+        "tau_normalized": 0.07269107550382614,
+        "q_R": 1.0080862045288086,
+        "q_D": 1.008344054222107,
+        "chi": 1.0516477823257446,
+        "reporting_R": 0.8489983677864075,
+        "reporting_D": 0.8493450284004211
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "TimePINN",
+      "seed": 33,
+      "best_epoch": 50,
+      "validation_score": 0.0005936832167208195,
+      "runtime_seconds": 1.74856310011819,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.611389398574829,
+        "beta_2": 1.3670945167541504,
+        "tau_normalized": 0.07016842067241669,
+        "q_R": 1.0551427602767944,
+        "q_D": 1.038983702659607,
+        "chi": 1.0576341152191162,
+        "reporting_R": 0.847790002822876,
+        "reporting_D": 0.8477855324745178
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "NoAttn-PINN",
+      "seed": 11,
+      "best_epoch": 50,
+      "validation_score": 0.007049954030662775,
+      "runtime_seconds": 11.935465599875897,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.344133138656616,
+        "beta_2": 1.2087620496749878,
+        "tau_normalized": 0.07484601438045502,
+        "q_R": 1.0062562227249146,
+        "q_D": 1.0273287296295166,
+        "chi": 1.070351481437683,
+        "reporting_R": 0.8420348167419434,
+        "reporting_D": 0.8418648838996887
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "NoAttn-PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.005681429989635944,
+      "runtime_seconds": 13.776189799886197,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0563466548919678,
+        "beta_2": 1.0234816074371338,
+        "tau_normalized": 0.0633029192686081,
+        "q_R": 1.2461450099945068,
+        "q_D": 1.2838164567947388,
+        "chi": 1.2797608375549316,
+        "reporting_R": 0.8440017104148865,
+        "reporting_D": 0.8373560309410095
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "NoAttn-PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.0037582083605229855,
+      "runtime_seconds": 13.195574900135398,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 1.976287603378296,
+        "beta_2": 1.0225112438201904,
+        "tau_normalized": 0.0649934783577919,
+        "q_R": 1.056309461593628,
+        "q_D": 1.1689066886901855,
+        "chi": 1.184566617012024,
+        "reporting_R": 0.849705159664154,
+        "reporting_D": 0.8462653160095215
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "TransPINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.004837840795516968,
+      "runtime_seconds": 18.800675299949944,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0544724464416504,
+        "beta_2": 1.0659091472625732,
+        "tau_normalized": 0.06826791912317276,
+        "q_R": 1.087378978729248,
+        "q_D": 1.0869821310043335,
+        "chi": 1.2094148397445679,
+        "reporting_R": 0.8456494212150574,
+        "reporting_D": 0.8475342392921448
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "TransPINN",
+      "seed": 22,
+      "best_epoch": 40,
+      "validation_score": 0.0014663091860711575,
+      "runtime_seconds": 15.807760800002143,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.3875274658203125,
+        "beta_2": 1.241457462310791,
+        "tau_normalized": 0.07259687781333923,
+        "q_R": 1.0110472440719604,
+        "q_D": 1.0171222686767578,
+        "chi": 1.0697190761566162,
+        "reporting_R": 0.8466531038284302,
+        "reporting_D": 0.8428394794464111
+      }
+    },
+    {
+      "event": "ottawa",
+      "fold": 3,
+      "model": "TransPINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.002784753916785121,
+      "runtime_seconds": 19.020268900087103,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0304441452026367,
+        "beta_2": 1.0430539846420288,
+        "tau_normalized": 0.0741933137178421,
+        "q_R": 1.0547419786453247,
+        "q_D": 1.16587233543396,
+        "chi": 1.145678997039795,
+        "reporting_R": 0.8435006737709045,
+        "reporting_D": 0.8464471101760864
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "PINN",
+      "seed": 11,
+      "best_epoch": 20,
+      "validation_score": 0.0025056074373424053,
+      "runtime_seconds": 1.5910702999681234,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.4107162952423096,
+        "beta_2": 1.2582271099090576,
+        "tau_normalized": 0.07252921164035797,
+        "q_R": 1.0105552673339844,
+        "q_D": 1.010103702545166,
+        "chi": 1.057970404624939,
+        "reporting_R": 0.8458549380302429,
+        "reporting_D": 0.8455634117126465
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "PINN",
+      "seed": 22,
+      "best_epoch": 20,
+      "validation_score": 0.0019243445713073015,
+      "runtime_seconds": 1.6487629998009652,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.410374164581299,
+        "beta_2": 1.2551052570343018,
+        "tau_normalized": 0.07376228272914886,
+        "q_R": 1.010994553565979,
+        "q_D": 1.0132001638412476,
+        "chi": 1.059789776802063,
+        "reporting_R": 0.8468272686004639,
+        "reporting_D": 0.8463743329048157
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.005083527881652117,
+      "runtime_seconds": 1.7654426998924464,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 1.993053913116455,
+        "beta_2": 1.102913498878479,
+        "tau_normalized": 0.07626946270465851,
+        "q_R": 0.9054005742073059,
+        "q_D": 0.9173495769500732,
+        "chi": 0.9761925339698792,
+        "reporting_R": 0.8455249071121216,
+        "reporting_D": 0.8446383476257324
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "LSTM-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.018716109916567802,
+      "runtime_seconds": 6.847600699868053,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.043797731399536,
+        "beta_2": 1.0494543313980103,
+        "tau_normalized": 0.08090104162693024,
+        "q_R": 0.8816223740577698,
+        "q_D": 0.9256742596626282,
+        "chi": 0.9899217486381531,
+        "reporting_R": 0.8556357622146606,
+        "reporting_D": 0.8576207756996155
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "LSTM-PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.025860561057925224,
+      "runtime_seconds": 6.754333300050348,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 1.9440807104110718,
+        "beta_2": 1.0005422830581665,
+        "tau_normalized": 0.08249291032552719,
+        "q_R": 0.8779953718185425,
+        "q_D": 0.8857012987136841,
+        "chi": 0.9623590707778931,
+        "reporting_R": 0.8575311899185181,
+        "reporting_D": 0.8568274974822998
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "LSTM-PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.02743864804506302,
+      "runtime_seconds": 6.713192000053823,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 1.9584574699401855,
+        "beta_2": 1.005405306816101,
+        "tau_normalized": 0.0729076936841011,
+        "q_R": 0.9480516314506531,
+        "q_D": 0.9951539039611816,
+        "chi": 1.0559812784194946,
+        "reporting_R": 0.8543381690979004,
+        "reporting_D": 0.8585513234138489
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "TimePINN",
+      "seed": 11,
+      "best_epoch": 20,
+      "validation_score": 0.0025834974367171526,
+      "runtime_seconds": 1.6394499999005347,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.5183374881744385,
+        "beta_2": 1.3151519298553467,
+        "tau_normalized": 0.07172435522079468,
+        "q_R": 1.0170565843582153,
+        "q_D": 1.023305892944336,
+        "chi": 1.0810483694076538,
+        "reporting_R": 0.8458848595619202,
+        "reporting_D": 0.8455759882926941
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "TimePINN",
+      "seed": 22,
+      "best_epoch": 20,
+      "validation_score": 0.001732709351927042,
+      "runtime_seconds": 1.75903690000996,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.519731044769287,
+        "beta_2": 1.3160364627838135,
+        "tau_normalized": 0.07333743572235107,
+        "q_R": 1.0151994228363037,
+        "q_D": 1.0142027139663696,
+        "chi": 1.0607904195785522,
+        "reporting_R": 0.8468850255012512,
+        "reporting_D": 0.8464032411575317
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "TimePINN",
+      "seed": 33,
+      "best_epoch": 50,
+      "validation_score": 0.004665052052587271,
+      "runtime_seconds": 1.7825599000789225,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.613947868347168,
+        "beta_2": 1.3687809705734253,
+        "tau_normalized": 0.07054205983877182,
+        "q_R": 1.0340123176574707,
+        "q_D": 1.0398411750793457,
+        "chi": 1.0536540746688843,
+        "reporting_R": 0.8464071154594421,
+        "reporting_D": 0.8458119630813599
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "NoAttn-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.010797539725899696,
+      "runtime_seconds": 13.76202329993248,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.004739999771118,
+        "beta_2": 1.0339008569717407,
+        "tau_normalized": 0.07698193192481995,
+        "q_R": 1.025838851928711,
+        "q_D": 1.1603976488113403,
+        "chi": 1.1524301767349243,
+        "reporting_R": 0.8409157991409302,
+        "reporting_D": 0.8406201601028442
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "NoAttn-PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.009130619466304779,
+      "runtime_seconds": 13.70014759991318,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0348050594329834,
+        "beta_2": 1.0158941745758057,
+        "tau_normalized": 0.06251567602157593,
+        "q_R": 1.2174005508422852,
+        "q_D": 1.2604964971542358,
+        "chi": 1.2625656127929688,
+        "reporting_R": 0.8438198566436768,
+        "reporting_D": 0.8359442949295044
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "NoAttn-PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.007830786518752575,
+      "runtime_seconds": 13.667885500006378,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 1.9726370573043823,
+        "beta_2": 1.0214766263961792,
+        "tau_normalized": 0.06478091329336166,
+        "q_R": 1.0279297828674316,
+        "q_D": 1.125466227531433,
+        "chi": 1.1621663570404053,
+        "reporting_R": 0.8483490347862244,
+        "reporting_D": 0.8426969647407532
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "TransPINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.005982743576169014,
+      "runtime_seconds": 103.98676180001348,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0566294193267822,
+        "beta_2": 1.0634782314300537,
+        "tau_normalized": 0.07029261440038681,
+        "q_R": 1.0562288761138916,
+        "q_D": 1.0651894807815552,
+        "chi": 1.1833513975143433,
+        "reporting_R": 0.84409099817276,
+        "reporting_D": 0.8453612923622131
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "TransPINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.005423061549663544,
+      "runtime_seconds": 62.22597029991448,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0456910133361816,
+        "beta_2": 1.0509490966796875,
+        "tau_normalized": 0.0666176974773407,
+        "q_R": 1.0657964944839478,
+        "q_D": 1.0613044500350952,
+        "chi": 1.133838176727295,
+        "reporting_R": 0.845417320728302,
+        "reporting_D": 0.8402856588363647
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 1,
+      "model": "TransPINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.0036590874660760164,
+      "runtime_seconds": 16.448821499943733,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0346171855926514,
+        "beta_2": 1.0538395643234253,
+        "tau_normalized": 0.07269695401191711,
+        "q_R": 1.014406442642212,
+        "q_D": 1.102792739868164,
+        "chi": 1.1115916967391968,
+        "reporting_R": 0.8436664938926697,
+        "reporting_D": 0.8443711996078491
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "PINN",
+      "seed": 11,
+      "best_epoch": 20,
+      "validation_score": 0.004703312646597624,
+      "runtime_seconds": 1.0771386998239905,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.4109787940979004,
+        "beta_2": 1.2583973407745361,
+        "tau_normalized": 0.07253863662481308,
+        "q_R": 1.0102208852767944,
+        "q_D": 1.0099302530288696,
+        "chi": 1.0576739311218262,
+        "reporting_R": 0.8452296257019043,
+        "reporting_D": 0.8449518084526062
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "PINN",
+      "seed": 22,
+      "best_epoch": 20,
+      "validation_score": 0.004304295405745506,
+      "runtime_seconds": 1.0661148000508547,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.409327745437622,
+        "beta_2": 1.2545198202133179,
+        "tau_normalized": 0.07387218624353409,
+        "q_R": 1.0098167657852173,
+        "q_D": 1.011600136756897,
+        "chi": 1.0584865808486938,
+        "reporting_R": 0.8460912108421326,
+        "reporting_D": 0.8457080721855164
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.005207937676459551,
+      "runtime_seconds": 1.250907199922949,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.1401069164276123,
+        "beta_2": 1.1715285778045654,
+        "tau_normalized": 0.07471194863319397,
+        "q_R": 0.8896979689598083,
+        "q_D": 0.9001365900039673,
+        "chi": 0.957633912563324,
+        "reporting_R": 0.8442810773849487,
+        "reporting_D": 0.8436982035636902
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "LSTM-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.020377807319164276,
+      "runtime_seconds": 6.082964800065383,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.03375506401062,
+        "beta_2": 1.0480103492736816,
+        "tau_normalized": 0.08664767444133759,
+        "q_R": 0.8304362297058105,
+        "q_D": 0.851277768611908,
+        "chi": 0.9086755514144897,
+        "reporting_R": 0.8547702431678772,
+        "reporting_D": 0.8553000092506409
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "LSTM-PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.017992140725255013,
+      "runtime_seconds": 5.558549700072035,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.4359843730926514,
+        "beta_2": 1.2560986280441284,
+        "tau_normalized": 0.0874592736363411,
+        "q_R": 0.8321459889411926,
+        "q_D": 0.8276236057281494,
+        "chi": 0.8938772082328796,
+        "reporting_R": 0.8563172817230225,
+        "reporting_D": 0.8555710911750793
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "LSTM-PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.017281141132116318,
+      "runtime_seconds": 5.733799899928272,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.352318048477173,
+        "beta_2": 1.210433840751648,
+        "tau_normalized": 0.0866910070180893,
+        "q_R": 0.8371259570121765,
+        "q_D": 0.8397196531295776,
+        "chi": 0.9068900346755981,
+        "reporting_R": 0.8538690209388733,
+        "reporting_D": 0.8572181463241577
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "TimePINN",
+      "seed": 11,
+      "best_epoch": 20,
+      "validation_score": 0.004644648637622595,
+      "runtime_seconds": 1.199783300049603,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.517576217651367,
+        "beta_2": 1.3147341012954712,
+        "tau_normalized": 0.0717955008149147,
+        "q_R": 1.0162121057510376,
+        "q_D": 1.022639274597168,
+        "chi": 1.0800471305847168,
+        "reporting_R": 0.8452604413032532,
+        "reporting_D": 0.8449658751487732
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "TimePINN",
+      "seed": 22,
+      "best_epoch": 20,
+      "validation_score": 0.0037640584632754326,
+      "runtime_seconds": 1.189496099948883,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.521911144256592,
+        "beta_2": 1.3172531127929688,
+        "tau_normalized": 0.07325226813554764,
+        "q_R": 1.014638900756836,
+        "q_D": 1.0129884481430054,
+        "chi": 1.0598396062850952,
+        "reporting_R": 0.8461342453956604,
+        "reporting_D": 0.8457354307174683
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "TimePINN",
+      "seed": 33,
+      "best_epoch": 30,
+      "validation_score": 0.004795650485903025,
+      "runtime_seconds": 1.1916215000674129,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.545846939086914,
+        "beta_2": 1.3308933973312378,
+        "tau_normalized": 0.07146579027175903,
+        "q_R": 1.0208386182785034,
+        "q_D": 1.038075566291809,
+        "chi": 1.064661979675293,
+        "reporting_R": 0.8449664115905762,
+        "reporting_D": 0.8447281122207642
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "NoAttn-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.008284496143460274,
+      "runtime_seconds": 12.037569400155917,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0274746417999268,
+        "beta_2": 1.041508436203003,
+        "tau_normalized": 0.07068051397800446,
+        "q_R": 0.995526909828186,
+        "q_D": 1.076615810394287,
+        "chi": 1.1129387617111206,
+        "reporting_R": 0.840259850025177,
+        "reporting_D": 0.8396503329277039
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "NoAttn-PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.00435851514339447,
+      "runtime_seconds": 11.508758899988607,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0269734859466553,
+        "beta_2": 1.04639732837677,
+        "tau_normalized": 0.06410684436559677,
+        "q_R": 1.1264804601669312,
+        "q_D": 1.2001160383224487,
+        "chi": 1.2128472328186035,
+        "reporting_R": 0.8441004157066345,
+        "reporting_D": 0.83695387840271
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "NoAttn-PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.004685383290052414,
+      "runtime_seconds": 11.550215299939737,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0012600421905518,
+        "beta_2": 1.0271140336990356,
+        "tau_normalized": 0.06515806168317795,
+        "q_R": 0.9881212115287781,
+        "q_D": 1.0730596780776978,
+        "chi": 1.1388343572616577,
+        "reporting_R": 0.8473770022392273,
+        "reporting_D": 0.8423057794570923
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "TransPINN",
+      "seed": 11,
+      "best_epoch": 50,
+      "validation_score": 0.0028299628756940365,
+      "runtime_seconds": 13.905343699967489,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.3314332962036133,
+        "beta_2": 1.2102739810943604,
+        "tau_normalized": 0.07164852321147919,
+        "q_R": 1.002645492553711,
+        "q_D": 1.0075013637542725,
+        "chi": 1.0751699209213257,
+        "reporting_R": 0.8429619669914246,
+        "reporting_D": 0.8450565338134766
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "TransPINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.0036611815448850393,
+      "runtime_seconds": 15.885501299984753,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0439906120300293,
+        "beta_2": 1.0412675142288208,
+        "tau_normalized": 0.06823740899562836,
+        "q_R": 1.015259027481079,
+        "q_D": 1.0173789262771606,
+        "chi": 1.1147770881652832,
+        "reporting_R": 0.8440050482749939,
+        "reporting_D": 0.838887631893158
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 2,
+      "model": "TransPINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.003257501870393753,
+      "runtime_seconds": 15.573434199905023,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.043915033340454,
+        "beta_2": 1.077303171157837,
+        "tau_normalized": 0.0758322924375534,
+        "q_R": 1.0019900798797607,
+        "q_D": 1.0808871984481812,
+        "chi": 1.1059787273406982,
+        "reporting_R": 0.8425847887992859,
+        "reporting_D": 0.8435766696929932
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.0012949465308338404,
+      "runtime_seconds": 1.3266044999472797,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.1183536052703857,
+        "beta_2": 1.0968999862670898,
+        "tau_normalized": 0.06930258125066757,
+        "q_R": 0.8769203424453735,
+        "q_D": 0.888156533241272,
+        "chi": 0.949924886226654,
+        "reporting_R": 0.8429006338119507,
+        "reporting_D": 0.8430657982826233
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.0013027804670855403,
+      "runtime_seconds": 1.3601945999544114,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.0475542545318604,
+        "beta_2": 1.0477925539016724,
+        "tau_normalized": 0.07871420681476593,
+        "q_R": 0.8847882151603699,
+        "q_D": 0.888028621673584,
+        "chi": 0.9459713697433472,
+        "reporting_R": 0.844814658164978,
+        "reporting_D": 0.844372570514679
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "PINN",
+      "seed": 33,
+      "best_epoch": 30,
+      "validation_score": 0.0007407982484437525,
+      "runtime_seconds": 1.1276394999586046,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.375661611557007,
+        "beta_2": 1.2894418239593506,
+        "tau_normalized": 0.07567466050386429,
+        "q_R": 0.991503894329071,
+        "q_D": 0.9914344549179077,
+        "chi": 1.0406209230422974,
+        "reporting_R": 0.8438073396682739,
+        "reporting_D": 0.8434631824493408
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "LSTM-PINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.005398498848080635,
+      "runtime_seconds": 5.391627700068057,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.850499391555786,
+        "beta_2": 1.6026747226715088,
+        "tau_normalized": 0.08833784610033035,
+        "q_R": 0.809840202331543,
+        "q_D": 0.830407440662384,
+        "chi": 0.8817718625068665,
+        "reporting_R": 0.8529943227767944,
+        "reporting_D": 0.8526045680046082
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "LSTM-PINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.003533782670274377,
+      "runtime_seconds": 5.35315450001508,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.776395320892334,
+        "beta_2": 1.434936761856079,
+        "tau_normalized": 0.09009715914726257,
+        "q_R": 0.8214507102966309,
+        "q_D": 0.8097983002662659,
+        "chi": 0.8741291761398315,
+        "reporting_R": 0.8556029200553894,
+        "reporting_D": 0.8547779321670532
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "LSTM-PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.005418071523308754,
+      "runtime_seconds": 5.297875999938697,
+      "parameter_count": 17839,
+      "parameters": {
+        "beta_1": 2.627031087875366,
+        "beta_2": 1.367342233657837,
+        "tau_normalized": 0.08938945084810257,
+        "q_R": 0.8022026419639587,
+        "q_D": 0.8045289516448975,
+        "chi": 0.8661201000213623,
+        "reporting_R": 0.8524683117866516,
+        "reporting_D": 0.8547608256340027
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "TimePINN",
+      "seed": 11,
+      "best_epoch": 260,
+      "validation_score": 0.0030616247095167637,
+      "runtime_seconds": 1.3332084000576288,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 3.009972095489502,
+        "beta_2": 1.5874519348144531,
+        "tau_normalized": 0.05977035313844681,
+        "q_R": 0.8971118927001953,
+        "q_D": 0.905305027961731,
+        "chi": 1.0083887577056885,
+        "reporting_R": 0.8425984382629395,
+        "reporting_D": 0.8429390788078308
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "TimePINN",
+      "seed": 22,
+      "best_epoch": 260,
+      "validation_score": 0.0021410020999610424,
+      "runtime_seconds": 1.345496900146827,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 3.0141689777374268,
+        "beta_2": 1.5753988027572632,
+        "tau_normalized": 0.0674273669719696,
+        "q_R": 0.8316296339035034,
+        "q_D": 0.9093131422996521,
+        "chi": 0.8909764289855957,
+        "reporting_R": 0.8445095419883728,
+        "reporting_D": 0.8440957069396973
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "TimePINN",
+      "seed": 33,
+      "best_epoch": 30,
+      "validation_score": 0.0005174041725695133,
+      "runtime_seconds": 1.1611081999726593,
+      "parameter_count": 19219,
+      "parameters": {
+        "beta_1": 2.545457124710083,
+        "beta_2": 1.3306759595870972,
+        "tau_normalized": 0.07151766866445541,
+        "q_R": 1.0175267457962036,
+        "q_D": 1.0373802185058594,
+        "chi": 1.0634158849716187,
+        "reporting_R": 0.8438794016838074,
+        "reporting_D": 0.843515157699585
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "NoAttn-PINN",
+      "seed": 11,
+      "best_epoch": 40,
+      "validation_score": 0.0012237685732543468,
+      "runtime_seconds": 9.520365099888295,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.3653011322021484,
+        "beta_2": 1.217760682106018,
+        "tau_normalized": 0.07205621898174286,
+        "q_R": 1.0012969970703125,
+        "q_D": 1.0027046203613281,
+        "chi": 1.0552853345870972,
+        "reporting_R": 0.8398768901824951,
+        "reporting_D": 0.8394548296928406
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "NoAttn-PINN",
+      "seed": 22,
+      "best_epoch": 80,
+      "validation_score": 0.0007491937140002847,
+      "runtime_seconds": 12.305767999961972,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.233644723892212,
+        "beta_2": 1.1561915874481201,
+        "tau_normalized": 0.06715493649244308,
+        "q_R": 1.0510387420654297,
+        "q_D": 1.068906545639038,
+        "chi": 1.1380029916763306,
+        "reporting_R": 0.8430466055870056,
+        "reporting_D": 0.8359020352363586
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "NoAttn-PINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.000950636516790837,
+      "runtime_seconds": 11.25502059981227,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.0273025035858154,
+        "beta_2": 1.037126064300537,
+        "tau_normalized": 0.0652371272444725,
+        "q_R": 0.9991412162780762,
+        "q_D": 1.0770857334136963,
+        "chi": 1.143958568572998,
+        "reporting_R": 0.8456467390060425,
+        "reporting_D": 0.840904176235199
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "TransPINN",
+      "seed": 11,
+      "best_epoch": 90,
+      "validation_score": 0.000711096334271133,
+      "runtime_seconds": 15.243748500011861,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.2187652587890625,
+        "beta_2": 1.146623134613037,
+        "tau_normalized": 0.07107733935117722,
+        "q_R": 1.0000920295715332,
+        "q_D": 1.0105583667755127,
+        "chi": 1.0925376415252686,
+        "reporting_R": 0.8420205116271973,
+        "reporting_D": 0.8436148762702942
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "TransPINN",
+      "seed": 22,
+      "best_epoch": 30,
+      "validation_score": 0.00012790346227120608,
+      "runtime_seconds": 13.01456500007771,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.418403387069702,
+        "beta_2": 1.2607755661010742,
+        "tau_normalized": 0.07324033975601196,
+        "q_R": 1.0055721998214722,
+        "q_D": 1.0064822435379028,
+        "chi": 1.0586150884628296,
+        "reporting_R": 0.843723475933075,
+        "reporting_D": 0.8400130271911621
+      }
+    },
+    {
+      "event": "sydney",
+      "fold": 3,
+      "model": "TransPINN",
+      "seed": 33,
+      "best_epoch": 260,
+      "validation_score": 0.0010456887539476156,
+      "runtime_seconds": 15.33729279995896,
+      "parameter_count": 18619,
+      "parameters": {
+        "beta_1": 2.041414260864258,
+        "beta_2": 1.0807445049285889,
+        "tau_normalized": 0.07804381102323532,
+        "q_R": 1.0065511465072632,
+        "q_D": 1.0696040391921997,
+        "chi": 1.1020057201385498,
+        "reporting_R": 0.841678261756897,
+        "reporting_D": 0.8424707055091858
+      }
+    }
+  ]
+}

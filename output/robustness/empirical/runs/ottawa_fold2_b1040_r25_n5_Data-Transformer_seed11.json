@@ -1,0 +1,44 @@
+{
+  "run": {
+    "event": "ottawa",
+    "fold": 2,
+    "model": "Data-Transformer",
+    "seed": 11,
+    "epochs_completed": 1040,
+    "parameter_count": 18619,
+    "best_epoch": 10,
+    "validation_score": 0.5470789074897766,
+    "runtime_seconds": 1.1047232173909636,
+    "runtime_kind": "amortized_gpu_batch",
+    "batch_id": "recovery_20260918T144718417634Z_stage2_ottawa_fold2_b1040_Data-Transformer_batch86",
+    "batch_size": 23,
+    "batch_runtime_seconds": 25.408633999992162,
+    "test_nrmse": 0.6215796935814465,
+    "test_nmae": 0.5938196614337885,
+    "parameters": null
+  },
+  "split": [
+    26,
+    30,
+    34
+  ],
+  "metric_denominator": [
+    6.233549779791836,
+    4.105745103771404
+  ],
+  "scales": [
+    133.71428571428572,
+    89.14285714285714
+  ],
+  "retention": 0.25,
+  "noise": 0.05,
+  "budget": 1040,
+  "condition": "r25_n5",
+  "mask_seed": 2244253461,
+  "noise_seed": 131176512,
+  "input_sha256": "83b0a8386189d3a03712d8c10bb7a4ddadc348244f94bd87846afc91961171c2",
+  "quadrature": [
+    1.0
+  ],
+  "reporting_bounds": null
+}

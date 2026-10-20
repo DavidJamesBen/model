@@ -1,0 +1,19 @@
+{
+  "events": [
+    "harvey",
+    "csdc",
+    "ottawa",
+    "sydney"
+  ],
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "additional_updates": 2400,
+  "learning_rate": 0.0007,
+  "selection": "Training score must match or improve the best frozen reference; then choose by validation score. If no candidate qualifies, report failure and retain previous published model.",
+  "test_use": "Final evaluation only. Existing test set has been reported in prior explorations; a new untouched holdout is needed for confirmatory claims.",
+  "comparison": "Targeted additional optimization of TransPINN against frozen baselines; not an equal-budget benchmark.",
+  "source_sha256": "c350434998319f42651d85c0b76373f3d0ff9aee8c0230c339b15623373d478a"
+}

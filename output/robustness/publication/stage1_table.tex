@@ -1,0 +1,23 @@
+% Generated from complete audited results by experiments/publish_robustness.py
+\begin{table*}[t]
+\centering
+\caption{Metric-aligned forecasting under two prespecified optimization budgets.}
+\label{tab:aligned_budgets}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{}}
+\toprule
+& \multicolumn{3}{c}{260 updates} & \multicolumn{3}{c}{1040 updates} \\
+Model & Mean $\pm$ SD & Selected & Time (s) & Mean $\pm$ SD & Selected & Time (s) \\
+\midrule
+TransPINN & $0.4359\pm0.0450$ & $0.4040$ & 3.48 & $0.4475\pm0.0556$ & $0.3889$ & 13.82 \\
+Matched-PINN & $0.4165\pm0.0220$ & $0.4012$ & 1.48 & $0.4205\pm0.0252$ & $0.4056$ & 6.02 \\
+NoAttn-PINN & $0.4139\pm0.0361$ & $0.4185$ & 3.39 & $0.4284\pm0.0590$ & $0.4884$ & 13.88 \\
+Data-Transformer & $0.4525\pm0.0548$ & $0.4550$ & 2.33 & $0.4601\pm0.0685$ & $0.4502$ & 9.17 \\
+Data-MLP & $0.4251\pm0.0270$ & $0.3892$ & 0.45 & $0.4741\pm0.0758$ & $0.5171$ & 1.86 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}\footnotesize Macro test NRMSE is averaged equally over channels, folds and events. Mean and sample SD span three seeds. Selected uses validation-based seed selection per event/fold. Each model has 18,619 parameters. Time averages optimization and validation cost per fit on an NVIDIA GeForce RTX 5070, using GPU batches of three. It measures amortized cost, not isolated-run latency.\end{minipage}
+\end{table*}

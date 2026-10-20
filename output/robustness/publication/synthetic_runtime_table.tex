@@ -1,0 +1,23 @@
+% Generated from complete audited results by experiments/publish_robustness.py
+\begin{table*}[t]
+\centering
+\caption{Computational cost of the independent synthetic test fits.}
+\label{tab:synthetic_runtime}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llcc@{}}
+\toprule
+Model & Execution & Model-consistent & Media-decay mismatch \\
+\midrule
+TransPINN & GPU, amortized & $7.88\pm0.39$ & $7.94\pm0.43$ \\
+Matched-PINN & GPU, amortized & $5.39\pm4.37$ & $6.11\pm4.82$ \\
+NoAttn-PINN & GPU, amortized & $15.42\pm3.08$ & $15.92\pm3.41$ \\
+Data-Transformer & GPU, amortized & $8.00\pm3.25$ & $8.54\pm3.59$ \\
+Data-MLP & GPU, amortized & $1.30\pm0.51$ & $1.38\pm0.57$ \\
+DDE-LS & CPU, serial & $1.46\pm0.38$ & $0.99\pm0.35$ \\
+\bottomrule
+\end{tabular*}
+\par\smallskip
+\begin{minipage}{\textwidth}\footnotesize Seconds per fit are summarized by mean and sample SD over individual test-trajectory fits. Neural times amortize GPU optimization and validation within each batch. DDE-LS uses serial CPU optimization and excludes one-time compilation. Budgets are 1040 Adam updates for neural models and at most 400 residual evaluations plus numerical Jacobians for each DDE start. Hardware and optimization units differ, so no speedup is inferred.\end{minipage}
+\end{table*}

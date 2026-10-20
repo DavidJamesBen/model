@@ -1,0 +1,1865 @@
+     IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                               1
+
+
+
+
+      Analyzing the Impact of Rumor Fatigue and Delay
+      Effects on Information Propagation Dynamics via
+                         TransPINN
+                                                        Deliang Li, Yi Zhao, and Yifeng Wang
+
+
+
+ 1      Abstract—Rumor spreading on social media is affected by44                    Subsequently, Maki and Thompson [12], [13] refined this
+ 2   information delays, media intervention, and changes in user                     paradigm through the M–T model, thereby further advancing           45
+ 3   attention. We propose a time-delayed rumor model that separates                 the theoretical foundations of rumor-spreading dynamics. In         46
+ 4   information exposure from active cognitive processing. The model
+ 5   includes competing corrective and rumor-inciting media. It also                 realistic communication environments, time-delay effects are        47
+
+ 6   uses a Holling-II fatigue term to describe the reduced user                     inherent throughout the rumor life cycle, encompassing infor-       48
+
+ 7   response caused by information overload. We prove that the                      mation generation, dissemination, intervention, and eventual        49
+
+ 8   model is well posed and derive the rumor propagation threshold.                 dissipation. To capture such effects, Fu et al. [14] developed      50
+ 9   We then analyze system stability and delay-induced oscillations.                a rumor-spreading model incorporating three identical time          51
+10   To estimate unknown parameters and hidden states from sparse
+11   data, we develop a Transformer-based physics-informed neural                    delays, aiming to examine the influence of uniform decision-        52
+
+12   network called TransPINN. Its self-attention mechanism helps                    making and response delays across multiple transition pro-          53
+
+13   capture the long-range temporal dependence created by the delay.                cesses. Building upon this uniform-delay framework, Wei et          54
+
+14   We test TransPINN on four real rumor events: Hurricane Harvey,                  al. [15] introduced two distinct time delays into the transitions   55
+15   CSDC-Rumor, the Ottawa shooting, and the Sydney cafe siege.                     from ignorants to spreaders and from spreaders to stiflers,         56
+16   Under the same data splits and training budget, we compare it
+17   with PINN, LSTM-PINN, causal TimePINN, and a parameter-                         respectively, while also incorporating a saturation effect to       57
+
+18   matched model without attention. Within this comparison, Tran-                  account for heterogeneous response lags and bounded contact         58
+
+19   sPINN achieves the lowest NRMSE. The numerical results also                     rates. Further extending this line of research, Sheng et al.        59
+
+20   show that delays can shift the rumor peak and cause secondary                   [16] integrated three time delays together with two saturation      60
+21   oscillations. Cognitive fatigue reduces the peak under information              functions, investigating the combined influence of multiple         61
+22   overload. Finally, we formulate an optimal control strategy that
+23   reduces rumor activity while limiting intervention costs.                       delay mechanisms and nonlinear incidence rates on the asymp-        62
+
+                                                                                     totic stability of rumor-spreading dynamics. In parallel, the       63
+24     Index Terms—Rumor dynamics, delay differential equations,                     stochastic-systems literature has developed rigorous stability      64
+25   TransPINN, cognitive fatigue, identifiability, optimal control.
+                                                                                     and synchronization criteria for mixed time-delay systems un-       65
+
+                                                                                     der aperiodic intermittent control, regime-switching diffusion,     66
+
+26                             I. I NTRODUCTION                                      and stochastic hybrid impulses [17]–[19].                           67
+
+                                                                                        Holling-II responses have previously represented bounded         68
+27
+
+28
+
+29
+     W       ITH the widespread adoption of social media plat-
+             forms, rumors can propagate rapidly through instant
+     communication networks, posing significant threats to public
+                                                                                     contact or attention in rumor models [20], [21]. In the present
+                                                                                     model, the decreasing factor is used only as a phenomeno-
+                                                                                                                                                         69
+
+                                                                                                                                                         70
+
+
+30   cognition [1], social order [2], and public safety [3]–[10].                    logical description of reduced response under information           71
+
+
+31   Such propagation distorts public judgment and induces social                    overload. Recent empirical work likewise emphasizes that            72
+
+
+32   panic, while simultaneously undermining the foundations of                      overload, uncertainty, and repeated exposure can change par-        73
+
+
+33   public trust. In the digital era, rumor diffusion exhibits distinct             ticipation and diffusion patterns [22], [23].                       74
+
+
+34   characteristics, including accelerated transmission, expanded                      Physics-informed neural networks (PINNs) offer a way to          75
+
+
+35   reach, and amplified societal impact, enabling rumors to                        combine differential-equation constraints with irregular obser-     76
+
+
+36   achieve viral-like replication within remarkably short time                     vations. Specific DDE solvers based on PINNs have been              77
+
+
+37   spans.                                                                          proposed [24], [25], while PINNsFormer uses self-attention          78
+
+
+38      Owing to the strong analogy between rumor propagation                        to propagate temporal information across pseudo-sequences           79
+
+
+39   and epidemic transmission, early research endeavors modeled                     [26]. Physics-informed LSTM networks provide a recurrent            80
+
+
+40   rumor diffusion using mathematical frameworks originally                        baseline [27], and causal residual weighting supplies a time-       81
+
+
+41   developed for infectious diseases. In the 1960s, Daley and                      ordered PINN baseline [28]. Other recent scientific-learning        82
+
+
+42   Kendall [11] proposed the classical D–K model, which cat-                       architectures use auxiliary outputs, Hermite interpolation,         83
+
+
+43   egorizes individuals into ignorants, spreaders, and stiflers.                   Kolmogorov–Arnold networks, or wavelets [29]–[32]. These            84
+
+                                                                                     methods motivate comparisons, but they do not by themselves         85
+
+       This work was supported by the National Natural Science Foundation of         solve the measurement and identifiability difficulties of a         86
+     China (NSFC) under Project No. 62473115 and the Fundamental Research            partially observed rumor model.                                     87
+     Plan of Shenzhen Government under Project No. JCYJ20240813105202004.
+       The authors are with the School of Science, Harbin Institute of Technology,      The contribution of this paper is therefore deliberately         88
+
+     Shenzhen, China. (Corresponding author: Yi Zhao).                               limited to four elements. First, a survival-weighted expo-          89
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                   2
+
+
+
+ 90   sure cohort replaces the non-positive delayed-stock outflow         ability (Su , Se ), passively exposed users (E), users actively     145
+
+ 91   used in an earlier formulation. Second, the resulting renewal       deliberating (H), rumor spreaders (R), debunkers (D), and           146
+
+ 92   structure yields an explicit delay-dependent threshold and          withdrawn users (U ). The two dimensionless media intensities       147
+
+ 93   a compact characteristic equation for critical-delay analy-         fix meanings throughout: M1 is corrective media and M2 is           148
+
+ 94   sis. Third, TransPINN is formulated with the same history           rumor-inciting media. A fraction λ of recruitment enters Se         149
+
+ 95   operator and with an explicit activity-measurement model.           and the remaining fraction enters Su . Each short empirical         150
+
+ 96   Fourth, a four-scenario, chronological forecasting study com-       cascade is modeled as a closed normalized event cohort, so          151
+
+ 97   pares TransPINN with a standard MLP-PINN, LSTM-PINN,                Λ = dh = 0 and N (0) = 1. The open-population terms are             152
+
+ 98   causal TimePINN, and an exactly parameter-matched no-               retained only for the general analysis.                             153
+
+ 99   attention ablation. To further assess the effects of model size        The distinction between E and H is defined in terms of           154
+
+100   and training budget, a supplementary experiment compares            their respective roles in the model. State E records passive        155
+
+101   models with matched parameter counts and update budgets,            exposure, whereas H records active evaluation. The fixed            156
+
+102   including a data-only Transformer as an additional baseline.        delay τ is the time, measured in hours, from a new exposure         157
+
+103   The evaluation distinguishes robustness across random seeds         to completion of the passive-processing stage. Media at the         158
+
+104   from forecasting performance obtained through validation-           exposure time determine the fraction entering this pathway.         159
+
+105   based model selection. The positivity proof, next-generation        Users who leave E through other routes before τ do not              160
+
+106   argument, Hopf test, and Pontryagin principle are standard          subsequently enter H.                                               161
+
+107   tools. The novelty lies in their consistent application to a
+108   partially observed forecasting problem incorporating cohort         B. Survival-weighted delay model                                    162
+109   delays, antagonistic media, and fatigue.
+110      The empirical component combines the processed Hurricane            Define the new-exposure incidence and a bounded pathway-         163
+
+
+111   Harvey activity table [33], the THUNLP CSDC-Rumor archive           selection probability by                                            164
+
+
+112   [34], and stance-annotated Ottawa and Sydney conversations                                                Su (t) + εSe (t)
+      from RumourEval [35]–[37]. These sources do not share an                     I(t) = (β1 R(t) + β2 D(t))                    ,     (1)    165
+113
+                                                                                                                     N (t)
+114   identical observation mechanism. We therefore model har-                              ρM1 (t)M2 (t)
+115   monized rumor/corrective activity fluxes, retain event-specific              p(t) =                   ∈ [0, 1),                  (2)    166
+                                                                                          1 + ρM1 (t)M2 (t)
+116   reporting scales, and treat the CSDC corrective series as a fact-
+117   check proxy rather than an individual stance label. No spline                  aE = ξE + σE + γE + dh .                          (3)    167
+
+
+118   point is treated as a new observation, and no neural variability    The completed-processing flux is                                    168
+119   band is called a confidence interval.
+120      The paper is organized as follows. Section II defines the                      Qτ (t) = p(t − τ )I(t − τ )e−aE τ .            (4)    169
+
+121   delay model and notation. Section III establishes positivity,
+                                                                          Thus, I(t−τ ) is the cohort exposed τ hours earlier, p(t−τ ) is     170
+122   the reproduction threshold, and the critical-delay conditions.
+                                                                          the fraction assigned to active processing at that exposure time,   171
+123   Section IV specifies the observation operator and reports
+                                                                          and e−aE τ is the probability that an individual in this cohort     172
+124   the four-scenario baseline, ablation study, and follow-up ro-
+                                                                          remains in E throughout the delay interval without leaving          173
+125   bustness grid. Section V gives the corrected optimal-control
+                                                                          through any of the competing exit pathways. If the network          174
+126   conditions. Section VI summarizes the supported conclusions
+                                                                          time is scaled to s = (t − t0 )/(tf − t0 ), the delay supplied to   175
+127   and limitations.
+                                                                          the network is τs = τ /(tf − t0 ). The governing system is          176
+
+                                                                             
+128     II. RUMOR P ROPAGATION M ODEL F ORMULATION AND                       
+                                                                               Ṡu = (1 − λ)Λ − dh Su − κ1 M1 Su + κ2 M2 Se
+                     DYNAMIC T RANSITIONS
+                                                                             
+                                                                                       − β1 RSu /N − β2 DSu /N,
+129
+                                                                             
+                                                                             
+                                                                             
+                                                                             
+                                                                             
+130      In this section, we establish the theoretical framework for         
+                                                                             
+                                                                               Ṡe = λΛ − dh Se + κ1 M1 Su − κ2 M2 Se
+                                                                             
+131   the time-delayed rumor propagation model, designed to cap-             
+                                                                                       − εβ1 RSe /N − εβ2 DSe /N,
+                                                                             
+                                                                             
+                                                                             
+132   ture the interplay between cognitive latency and antagonistic          
+                                                                             
+                                                                             
+                                                                              Ė = I(t) − aE E − Qτ (t),
+                                                                             
+133   media environments. We delineate the population stratification         
+                                                                             
+134   and the dynamic transmission mechanisms, explicitly incorpo-              Ḣ = Qτ (t) − (ΓR + ΓD + ΓU + dh )H,
+135   rating Holling-II type cognitive fatigue and competitive inhibi-       
+                                                                                 Ṙ = ξE E + ΓR H − (µ + dh + δ1 M1 )R + δ2 M2 D,
+                                                                             
+                                                                             
+                                                                             
+136   tion functions to reflect real-world psychological constraints.        
+                                                                             
+                                                                                Ḋ = σE E + ΓD H + δ1 M1 R − (α + dh + δ2 M2 )D,
+                                                                             
+                                                                             
+137   The governing system of delay differential equations is derived        
+                                                                             
+                                                                             
+                                                                             
+138   to quantify these nonlinear interactions. This mathematical            
+                                                                             
+                                                                               U̇ = γE E + µR + αD + ΓU H − dh U,
+                                                                             
+139   formulation serves as the fundamental basis for the dynamical          
+                                                                               Ṁ 1 = η1 D + v1 − dM1 M1 ,
+                                                                             
+                                                                             
+                                                                             
+140   stability analysis and the data-driven parameter identification        
+                                                                             
+                                                                               Ṁ2 = η2 R + v2 − dM2 M2 .
+                                                                             
+141   presented in the subsequent sections.
+                                                                                                                                      (5)     177
+
+                                                                          Here N = Su + Se + E + H + R + D + U . The media                    178
+142   A. States assumptions                                               variables are dimensionless indices, and their decay rates dMi      179
+
+143      The human population is divided into seven mutually ex-          are distinct from human exit dh .                                   180
+
+144   clusive states: susceptible users without and with verification        The media-driven rates are defined consistently with Fig. 1:     181
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                                  3
+
+
+
+
+      Fig. 1. Rumor–media model with noncrossing flow paths. The main E → H → U path is straight, while direct exits from E and R ↔ D transitions follow
+      separate routes. Repeated U nodes represent the same withdrawal compartment. The delayed E → H transition is governed by the survival-weighted cohort
+      flux Qτ (t), defined in Eq. (4).
+
+
+
+                                                                                  continuous, nonnegative history function ϕ ∈ C([−τ, 0], R9+ )               202
+                                  M2           χ                                  and compute I(s) and p(s) from ϕ(s) for s ∈ [−τ, 0].                        203
+                  ΓR (M ) = qR                          ,
+                               1 + ϖ 1 M1 χ + M 1 + M 2                           The prescribed history is compatible with the exposure-cohort               204
+
+                                  M1           χ                                  structure if                                                                205
+182               ΓD (M ) = qD                          ,                  (6)                             Z 0
+                               1 + ϖ 2 M2 χ + M 1 + M 2
+                                 M1 + M 2                                                        E(0) ≥        eaE s p(s)I(s) ds.           (7)               206
+
+                  ΓU (M ) = qU               .                                                                  −τ
+                               χ + M 1 + M2
+                                                                                  This condition ensures that E(0) is sufficient to include all               207
+183      Consequently, ϖ1 measures how strongly corrective media                  surviving members of pre-observation cohorts scheduled to                   208
+184   inhibit H → R, while ϖ2 measures how strongly rumor                         complete processing after t = 0.                                            209
+185   media inhibit H → D. Increasing ϖ1 cannot increase ΓR , and
+186   increasing ϖ2 cannot increase ΓD . The factor χ/(χ + M1 +
+187   M2 ) decreases with total information load. The parameters                           III. DYNAMICAL A NALYSIS OF THE M ODEL                             210
+188   qR , qD , qU are baseline transition rates, measured in h−1 .
+189      Table I summarizes the model parameters and their in-                    A. Well-posedness and positive invariance                                   211
+
+190   ferential roles. Time is measured in hours in the analytical                Theorem III.1 (Positivity and boundedness). Suppose all                     212
+191   model and is normalized to each observed event horizon                      parameters are nonnegative, 0 ≤ λ, ε ≤ 1, and the history                   213
+192   in Section IV. Mi are dimensionless. In the table, F de-                    is continuous, nonnegative, and satisfies (7). System (5) has a             214
+193   notes quantities fixed by design or normalization, whereas                  unique nonnegative solution. If dh > 0, then                                215
+194   G denotes quantities that may be confounded in the full
+195   inverse problem. These labels do not assert identifiability.                     N (t) ≤ Nmax := max{N (0), Λ/dh },                                     216
+196   Section IV-C summarizes the identifiability results. Complete
+                                                                                     Mi (t) ≤ max{Mi (0), (ηi Nmax + vi )/dMi },             i = 1, 2.        217
+197   empirical settings, fitted values, and conditional intervals are
+198   provided in Supplementary Material.
+                                                                                   For the closed event model (Λ = dh = 0), N (t) = N (0).                    218
+199      A delay differential equation (DDE) requires a history
+200   function specifying the system state over the interval [−τ, 0],             Proof. The right-hand side is locally Lipschitz on bounded                  219
+
+201   rather than only an initial value at t = 0. We assume a                     sets. The equation for E requires a separate argument to                    220
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                                                       4
+
+
+
+                                                                                TABLE I
+                                                                 M ODEL PARAMETERS AND INFERENTIAL ROLE
+
+      Symbol            Meaning                                          Unit/role              Symbol        Meaning                                           Unit/role
+      Λ                 recruitment into the event cohort                proportion h−1 , F     λ             fraction recruited to Se                          1, F
+      dh                human exit/churn rate                            h−1 , F                β 1 , β2      exposure rates due to R, D                        h−1 , G
+      ε                 relative exposure of Se                          1, F                   κ1 , κ2       media-driven Su ↔ Se rates                        h−1 , G
+      ξE , σ E          direct E → R, D rates                            h−1 , G                γE            direct E → U rate                                 h−1 , G
+      ρ                 scale in the bounded pathway gate p              1, G                   τ             cognitive-processing delay                        h, G
+      qR , qD , qU      baseline H → R, D, U rates                       h−1 , G                χ             fatigue tolerance threshold                       media unit, G
+      ϖ1                corrective inhibition of H → R                   1, G                   ϖ2            rumor inhibition of H → D                         1, G
+      µ, α              withdrawal rates from R, D                       h−1 , G                δ 1 , δ2      R ↔ D media conversion rates                      h−1 , G
+      η1 , η 2          endogenous media-generation rates                h−1 , G                v 1 , v2      exogenous media input                             media h−1 , F/G
+      dM1 , dM2         decay rates of the two media indices             h−1 , G                N             event-cohort normalization                        proportion, F
+
+
+                                                                                 TABLE II
+                                                           T HEORETICAL SCOPE RELATIVE TO DELAYED RUMOR MODELS
+
+      Result                 Refs. [14]–[16] and related control work [38]                                 Present formulation
+      Positivity             Standard quasipositivity for delayed compartment models                       Cohort representation and the explicit compatibility inequality (7).
+                                                                                                           No delayed stock is subtracted from E(t)
+      Threshold              Next-generation calculations for prescribed delay structures                  Renewal calculation with the survival probability e−aE τ and both
+                                                                                                           R and D activity pathways
+      Delay stability        Characteristic-root and Hopf methods for delayed rumor systems                Compact characteristic equation for the cohort delay and antagonis-
+                                                                                                           tic R–D conversion
+      Control                Standard Pontryagin and forward–backward sweep methods                        Complete fatigue derivatives for rumor suppression and corrective-
+                                                                                                           media promotion
+      Inverse problem        Generally not considered in the cited analytical models                       History-aware observation model, exact media-scale non-
+                                                                                                           identifiability proof, and conditional sensitivity/profile analysis
+
+
+
+221   establish nonnegativity because it contains a delayed outflow                           For the normalized closed model, Su0 + Se0 = 1 and the                              245
+
+222   term. Variation of constants and (4) yield, for t ≥ τ ,                                 baseline composition is fixed by the event design rather than                       246
+                                      Z 0                                                   by demographic balance.                                                             247
+
+223            E(t) = e−aE t E(0) −          eaE s p(s)I(s) ds                                  Let                                                                               248
+                                        −τ
+                         Z t−τ                                                                                                         ρM10 M20
+                                  −aE (t−s)                                                            Ψ = (Su0 + εSe0 )/N 0 , p0 =               ,                               249
+224                    +        e           [1 − p(s)]I(s) ds                                                                        1 + ρM10 M20
+                           0
+                                                                                                                                       1 − θτ
+                                                                                                           θτ = p0 e−aE τ ,
+                         Z t
+                                                                                                                               LE =           ,                                   250
+225                    +       e−aE (t−s) I(s) ds.                                                                                       aE
+                                   t−τ                                                                         h = Γ0R + Γ0D + Γ0U + dh ,                                         251
+226
+
+227      Every term is nonnegative. For 0 ≤ t < τ , the same                                                         c1 = δ1 M10 ,         c2 = δ2 M20 ,                          252
+
+228
+             R 0 contains the additional nonnegative remainder
+      calculation                                                                                             kR = µ + dh + c1 ,         kD = α + dh + c2 ,                       253
+
+229   e−aE t t−τ eaE s p(s)I(s) ds. Therefore E(t) ≥ 0. At the                                                           ∆ = kR kD − c1 c2 > 0.                                   254
+230   boundary of every other compartment its derivative is non-
+231   negative. Ṙ|R=0 = ξE E + ΓR H + δ2 M2 D ≥ 0. Hence the                                                                                                                     255
+
+232   nonnegative cone is invariant.                                                            An individual newly entering E spends expected time LE                            256
+
+233      Summing the seven human equations cancels every internal                             there and reaches H with probability θτ . Hence its expected                        257
+
+234   flow, including Qτ , and yields Ṅ = Λ − dh N . The asserted                            numbers of entries into the two active states are                                   258
+
+      bound follows from its explicit solution. Since D, R ≤ Nmax ,
+                                                                                                zR = ξE LE + θτ Γ0R /h,                  zD = σE LE + θτ Γ0D /h.
+235
+                                                                                                                                                                            (9)   259
+236   comparison in the two media equations gives the stated media
+237   bounds. These bounds rule out unbounded growth in finite                                                                                                                    260
+
+238   time and ensure that the local solution extends to a global                               The R–D transition matrix and its inverse are                                     261
+
+239   solution.                                                                                         
+                                                                                                          kR −c2
+                                                                                                                    
+                                                                                                                             −1
+                                                                                                                                       
+                                                                                                                                     1 kD c2
+                                                                                                                                              
+                                                                                                   VA =               ,     VA =                .                                 262
+                                                                                                         −c1 kD                     ∆ c1 k R
+240   B. Rumor-free equilibrium and delay-dependent threshold                                                                                                                     263
+
+241      For dh , dM1 , dM2 > 0, define Mi0 = vi /dMi . The rumor-                              Following the next-generation principle [39], multiplying                         264
+
+242   free equilibrium is X0 = (Su0 , Se0 , 0, 0, 0, 0, 0, M10 , M20 ),                       the active-state sojourn vector VA−1 (zR , zD )T by the exposure                    265
+
+243   where                                                                                   row Ψ(β1 , β2 ) gives                                                               266
+                             Λ[(1 − λ)dh + κ2 M20 ]
+                     Su0 =                             ,                                                                                                                          267
+                            dh (dh + κ1 M10 + κ2 M20 )                                                     Ψ
+244                                                               (8)                            R0 (τ ) =   {β1 (kD zR + c2 zD ) + β2 (c1 zR + kR zD )} .
+                                 Λ[λdh + κ1 M10 ]                                                          ∆
+                     Se0 =                             .                                                                                                (10)
+                            dh (dh + κ1 M10 + κ2 M20 )                                                                                                                            268
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                       5
+
+
+
+269                                                                          the absence of a verified stability boundary crossing, the finite-   316
+
+270      Because D also generates exposure in (1), R0 is a joint             time rebounds observed in the simulations are interpreted as         317
+
+271   information-activation threshold, not a count of rumor-only            transient dynamics.                                                  318
+
+272   descendants. Delay does not have a predetermined effect:
+                                                                             Remark III (Oscillation is not chaos). A Hopf bifurcation            319
+273   increasing τ reduces the H pathway through θτ but increases
+                                                                             indicates the emergence of periodic solutions, not chaos. We         320
+274   expected residence in E through LE .
+                                                                             do not use R2 as the main metric because some short test             321
+
+                                                                             blocks have nearly constant observations. Low variance makes         322
+275   C. DDE characteristic equation and critical delay                      R2 sensitive to prediction errors, while zero variance makes         323
+
+276     Linearization in y = (E, H, R, D)T gives a retarded system.          it undefined.                                                        324
+
+277   Define
+                                    
+                     z + kR     −c2                                          D. Lyapunov analysis of the closed model                             325
+278        B(z) =                      ,
+                       −c1    z + kD                                            For fixed parameters and τ > 0, write the closed model            326
+
+279       nE (z) = Ψ(β1 , β2 ) adj B(z)(ξE , σE )T ,                         as Ẋ = f (X(t), X(t − τ )). A perturbation is a continuous          327
+
+
+280       nH (z) = Ψ(β1 , β2 ) adj B(z)(Γ0R , Γ0D )T ,                       history function. Its seven human components sum to zero at          328
+
+                                                                             each history time. For vt (s) = v(t + s), define                     329
+281         P(z) = (z + aE )(z + h) det B(z) − (z + h)nE (z),
+                                                                                                       1 0
+                                                                                                         Z
+282         Q(z) = (z + h)nE (z) − (z + aE )nH (z).                                          ∥vt ∥2τ =       ∥v(t + s)∥22 ds.                     330
+                                                                                                       τ −τ
+283
+
+284     Direct elimination of E, H, R, D yields the characteristic           Theorem III.3 (Lyapunov growth and neutral perturbations).           331
+
+
+285   equation                                                               Along a solution X(t), the perturbation satisfies                    332
+
+
+
+286             F (z, τ ) := P(z) + p0 e−(z+aE )τ Q(z) = 0.          (11)                   v̇(t) = A(t)v(t) + B(t)v(t − τ ),             (14)    333
+
+
+
+287   In particular, F (0, τ ) = aE h∆[1 − R0 (τ )], which verifies the      where A(t) = ∂1 f and B(t) = ∂2 f are evaluated along X(t).          334
+
+288   threshold algebra. If R0 > 1, continuity of F on the positive          Start with a history of unit norm. Normalize the complete            335
+
+289   real axis gives a positive characteristic root and instability.        perturbation history at times 0 = t0 < t1 < · · · . Let              336
+
+                                                                             gk > 0 denote its norm immediately before normalization.             337
+290   Theorem III.2 (Critical-delay and Hopf conditions). Assume             The solution without normalization then satisfies                    338
+291   the zero-delay polynomial F (z, 0) is Hurwitz and R0 (0) < 1.
+                                                                                                                      K
+292   Write P(iω) = PR + iPI and Q(iω) = QR + iQI . Purely                                   1     ∥vtK ∥τ    1 X
+                                                                                               log         =      log gk .                (15)    339
+293   imaginary roots are exactly the positive solutions (ω, τ ) of                         tK      ∥v0 ∥τ   tK
+                                                                                                                      k=1
+294           PR + p0 e−aE τ (QR cos ωτ + QI sin ωτ ) = 0,                   Suppose the initial history attains the maximal asymptotic           340
+
+295            PI + p0 e−aE τ (QI cos ωτ − QR sin ωτ ) = 0.          (12)    growth rate. If its Lyapunov exponent exists, the expression         341
+
+                                                                             on the right converges to λmax as tK → ∞.                            342
+296   Let τH be the smallest positive delay in this solution set and           For the empirical coefficients, the model has the equilibrium      343
+297   let τ0 = inf{τ > 0 : R0 (τ ) = 1}, with the infimum of the             family                                                               344
+298   empty set equal to infinity. Then X0 is locally asymptotically
+                                                                                   ∗
+299   stable for 0 ≤ τ < min{τ0 , τH }. If τH < τ0 , the root iωH is             X (s) = (5s/13, 8s/13, 0, 0, 0, 0, 1 − s, 0.2, 0.2),
+                                                                                                                                          (16)    345
+300   simple, and                                                                                     0 ≤ s ≤ 1.
+                 p0 (z + aE )e−(z+aE )τ Q(z)
+                                                  
+                                                                             At each equilibrium, the linearization admits a perturbation         346
+      Re ′                                                        ̸= 0,
+            P (z) + p0 e−(z+aE )τ [Q′ (z) − τ Q(z)] z=iωH , τ =τH            with zero exponent that preserves total population. Hence            347
+
+301                                                                (13)      λmax (X ∗ (s)) ≥ 0. Suppose the zero characteristic root is          348
+
+302   then a Hopf bifurcation occurs at τH . If τ0 < τH , stability is       semisimple. If every other characteristic root has negative          349
+
+303   instead lost through the zero characteristic root at τ0 .              real part, then λmax (X ∗ (s)) = 0. These spectral conditions        350
+
+                                                                             concern the linearization on the tangent space of fixed total        351
+304   Proof. Equation (12) is the real–imaginary decomposition of
+                                                                             population.                                                          352
+305   (11). Roots vary continuously until the first imaginary-axis
+306   crossing, while F (0, τ ) = 0 is equivalent to R0 (τ ) = 1.            Proof. Equation (14) is linear in the perturbation. Dividing its     353
+
+307   Thus min{τ0 , τH } is the first possible loss of stability. Implicit   complete history by gk scales all subsequent perturbations by        354
+
+308   differentiation of F (z, τ ) = 0 gives the fraction in (13). Thus,     the same factor. Induction therefore gives                           355
+
+309   the standard Hopf theorem for retarded functional differential                                             K
+      equations [40] completes the nonzero-frequency case.                                          ∥vtK ∥τ   Y
+310
+                                                                                                            =   gk .                              356
+                                                                                                     ∥v0 ∥τ
+311      A numerical value of τc needs to be computed from an in-                                               k=1
+
+312   dependently identified structural parameter vector and checked         Taking logarithms proves (15). The limit gives the exponent          357
+
+313   by DDE spectral continuation. The two-channel activity obser-          under the stated assumptions. Scaling only v(tk ) is insuf-          358
+
+314   vations in Section IV do not provide such identification, and          ficient. The delayed history also determines the subsequent          359
+
+315   the learned parameter groups are used only for forecasting. In         evolution [41].                                                      360
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                        6
+
+
+
+361     Substitution gives f (X ∗ (s), X ∗ (s)) = 0. Differentiation         counts for each event. These scales account for differences           413
+
+362   with respect to s yields (A∗ + B∗ )w = 0, where                        in bin width and platform coverage.                                   414
+
+                                                                                Cumulative activity counts record actions over time. In            415
+363               w = (5/13, 8/13, 0, 0, 0, 0, −1, 0, 0)T .                  contrast, R(t) and D(t) describe the populations in the cor-          416
+
+
+364   The human components of w sum to zero. Thus v(t) ≡ w                   responding compartments at time t. We link these quantities           417
+
+
+365   preserves total population. Its norm is constant, so its exponent      through the entry fluxes into R and D:                                418
+
+
+366   is zero.                                                                              fR (t) = ξE E + ΓR H + δ2 M2 D,
+         Under the stated spectral conditions, the linear solution                                                                         (17)    419
+367
+                                                                                            fD (t) = σE E + ΓD H + δ1 M1 R.
+368   operator has a bounded neutral part. The remaining part decays                                                                               420
+
+369   exponentially [40]. No perturbation therefore has a positive            Integrating each flux over bin [tj−1 , tj ] gives the measure-       421
+
+370   asymptotic growth rate. The perturbation w attains zero. Hence         ment equation                                                         422
+
+371   the maximal exponent equals zero.                                                    Z tj
+                                                                                Yk,j = sk       fk (t) dt + ek,j ,     k ∈ {R, D}.      (18)       423
+372   Numerical evaluation. We apply (15) to 12 neural parameter                              tj−1
+373   sets from the existing experiments and four independent DDE                                                                                  424
+
+374   fits. The analysis includes 116 runs. The checks cover mesh              Here, sk > 0 is a reporting scale for each event and channel.       425
+
+375   size, integration duration, perturbation direction, initial history,   On the uniform normalized grid, we approximate the integral           426
+
+376   and delay. Each run extends to normalized time 500. We                 using the flux at the right endpoint. The scale sk absorbs            427
+
+377   exclude the first 100 time units from the main estimate.               the common bin width. We obtain cumulative predictions by             428
+
+378   The results satisfy |λ bmax | < 2.95 × 10−8 . Estimates over           summing the nonnegative predictions for individual bins. The          429
+
+379   later intervals approach zero. The trajectories approach the           network does not predict cumulative activity separately.              430
+
+380   equilibrium family with no spreading activity. We detect no
+381   sustained positive exponent. These results do not establish            B. TransPINN with history                                             431
+
+382   the spectral conditions at every equilibrium. They also do not            The network predicts the nine states X   bθ (t) in (5). It also    432
+
+383   exclude chaos for other parameters or in the observed events.          predicts two nonnegative fluxes fR , fD . A softmax ensures that
+                                                                                                             b    b                                433
+
+384   The supplement provides the methods and convergence tables.            the seven human states are nonnegative with a total of one.           434
+
+385                                                                          Softplus functions enforce nonnegativity for the two media            435
+
+                                                                             states and the fluxes. Each temporal backbone takes normal-           436
+
+                                                                             ized time with four Fourier sine and cosine pairs as input.           437
+386   E. Model scope
+                                                                             LSTM-PINN, TransPINN, and NoAttn-PINN share a sequence                438
+387      The model describes deterministic dynamics in a homo-               of 16 time tokens over [max(0, t−0.18), t]. This design adapts        439
+388   geneous population through average interactions. The delay             the pseudo-sequence approach of PINNsFormer [26] for causal           440
+389   τ is constant. Media intensities are latent indices. Repeated          forecasting. The original approach includes future timestamps.        441
+390   posts from one account do not represent distinct people.               Here, no token extends beyond the query time.                         442
+391   The model omits network structure, differences in attention,              For Q, K, V ∈ RL×dk , each attention head computes                 443
+392   endogenous label errors, bots, and platform recommendations.
+                                                                                                                       QK T
+                                                                                                                             
+393   These limitations restrict causal interpretation. They motivate                    head(Q, K, V ) = softmax √              V.        (19)    444
+
+394   the observation model in the next section.                                                                          dk
+                                                                             The attention scores use QK T . We concatenate the outputs            445
+
+395          IV. O BSERVATION M ODEL , T RANS PINN, AND                      from all heads, then apply a projection. The result passes to         446
+
+396                         VALIDATION                                       the state head. We evaluate delayed states through the history        447
+
+                                                                             operator                                                              448
+397   A. Four event scenarios and the measurement equation                                           (
+                                                                                                        ϕ(t − τ ), 0 ≤ t < τ,
+398      Table III describes the four activity scenarios. Each source                    Hτ [X](t)
+                                                                                              b    =                                   (20)        449
+                                                                                                        b − τ ), t ≥ τ.
+                                                                                                        X(t
+399   measures activity differently. We therefore express the targets
+                                                                                                                                                   450
+400   as activity fluxes. They do not represent counts of distinct
+401   people or directly comparable prevalence. Labels contain no               This operator supplies p(t − τ ) and I(t − τ ) in every            451
+
+
+402   moving averages, spline interpolation, or values generated by          residual. We use a constant history specified in advance and          452
+
+
+403   a model.                                                               documented in the code. The neural residual therefore follows         453
+
+
+404      The Harvey series comes from an aggregate table sup-                the DDE directly. Bounded sigmoid transforms represent the            454
+
+
+405   plied by the authors. It is not a reconstruction of the public         six structural parameter groups (β1 , β2 , τ, qR , qD , χ) plus two   455
+
+
+406   tweet archive. CSDC interactions lack support/deny labels. We          reporting scales. All methods use the same fixed history              456
+
+
+407   therefore use its fact check count as a proxy for corrective           and remaining rates. We use the estimated parameters for              457
+
+
+408   activity. For Ottawa and Sydney, we retain only support and            prediction, without assigning them a causal interpretation.           458
+
+
+409   deny records with timestamps. All scenarios use uniform time              We normalize the data separately for each event. The               459
+
+
+410   bins, including bins with no activity. Each scenario assumes           common objective is                                                   460
+
+
+411   a closed, normalized event cohort (N = 1, Λ = dh = 0).                              L = 12Ldata + 0.2rm LDDE + 4Lhist ,
+      Separate observation scales map model outputs to activity                                                                            (21)    461
+412                                                                                      rm = min{1, m/120}.
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                                                    7
+
+
+
+                                                                        TABLE III
+        F OUR EMPIRICAL SCENARIOS . “F ULL / ACTIVE ” GIVES THE TOTAL NUMBER OF BINS AND THE SHORTEST PREFIX CONTAINING AT LEAST 99% OF THE
+        ACTIVITY IN BOTH CHANNELS . R/D DENOTES RUMOR / CORRECTIVE ACTIVITY. T RAINING ENDPOINTS DEFINE THE THREE SPLITS . VALIDATION AND
+                                                           TEST INTERVALS EACH CONTAIN he BINS .
+
+
+      Scenario            Source, bin width     Full/active     Total R/D       Training endpoints (he )   Mapping and limitations
+      Harvey              Author table, 1 h         662/395   2496.3/190103.1     198, 237, 276 (39)       newcount_of_spread/newcount. Tweet identifiers and labeling
+                                                                                                           rules are unavailable. The derivation of noninteger counts is also
+                                                                                                           unavailable.
+      CSDC-Rumor          THUNLP, 1 day              58/56      31607/105            28, 33, 38 (5)        Original rumor posts plus forwards form the rumor channel. Fact
+                                                                                                           check records without a “confirmed true” label form the corrective
+                                                                                                           proxy. The collection covers multiple rumors.
+      Ottawa shooting     RumourEval, 15 min        243/43        161/76             22, 26, 30 (4)        Support/deny stance labels. We exclude query and comment records.
+      Sydney cafe siege   RumourEval, 15 min        194/78        220/89             39, 46, 53 (7)        Support/deny stance labels. We exclude query and comment records.
+
+
+
+
+462   Here, m denotes the training epoch. The data loss Ldata                                                         TABLE IV
+463   sums the MSE terms for incremental activity and cumulative                             BASELINE CONFIGURATIONS . A LL METHODS USE THE SAME DATA ,
+                                                                                           FOLDS , DDE, HISTORY, AND PARAMETER BOUNDS . T HEY ALSO SHARE
+464   activity. The DDE loss LDDE averages the residuals for nine                          THE OPTIMIZATION BUDGET. T HE LOSSES ARE IDENTICAL EXCEPT FOR
+465   states and two fluxes. The history loss Lhist enforces the initial                                    THE CAUSAL WEIGHTING IN (22).
+466   state. The softmax enforces N = 1 exactly. We compute
+467   derivatives using a centered difference with a step of 2.5×10−3                    Method/item           Configuration                                     Parameters
+468   at 96 shared collocation points.                                                   PINN/TimePINN         9–128–128–11 tanh MLP                                 19,219
+469      Figure 2 shows the computational flow of TransPINN. The                         LSTM-PINN             Two unidirectional layers, hidden width               17,839
+                                                                                                               36
+470   attention module encodes time tokens up to the query time.                         TransPINN             One encoder and one decoder, d = 24, 4                18,619
+471   The history operator supplies the delayed states. State and flux                                         heads, FFN width 48, WaveAct
+472   outputs feed separate physics and measurement branches. Both                       NoAttn-PINN           Projections with the same parameter                   18,619
+                                                                                                               count, no mixing across tokens
+473   branches contribute to the common objective. The implemen-                         Optimization          Adam with cosine learning rate decay                        –
+474   tation includes nonnegative flux outputs, the observation map                                            from 2 × 10−3 . Maximum of 260 epochs.
+475   in (18), and the corrected operators for cohorts and history.                                            Checkpoint selection by validation. Seeds:
+                                                                                                               11, 22, 33.
+476   The attention mechanism remains unchanged.
+477      The available information depends on the task. In the dis-
+478   sertation, offline inverse simulation uses all timestamps within
+                                                                                         C. Parameter identifiability                                                           502
+479   the observed reconstruction window. It therefore requires no
+480   autoregressive causal mask. In the rolling forecast experiment                         We assess parameter identifiability through scaling, sensi-                        503
+
+
+481   here, the query sequence is limited to [max(0, t−0.18), t]. This                   tivity, and profile likelihood analyses. An exact symmetry in                          504
+
+
+482   prevents forecasts from accessing timestamps after the query                       the media scale leaves both observed activity series unchanged.                        505
+
+
+483   time. Both settings use the scaled dot product attention in (19).                  Thus, the unrestricted model is structurally unidentifiable [42].                      506
+
+
+484   The causal restriction controls access to observations. It does                    We fix the media scale, history, and background coefficients.                          507
+
+
+485   not change the architecture or its physical interpretation.                        This leaves eight parameters to estimate. Across 12 com-                               508
+
+
+486      We compare five implementations with the same maximum                           binations of events and folds, all sensitivity matrices have                           509
+
+
+487   training budget. Table IV lists their configurations and param-                    rank eight at a relative cutoff of 10−6 . However, condition                           510
+
+
+488   eter counts. Section IV-E provides an additional comparison                        numbers range from 2.38 × 105 to 4.93 × 105 . These values                             511
+
+
+489   with a Transformer trained only on data under strictly matched                     indicate strong practical confounding among the parameters.                            512
+
+
+490   conditions. PINN uses the standard MLP solver. LSTM-PINN                           Profile likelihoods from training data [43] give nominal 95%                           513
+
+
+491   adapts the PhyLSTM principle [27] to the architecture used                         support intervals for the middle fold of each event as shown                           514
+
+
+492   in this comparison. TimePINN applies causal weighting to                           in Fig. 3. Of the 32 intervals, 24 reach at least one search                           515
+
+
+493   the residual loss following Wang et al. [28]. We divide the                        bound. Among these, 19 span the full search range. The delay                           516
+
+
+494   residuals into eight chunks in time order. The loss is                             τs , adoption coefficients qR , qD , and fatigue threshold χ span                      517
+
+
+495
+                                                                                         their full search ranges in every event. The estimates support                         518
+
+                          Li = MSE(ri ),                                                 forecasting under the fixed assumptions. However, they do not                          519
+
+                                                                                         uniquely identify the underlying mechanisms. The intervals
+                                  "                   #
+                                                                                                                                                                                520
+                                       X
+                          wi = exp −2    stopgrad(Lk ) ,                                 assume Gaussian errors. They describe independent DDE fits,                            521
+496                                           k<i                               (22)     but their coverage is not calibrated. We report the neural                             522
+
+
+                                  1
+                                     8
+                                     X                                                   parameter estimates separately.                                                        523
+
+                    Lcausal
+                     DDE =              wi Li .
+                                  8 i=1
+497
+                                                                                         D. Rolling-origin comparison and uncertainty                                           524
+
+
+498      NoAttn-PINN has the same number of trainable parameters                            For each event e, we find the number of bins needed to                              525
+
+499   as TransPINN. It replaces each attention map with four linear                      capture 99% of the observed activity in each channel and take                          526
+
+500   projections applied separately to each token. Only this ablation                   the larger value as Le . We set he = max{2, ⌊0.1Le ⌋}. The                             527
+
+501   isolates the effect of attention across tokens.                                    training window starts at the first bin and initially ends at                          528
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                                      8
+
+
+
+                           1                                        2                                        3
+                                  Data and history                         Causal time tokens                    Attention with four heads
+                                   De = {tj , Yj }                           zℓ = [tℓ , PE(tℓ )]                  Ah = Attnh (Q, K, V )
+                                      ϕ(t − τ )                         PE : 4 × (sin, cos), tℓ ≤ t                Z = [A1 ; A2 ; A3 ; A4 ]
+
+
+                                                                    4
+                                                                           State and flux heads
+                                                                                  b θ ∈ R9
+                                                                                  X
+                                                                                fbR , fbD ≥ 0
+
+                                              5                                          6
+                                                       Physics branch                          Measurement branch
+                                                       rDDE , Hτ [X]
+                                                                   b                              N = 1,R fbk ≥ 0
+                                                                                                          t
+                                                       Qτ = pIe−aE τ                          Ybk,j = sk t j fbk (t) dt
+                                                                                                          j−1
+
+
+
+
+                                                              7
+
+                                                                          Composite objective
+                                                                   L = 12Ldata + 0.2rm LDDE + 4Lhist
+
+
+                                                               8
+                                                                         Forecast after validation
+                                                                        Ttrain → Tval (θ⋆ ) → Ttest
+                                                                           SEALED TEST BLOCK
+
+
+      Fig. 2. TransPINN workflow. Time inputs up to the query time pass through Fourier encoding and attention with four heads. The history operator supplies
+      delayed states. State and flux outputs feed the physics and measurement branches. Both branches contribute to the common objective. Validation selects θ⋆
+      before evaluation on the test interval. Equation (19) defines the attention operator.
+
+
+
+529   bin ⌈0.5Le ⌉. We then extend it by he bins at each step. The                    choose the seed with the lowest validation objective. Exact                 557
+
+530   next he bins form the validation interval, and the following                    ties favor the smaller seed. All methods follow this rule.                  558
+
+531   he bins form the test interval. We retain the first three splits                Selection uses no test predictions or errors. NMAE uses the                 559
+
+532   with positive activity in both channels in both validation and                  same denominator computed only from training data. Runtime                  560
+
+533   test intervals.                                                                 measures the elapsed time for one CPU fit with a given event,               561
+
+534      This rule uses the observed series to determine eligible                     fold, and seed.                                                             562
+
+535   splits before fitting and applies to all models. Validation and                    Table VI reports test performance after seed selection using             563
+
+536   test values are not used for normalization, gradient updates,                   validation alone. Among the five methods, TransPINN has the                 564
+
+537   checkpoint selection, or hyperparameter changes. Table III                      lowest macro NRMSE and NMAE point estimates. It also has                    565
+
+538   reports the resulting boundaries. This design replaces the                      the lowest NRMSE for Harvey and CSDC. PINN leads on                         566
+
+539   previous 60/20/20 split of the full series. Under the 60/20/20                  Ottawa. NoAttn-PINN leads on Sydney.                                        567
+
+540   split, the Harvey test interval contains no rumor activity. For                    We assess uncertainty in pairwise differences using 5000 de-             568
+541   Sydney, the validation interval has no activity in either channel,              terministic replicates of a paired hierarchical bootstrap. Events           569
+542   and the test interval contains only one rumor item and no                       form the outer clusters with equal weights. We resample √   folds           570
+543   corrective items. We exclude errors from these largely inactive                 within each event. We also use circular blocks of length ⌈ n⌉,              571
+544   intervals because they provide little evidence of forecasting                   where n is the number of test bins. Sampling consecutive bins               572
+545   performance. For a channel with n test bins and ntr training                    preserves part of the temporal dependence. The same blocks                  573
+546   bins, the primary metric is                                                     apply to both methods and both channels.The same blocks                     574
+547
+                                     q                                                apply to both methods and both channels. The robustness                     575
+
+                             n−1 j (Ybj − Yj )2
+                                 P
+                                                                                      analysis also resamples seeds. The analysis after validation                576
+
+548               NRMSE =    n q                  o.                          (23)    selection keeps the chosen seed fixed for each event, fold,                 577
+                          max 1, n−1            2
+                                      P
+                                   tr   j∈tr Y j                                      and model. In Table VII, we define d = NRMSEbaseline −                      578
+
+549                                                                                   NRMSETransPINN . Positive values favor TransPINN.                           579
+
+550      We first average results across channels within each fold.                      The two evaluations address different questions. Across                  580
+
+551   We then average across folds within each event. We report                       all seeds, TransPINN has a macro NRMSE of 0.507. The                        581
+
+552   two evaluations. The first assesses robustness across seeds.                    corresponding values are 0.524 for LSTM-PINN, 0.464 for                     582
+
+553   For each seed, we average the event results. Table V reports                    TimePINN, 0.457 for PINN, and 0.479 for NoAttn-PINN.                        583
+
+554   the mean and sample standard deviation across the three seeds                   Figure 4 also shows a wider upper tail for TransPINN.                       584
+
+555   specified in advance. The second evaluates performance after                    After validation selection, TransPINN has the lowest macro                  585
+
+556   validation selects a seed. For each event, fold, and model, we                  NRMSE at 0.436. The point reductions relative to LSTM-                      586
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                                                                                                       9
+
+
+
+                                                           β1                                       β2                                             τs                                              qR
+           Profile likelihood ratio   8                                          8                                         8                                                8
+
+                                      6                                          6                                         6                                                6
+
+                                      4                                          4                                         4                                                4
+
+                                      2                                          2                                         2                                                2
+
+                                      0                                          0                                         0                                                0
+                                           −1                    0                           −1                0                 −2                           −1                     −1                          0
+                                      10                    10                          10                10                10                           10                     10                        10
+                                                           qD                                        χ                                             sR̃                                             sD̃
+                                      8                                          8                                         8                                                8
+           Profile likelihood ratio
+
+
+
+
+                                      6                                          6                                         6                                                6
+
+                                      4                                          4                                         4                                                4
+
+                                      2                                          2                                         2                                                2
+
+                                      0                                          0                                         0                                                0
+                                                     −1                   0                   −1                   0                           0                        1                      0                          1
+                                                10                   10                  10                 10                            10                       10                     10                         10
+                                                                                        Harvey                 CSDC                   Ottawa                  Sydney
+
+
+      Fig. 3. Training profile likelihoods for the eight estimated quantities across four events. Each curve re-optimizes the remaining seven parameters. The dashed
+      line marks the nominal 95% cutoff of 3.841. Horizontal axes are logarithmic. Values above eight are clipped. Flat profiles indicate weak parameter constraints.
+
+                                                                TABLE V
+       ROBUSTNESS ACROSS ALL SEEDS . E VENT COLUMNS AND MACRO NRMSE REPORT TEST NRMSE AS MEAN ± SAMPLE SD ACROSS SEEDS . M ACRO
+      NMAE FOLLOWS THE SAME AVERAGING PROCEDURE . B OLD VALUES INDICATE THE LOWEST MEAN . T HEY DO NOT IMPLY STATISTICAL SIGNIFICANCE .
+
+                                                Method                Harvey            CSDC              Ottawa                Sydney     Macro NRMSE             Macro NMAE Parameters                 s/fit
+                                                PINN        0.399±0.019 0.435±0.061 0.447±0.113 0.549±0.060 0.457±0.052 0.395±0.049                                                       19,219 1.53
+                                                LSTM-PINN 0.561±0.124 0.428±0.001 0.548±0.012 0.559±0.069 0.524±0.031 0.460±0.032                                                         17,839 6.31
+                                                TimePINN    0.397±0.022 0.437±0.065 0.451±0.118 0.572±0.044 0.464±0.050 0.402±0.050                                                       19,219 1.61
+                                                NoAttn-PINN 0.370±0.046 0.417±0.019 0.574±0.145 0.555±0.075 0.479±0.044 0.412±0.049                                                       18,619 13.20
+                                                TransPINN   0.453±0.175 0.428±0.041 0.562±0.171 0.585±0.180 0.507±0.059 0.444±0.058                                                       18,619 21.58
+
+
+                                                                   TABLE VI
+      T EST PERFORMANCE AFTER VALIDATION SELECTS A SEED . E VENT ENTRIES REPORT NRMSE AS MEAN ± SAMPLE SD ACROSS THREE FOLDS . M ACRO
+       NRMSE AND NMAE GIVE EQUAL WEIGHT TO EACH EVENT. S ELECTION USES THE SAME THREE SEEDS FOR EVERY METHOD , WITHOUT ACCESS TO
+                                                                  TEST VALUES .
+
+
+                                                          Method               Harvey              CSDC                Ottawa            Sydney          Macro NRMSE Macro NMAE
+                                                          PINN        0.381±0.203 0.456±0.321 0.352±0.049 0.634±0.089                                          0.456            0.395
+                                                          LSTM-PINN   0.443±0.255 0.423±0.127 0.544±0.072 0.584±0.255                                          0.499            0.432
+                                                          TimePINN    0.381±0.236 0.457±0.296 0.361±0.041 0.641±0.091                                          0.460            0.399
+                                                          NoAttn-PINN 0.364±0.258 0.424±0.074 0.494±0.129 0.536±0.164                                          0.455            0.385
+                                                          TransPINN   0.348±0.169 0.411±0.138 0.380±0.064 0.607±0.140                                          0.436            0.366
+
+
+
+
+587   PINN, TimePINN, PINN, and NoAttn-PINN are 12.5%, 5.1%,                                                                  Tables V–VII evaluate forecasts over future intervals. They                                         597
+
+588   4.2%, and 4.0%, respectively. Against each baseline, Tran-                                                           cover multiple events, folds, and seeds across five architec-                                          598
+
+589   sPINN has a lower point error in three of the four events. The                                                       tures. These results measure predictive performance on unseen                                          599
+
+590   difference between NoAttn-PINN and TransPINN changes                                                                 data, both across all seeds and after validation selection. The                                        600
+
+591   from −0.028 across all seeds to +0.018 after selection.                                                              two experiments use different information and error scales.                                            601
+
+                                                                                                                           They also measure different quantities. Their figures therefore                                        602
+592     The dissertation’s normalized delay sweep reports offline                                                          do not represent repeated measurements of the same experi-                                             603
+593   simulation MSE for PINN and TransPINN. Both methods                                                                  ment.                                                                                                  604
+594   use the full observation window for reconstruction. This
+595   experiment measures numerical robustness to a prescribed                                                               All five methods use the same validation rule. TransPINN’s                                           605
+
+596   normalized delay τ .                                                                                                 lower point error comes with a higher computational cost.                                              606
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                                                                                                   10
+
+
+
+                                                                                          TABLE VII
+                                PAIRED COMPARISON WITH T RANS PINN USING A HIERARCHICAL BLOCK BOOTSTRAP. P OINT DIFFERENCES AFTER VALIDATION SELECTION FAVOR
+                                                                       T RANS PINN. E VERY 95% INTERVAL INCLUDES ZERO .
+
+                                                                                                                                 Across all seeds                    After validation selection
+                                                                                     Baseline                            d                  95% interval      d          95% interval        Pr∗ (d > 0)
+                                                                                     PINN                          −0.050                 [−0.134, 0.041]    0.019    [−0.050, 0.108]             0.685
+                                                                                     LSTM-PINN                      0.017                 [−0.060, 0.115]    0.062    [−0.072, 0.163]             0.855
+                                                                                     TimePINN                      −0.043                 [−0.130, 0.042]    0.023    [−0.043, 0.109]             0.732
+                                                                                     NoAttn-PINN                   −0.028                 [−0.091, 0.024]    0.018    [−0.091, 0.103]             0.680
+
+
+
+                                                       All prespecified initializations: error distribution before validation selection                     0.0581, compared with 0.4717 ± 0.0826. Both metrics show           637
+
+                                                                                                                                                            smaller standard deviations for TransPINN.                         638
+                                          1.0
+                                                                                                                                                               These point estimates suggest benefits from attention after     639
+       Test NRMSE per event--fold--seed
+
+
+
+
+                                          0.8                                                                                                               validation selection and more consistent performance across        640
+
+                                                                                                                                                            seeds than Data-Transformer. The paired intervals in Table IX      641
+                                          0.6
+                                                                                                                                                            include zero, so these differences remain suggestive rather than   642
+
+                                          0.4
+                                                                                                                                                            statistically conclusive.                                          643
+
+
+
+                                          0.2
+
+                                                                                                                                                            F. Additional forecasting and robustness tests                     644
+
+                                                PINN           LSTM-PINN                  TimePINN                 NoAttn-PINN              TransPINN
+                                                                                                                                                               We extend the comparison to an MLP and a Transformer            645
+
+                                                                                                                                                            trained only on data. Each neural model has 18,619 pa-             646
+      Fig. 4. Distribution of test NRMSE across 36 combinations of events, folds,
+      and seeds for each method before validation selection. Some TransPINN runs
+                                                                                                                                                            rameters. All models share the same data splits, seeds, and        647
+
+      achieve competitive errors. Its distribution also has a wider upper tail. We                                                                          update budgets. With 1,040 updates, TransPINN achieves a           648
+
+      therefore report robustness separately from performance after selection.                                                                              bin NRMSE of 0.3889 after validation selection. The corre-         649
+
+                                                                                                                                                            sponding errors are 0.4502 for Data-Transformer and 0.5171         650
+
+                                                                                                                                                            for Data-MLP.                                                      651
+607   Fitting three TransPINN candidates takes about 64.7 CPU
+                                                                                                                                                               We also test nine combinations of data sparsity and noise       652
+608   seconds per event and fold. PINN takes 4.6 seconds. NoAttn-
+                                                                                                                                                            (Fig. 8). Across all seeds, TransPINN has lower mean error         653
+609   PINN takes 39.6 seconds. Every paired interval in Table VII
+                                                                                                                                                            than Data-MLP in every setting. Its error exceeds that of Data-    654
+610   includes zero. TransPINN therefore has the lowest point error
+                                                                                                                                                            Transformer in eight settings. All adjusted paired intervals       655
+611   after validation selection among these five implementations.
+                                                                                                                                                            include zero. These additional tests on the four real events       656
+612   However, the four sparse cascades do not establish a statisti-
+                                                                                                                                                            therefore remain exploratory.                                      657
+613   cally clear advantage or consistent gains from attention across
+                                                                                                                                                               Tables X and XI report results on synthetic data. When          658
+614   settings. The next experiment compares models with strictly
+                                                                                                                                                            the data follow the assumed model, DDE-LS has the lowest           659
+615   matched capacity. It also includes a baseline without physics
+                                                                                                                                                            forecasting and parameter recovery errors. TransPINN has           660
+616   constraints.
+                                                                                                                                                            lower forecasting errors than Matched-PINN at every horizon.       661
+
+                                                                                                                                                            Its advantage over models without physics constraints varies       662
+617   E. Comparison at equal capacity                                                                                                                       across settings. Parameter recovery assumes a prescribed his-      663
+
+618      We compare TransPINN, Matched-PINN, NoAttn-PINN,                                                                                                   tory with fixed background coefficients. The revision package      664
+
+619   and Data-Transformer. Each model has 18,619 trainable pa-                                                                                             provides the full protocols and predictions.                       665
+
+620   rameters. All models use the same data splits, normalization,
+621   and random seeds. Each fit uses 260 Adam updates. We
+622   select checkpoints and seeds using validation data only. The                                                                                          G. Ablation of the delay                                           666
+
+
+623   three models with physics constraints share the same history,                                                                                            We compare the full TransPINN with a version that fixes         667
+
+624   parameter bounds, and residual settings. Data-Transformer                                                                                             τ = 0. In this version, X(t − τ ) = X(t) and e−aE τ = 1.           668
+
+625   predicts activity using data alone. Runtime includes training                                                                                         The cohort transfer becomes Q0 (t) = p(t)I(t). Thus Ė =           669
+
+626   and validation under the same computing conditions.                                                                                                   (1−p(t))I(t)−aE E, while H receives p(t)I(t). The transfer         670
+
+627      Table VIII shows the benefit of attention within the Tran-                                                                                         pathway remains active. This comparison removes the waiting        671
+
+628   sPINN framework. After validation selection, TransPINN                                                                                                time. The attention window remains [max(0, t − 0.18), t].          672
+
+629   achieves a macro NRMSE of 0.4364, compared with 0.4546                                                                                                   Both variants use the same four events, three chronological     673
+
+630   for NoAttn-PINN. Its macro NMAE is 0.3663, compared with                                                                                              folds, and seeds 11, 22, and 33. We retrain both variants,         674
+
+631   0.3847. These values correspond to reductions of about 4.0%                                                                                           giving 72 fits on the same CPU with four threads. The network,     675
+
+632   in NRMSE and 4.8% in NMAE under the same parameter                                                                                                    losses, initial history, optimizer, and maximum budget of 260      676
+
+633   count and update budget.                                                                                                                              epochs remain the same. Each fit estimates the remaining pa-       677
+
+634      Across all seeds, TransPINN also has lower mean errors                                                                                             rameters again. The full model estimates τ within [0.01, 0.22].    678
+
+635   than Data-Transformer. Its macro NRMSE is 0.5069 ± 0.0587,                                                                                            The ablation fixes it at zero, reducing the trainable parameter    679
+
+636   compared with 0.5397±0.0719. Its macro NMAE is 0.4442±                                                                                                count from 18619 to 18618. Only training observations enter        680
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                                                                                                                            11
+
+
+
+                                                     (a) Event-level and equal-event macro comparison
+                                                                                                   PINN           LSTM-PINN         TimePINN                           NoAttn-PINN            TransPINN
+                                              0.6
+
+
+
+                                              0.5
+             Validation-selected test NRMSE
+
+
+
+
+                                              0.4
+
+
+
+                                              0.3
+
+
+
+                                              0.2
+
+
+
+                                              0.1
+
+
+
+                                              0.0
+                                                                 Hurricane Harvey                   CSDC-Rumor                    Ottawa shooting                                Sydney cafe siege                        Macro
+                                                     (b) Paired 95% block-bootstrap intervals                                                                   (c) Accuracy--compute trade-off
+                                                                                                                                                         0.50                         LSTM-PINN
+         LSTM-PINN
+
+
+                                                                                                                                                         0.49
+
+
+                                                                                                                                                         0.48
+
+
+                                                                                                                                      Macro test NRMSE
+          TimePINN
+
+                                                                                                                                                         0.47
+
+                                                                                                                                                                    TimePINN
+                                                                                                                                                         0.46
+                            PINN                                                                                                                                    PINN                                        NoAttn-PINN
+
+                                                                                                                                                         0.45
+
+
+                                                                                                                                                         0.44                                                                          TransPINN
+        NoAttn-PINN
+
+                                                    −0.10        −0.05              0.00    0.05           0.10           0.15                                          10           20           30          40          50      60
+                                                                           Baseline minus TransPINN NRMSE                                                                            CPU seconds per fold (three candidates)
+
+
+
+      Fig. 5. Comparison of the five methods after validation selection. (a) Event and macro NRMSE. (b) Paired NRMSE differences from the block bootstrap.
+      Positive values favor TransPINN. (c) Accuracy and computational cost for fitting all three seed candidates. TransPINN has the lowest macro point error but
+      the highest CPU cost. The paired intervals do not establish a clear advantage.
+
+                                                                  TABLE VIII
+       C OMPARISON WITH 18,619 TRAINABLE PARAMETERS AND 260 UPDATES PER FIT. E RRORS ACROSS ALL SEEDS REPORT MACRO MEAN ± SAMPLE SD
+        OVER THREE SEEDS . E RRORS AFTER SELECTION USE VALIDATION DATA TO CHOOSE THE SEED . RUNTIME REPORTS MEAN ± SD OVER 36 FITS PER
+                                                 METHOD ON THE SAME CPU WITH FOUR THREADS .
+
+
+                                                                                                           Across all seeds                                         After validation selection
+                                                                Method                             NRMSE                         NMAE                               NRMSE                 NMAE               Time (s)/fit
+                                                                TransPINN                  0.5069 ± 0.0587              0.4442 ± 0.0581                              0.4364               0.3663             20.4 ± 4.8
+                                                                Matched-PINN               0.4341 ± 0.0234              0.3717 ± 0.0221                              0.4315               0.3652              1.6 ± 0.1
+                                                                NoAttn-PINN                0.4788 ± 0.0439              0.4121 ± 0.0489                              0.4546               0.3847             14.0 ± 2.3
+                                                                Data-Transformer           0.5397 ± 0.0719              0.4717 ± 0.0826                              0.4085               0.3371              3.8 ± 2.4
+
+
+
+681   the data loss. Validation loss selects each checkpoint and the                                                                            H. Ablation of cognitive fatigue and antagonistic media                                                 692
+
+682   seed for deployment. Test observations do not enter selection.                                                                               To separate the two mechanisms from the attention architec-                                          693
+
+                                                                                                                                                ture, we retrain TransPINN with each mechanism removed in                                               694
+
+                                                                                                                                                turn. Write F (M ) = χ/(χ + M1 + M2 ) for the fatigue factor                                            695
+683      Table XII reports test errors. The selected NRMSE dif-
+                                                                                                                                                in Eq. (6). The no-fatigue variant takes the limit χ → ∞: it                                            696
+684   ference, ∆ = NRMSEτ =0 − NRMSEfull , is +0.000178.
+                                                                                                                                                sets F = 1 in both adoption rates and ΓU = 0, removing load-                                            697
+685   Its 95% interval is [−0.000053, 0.000557] from 5000 paired
+                                                                                                                                                dependent attenuation and fatigue-driven withdrawal together.                                           698
+686   hierarchical bootstrap replicates with blocks of consecutive
+                                                                                                                                                This gives                                                                                              699
+687   test bins. The interval includes zero, so this experiment does
+      not establish a clear forecasting benefit from a positive delay.                                                                                              qR M 2                  qD M 1
+688
+                                                                                                                                                         ΓNF
+                                                                                                                                                           R =              ,     ΓNF
+                                                                                                                                                                                   D =               .   (24)                                           700
+689   This is a forecast comparison on observed events. It does not                                                                                              1 + ϖ 1 M1               1 + ϖ 2 M2
+690   measure parameter recovery or identify a causal effect of delay.                                                                          The no-antagonistic-function variant instead sets ϖ1 = ϖ2 =                                             701
+
+691                                                                                                                                             0, giving ΓNA                  NA
+                                                                                                                                                           R = qR M2 F and ΓD = qD M1 F , while retaining                                               702
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                                                           12
+
+
+
+
+                                                Validation-selected event--channel comparison; green box marks row minimum
+
+                 Hurricane Harvey — rumor        0.327               0.525                0.332              0.313                  0.356
+                                                                                                                                             0.8
+
+
+                Hurricane Harvey — debunk        0.435               0.361                0.430              0.416                  0.340
+
+                                                                                                                                             0.7
+
+                    CSDC-Rumor — rumor           0.555               0.256                0.531              0.290                  0.267
+
+
+
+
+                                                                                                                                                   Test NRMSE (lower is better)
+                                                                                                                                             0.6
+                   CSDC-Rumor — debunk           0.356               0.590                0.383              0.557                  0.556
+
+
+
+                   Ottawa shooting — rumor       0.291               0.510                0.304              0.450                  0.288    0.5
+
+
+
+                  Ottawa shooting — debunk       0.413               0.578                0.419              0.539                  0.472
+                                                                                                                                             0.4
+
+
+                 Sydney cafe siege — rumor       0.824               0.761                0.828              0.717                  0.777
+
+                                                                                                                                             0.3
+                Sydney cafe siege — debunk       0.444               0.407                0.453              0.354                  0.436
+
+
+
+                                                  N                 INN                    N                     N                  N
+                                               PIN            M-P                    ePIN             ttn-P
+                                                                                                            IN                  sPIN
+                                                          LST                    Tim               NoA                     Tran
+
+
+
+      Fig. 6. Test NRMSE after validation selection, averaged across rolling folds for each event and channel. Bold green boxes mark the minimum in each row.
+      No method leads across all events and channels.
+
+                                                                    TABLE IX
+        PAIRED NRMSE DIFFERENCES AT EQUAL CAPACITY AND UPDATE BUDGETS . W E DEFINE ∆ = NRMSEbaseline − NRMSETransPINN . P OSITIVE
+      VALUES FAVOR T RANS PINN. I NTERVALS USE 5000 PAIRED BOOTSTRAP REPLICATES WITH RESAMPLING ACROSS EVENTS , FOLDS , AND CIRCULAR TIME
+                                   BLOCKS . T HE COMPARISON ACROSS ALL SEEDS ALSO USES PAIRED SEED RESAMPLING .
+
+
+                                                                 Across all seeds                     After validation selection
+                                    Baseline                ∆                95% interval             ∆                95% interval
+                                    Matched-PINN         −0.0729          [−0.1620, 0.0287]        −0.0049           [−0.1113, 0.0980]
+                                    NoAttn-PINN          −0.0281          [−0.0908, 0.0236]        +0.0182           [−0.0949, 0.1010]
+                                    Data-Transformer     +0.0327          [−0.0441, 0.1331]        −0.0279           [−0.1261, 0.0714]
+
+
+
+703   ΓU . This removes the competitive inhibition denominators                          interval includes zero. Removing the antagonistic function                                    722
+
+704   only. Media production, the delayed pathway, and the R ↔ D                         raises NRMSE to 0.436661, corresponding to a 0.062% con-                                      723
+
+705   conversion terms remain. Thus, the comparison tests the                            tribution. Its interval lies just above zero, but the absolute dif-                           724
+
+706   specified antagonistic function rather than the entire media                       ference is only 2.72 × 10−4 . Across all seeds, removing either                               725
+
+707   subsystem.                                                                         mechanism increases mean NRMSE by less than 0.002, much                                       726
+
+708      All three variants use the same Transformer, observation                        less than the across-seed standard deviations. These results do                               727
+
+709   heads, parameter bounds, loss weights, optimizer, and 260-                         not establish a consistent forecasting benefit from fatigue and                               728
+
+710   epoch maximum budget. Each is fitted independently on the                          show only a very small benefit from the antagonistic function                                 729
+
+711   same four events, three rolling folds, and seeds 11, 22, and                       under the present protocol. The mechanisms describe distinct                                  730
+
+712   33, yielding 108 fits. Parameters are re-estimated after each                      model responses, but the two observed activity channels pro-                                  731
+
+713   removal. χ is inactive in the no-fatigue variant. Checkpoints                      vide limited evidence for their individual predictive value. The                              732
+
+714   and the deployed seed are chosen using validation loss alone,                      comparisons do not identify causal media or fatigue effects.                                  733
+
+715   as in the preceding comparison. Table XIII reports both the all-
+716   seed results and the validation-selected forecasts. The attention                                  V. O PTIMAL C ONTROL A NALYSIS                                                734
+717   ablation remains the separate, parameter-matched comparison
+718   with NoAttn-PINN in Tables V and VI.                                               A. Controls and objective                                                                     735
+
+
+719      Removing fatigue slightly lowers the validation-selected                          Let u1 be effort that suppresses the rumor-adoption pathway                                 736
+
+720   NRMSE, from 0.436389 to 0.436042. Its signed contribution,                         and let u2 be effort that promotes the corrective pathway.                                    737
+
+721   100∆/NRMSEablated , is therefore −0.080%, and the paired                           This resolves the former interpretation in which a purported                                  738
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                                                                                                                                                                             13
+
+
+
+
+                                                                             Observed             PINN                        LSTM-PINN               TimePINN                              NoAttn-PINN               TransPINN
+
+                                                                                    Chronological splits | White: training; blue: validation; red: test | Model selection: validation only
+
+                                                         Hurricane Harvey — rumor (fold 2)                                                                                                                Hurricane Harvey — debunk (fold 2)
+                                  5
+                                                                 Train                                                Val.           Test                                    10                                    Train                                            Val.           Test
+
+                                  4                                                                                                                                           8
+              log(1 + activity)
+
+
+
+
+                                                                                                                                                         log(1 + activity)
+                                  3                                                                                                                                           6
+
+                                  2                                                                                                                                           4
+
+                                  1                                                                                                                                           2
+
+                                  0                                                                                                                                           0
+                                       0      50           100                 150              200                  250              300                                          0            50           100               150            200                  250              300
+                                                                         Time-bin index                                                                                                                                    Time-bin index
+
+
+
+                                                          CSDC-Rumor — rumor (fold 2)                                                                                                                      CSDC-Rumor — debunk (fold 2)
+                                                                 Train                                                 Val.          Test                                                                          Train                                             Val.          Test
+                                  10                                                                                                                                         2.0
+        log(1 + activity)
+
+
+
+
+                                                                                                                                                      log(1 + activity)
+                                  8
+                                                                                                                                                                             1.5
+                                  6
+                                                                                                                                                                             1.0
+                                  4
+                                                                                                                                                                             0.5
+                                  2
+
+                                  0                                                                                                                                          0.0
+                                       0            10                         20                          30                        40                                            0                  10                       20                        30                        40
+                                                                         Time-bin index                                                                                                                                    Time-bin index
+
+
+
+                                                         Ottawa shooting — rumor (fold 2)                                                                                                                  Ottawa shooting — debunk (fold 2)
+                                  3                              Train                                                Val.           Test                                                                          Train                                            Val.           Test
+
+                                                                                                                                                                             2.0
+              log(1 + activity)
+
+
+
+
+                                                                                                                                                      log(1 + activity)
+
+
+
+
+                                  2                                                                                                                                          1.5
+
+                                                                                                                                                                             1.0
+                                  1
+                                                                                                                                                                             0.5
+
+                                  0                                                                                                                                          0.0
+                                       0      5            10                 15           20                   25              30               35                                0            5           10                15         20                   25              30               35
+                                                                         Time-bin index                                                                                                                                    Time-bin index
+
+
+
+                                                         Sydney cafe siege — rumor (fold 2)                                                                                                               Sydney cafe siege — debunk (fold 2)
+                                                                     Train                                             Val.          Test                                                                             Train                                          Val.          Test
+                                  3                                                                                                                                          2.5
+
+                                                                                                                                                                             2.0
+              log(1 + activity)
+
+
+
+
+                                                                                                                                                      log(1 + activity)
+
+
+
+
+                                  2
+                                                                                                                                                                             1.5
+
+                                                                                                                                                                             1.0
+                                  1
+                                                                                                                                                                             0.5
+
+                                  0                                                                                                                                          0.0
+                                       0       10               20                  30                40                   50               60                                     0             10              20                 30              40                   50               60
+                                                                         Time-bin index                                                                                                                                    Time-bin index
+
+
+      Fig. 7. Predictions for the middle rolling fold of each scenario and channel on the log(1 + activity) scale. Blue backgrounds mark validation intervals.
+      Red backgrounds mark test intervals. Each method uses the seed chosen through validation alone. Tables VI and VII use all folds for statistical analysis. The
+      curves show individual forecasts without confidence bands. They do not reproduce the dissertation’s ensemble fits over the full observation window.
+
+
+
+739   intervention reduced debunking. With Z = χ + M1 + M2 ,                                                                                             The admissible set is U = {ui ∈ L∞ (0, tf ) : 0 ≤ ui ≤                                                                                          744
+
+740   define the uncontrolled rates                                                                                                                     ui,max }, with u1,max < 1. The objective is                                                                                                      745
+
+
+                                                                                                                                                                                       Z tf 
+                                                                                                                                                                                                                           B1 u21 + B2 u22
+                                                                                                                                                                                                                                                                                          
+                                           qR χM2                                           qD χM1                                                              J(u) =                              AR R + A E E + A H H +                                                                     dt.
+741                                ΓR =               ,                             ΓD =               ,                                                                                                                          2
+                                        (1 + ϖ1 M1 )Z                                    (1 + ϖ2 M2 )Z                                                                                  0
+                                                                                                                                                                                                                                                                                               (26)      746
+
+
+
+742   and the controlled rates
+                                                                                                                                                        B. Hamiltonian and complete delayed adjoint system                                                                                               747
+
+
+743                                    ΓuR = (1 − u1 )ΓR ,                         ΓuD = (1 + u2 )ΓD .                                      (25)                             Write x = (Su , Se , E, H, R, D, U, M1 , M2 )T ,                                                                            748
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                                                                                   14
+
+
+
+
+                                                               All runs                                                  All runs
+                                                           Data-Transformer                                             Data-MLP
+
+
+                                            -0.00597             -0.032             -0.0201             +0.0163          +0.0112             +0.0243
+       Observations retained (%)
+
+
+
+
+                                   100                                                         100
+
+
+
+                                                                                                                                                             0.4
+                                    50      -0.00845            -0.0109             -0.0122     50      +0.0796           +0.073             +0.0895
+
+
+
+
+                                                                                                                                                                       Baseline NRMSE − TransPINN NRMSE
+                                    25      -0.00787            -0.00835           +0.0149      25      +0.131            +0.103             +0.106          0.2
+
+
+                                                0                  5                  10                   0                 5                 10
+                                                           Training noise (%)                                        Training noise (%)
+                                                                                                                                                             0.0
+                                                        Validation-selected runs                                  Validation-selected runs
+                                                           Data-Transformer                                             Data-MLP
+
+
+                                             -0.0415            -0.0597             -0.0412             +0.0875           +0.111             +0.0232
+       Observations retained (%)
+
+
+
+
+                                   100                                                         100                                                           −0.2
+
+
+
+                                    50      +0.0627             +0.0114            +0.0401      50      +0.0946          +0.0432             +0.0134
+                                                                                                                                                             −0.4
+
+
+
+                                    25      +0.0155             +0.0247            +0.0102      25       +0.52            +0.578             +0.565
+
+                                                0                  5                  10                   0                 5                 10
+                                                           Training noise (%)                                        Training noise (%)
+
+
+      Fig. 8. Robustness across all combinations of data retention and noise. Each cell shows the baseline NRMSE minus the TransPINN NRMSE. Positive values
+      favor TransPINN. The upper row summarizes all seeds. The lower row reports results after validation selection.
+
+
+
+749     b = (0, 0, −1, 1, 0, 0, 0, 0, 0)T , and g(x) = p(M1 , M2 )I(x).                               existence and delayed Pontryagin arguments [38], [44] give                                               768
+
+750   Then the controlled state equation has the compact form                                         (28)–(29). The advanced term is the derivative, at time t + τ ,                                          769
+
+                                                                                                      of the cohort flux whose delayed argument is x(t).                                                       770
+751                                      ẋ(t) = f (x(t), u(t)) + be−aE τ g(x(t − τ )).
+752   For the running cost ℓ in (26), the Hamiltonian is
+753    H (t) = ℓ(x, u)+W (t)T f (x, u)+W (t)T be−aE τ g(xτ ). (27)                                      For clarity, let ∆R = WR − WH , ∆D = WD − WH , ∆U =                                                    771
+
+
+754    For compactness, put ωτ (t) = 1[0,tf −τ ] (t)e                              −aE τ
+                                                                                           .          WU − WH , and ∆τ (t) = WH (t + τ ) − WE (t + τ ). The media                                              772
+
+                                                                                                      components of (28) are                                                                                   773
+
+755   Theorem V.1 (Existence and necessary conditions). An opti-
+756   mal control exists. For an optimal pair (x∗ , u∗ ), there is an
+757   absolutely continuous costate W satisfying                                                          ẆM1 = κ1 Su (WSu − WSe )                                                                            774
+
+                                                            ∗   ∗ T                                                 + δ1 R(WR − WD ) + dM1 WM1
+758                                Ẇ (t) = − ℓx − fx (x , u ) W (t)                                                                                                                                           775
+
+
+                                                                                                                           ∆R ΓuR,M1 + ∆D ΓuD,M1 + ∆U ΓU,M1
+                                                                                                                                                                   
+                                                            ∗                                                       −H
+759                                          −ωτ (t)∇g(x (t))[WH (t + τ ) − WE (t + τ )],                                                                                                                      776
+
+                                                                                        (28)                        − ωτ (t)gM1 (t)∆τ (t),                             (30)                                    777
+
+760                       W (tf ) = 0,                 W (t) = 0    (t > tf ).                 (29)       ẆM2 = − κ2 Se (WSu − WSe )                                                                          778
+
+
+761   Together with the state equation, these nine scalar equations                                                 − δ2 D(WR − WD ) + dM2 WM2                                                                 779
+
+
+                                                                                                                           ∆R ΓuR,M2 + ∆D ΓuD,M2 + ∆U ΓU,M2
+                                                                                                                                                                   
+762   and the projected controls below form the complete optimality                                                 −H                                                                                         780
+
+763   system.                                                                                                       − ωτ (t)gM2 (t)∆τ (t).                             (31)                                    781
+
+764   Proof. The state set is bounded by Theorem III.1. The right-
+765   hand side is locally Lipschitz, the control set is nonempty,
+766   convex, and compact, the dynamics are affine in u, and the                                       The ΓU terms, omitted in the former derivation, are now                                                 782
+
+767   running cost is coercive and strictly convex in u. Standard                                     explicit. The delayed derivatives use the current state x(t) and                                         783
+
+                                                                                                      the future costates, not future media multiplied by future E.                                            784
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                                         15
+
+
+
+                                                                    TABLE X
+                       F ORECASTING ON INDEPENDENT SYNTHETIC TEST DATA . O BSERVATIONS INTEGRATE ACTIVITY OVER EACH TIME BIN .
+
+      Model                                   20 bins                                       40 bins                                        80 bins
+       Data consistent with the model
+      TransPINN                    0.0617 ± 0.0096 [0.0500]                       0.0719 ± 0.0046 [0.0643]                      0.1002 ± 0.0066 [0.0980]
+      Matched-PINN                 0.0712 ± 0.0047 [0.0608]                       0.0959 ± 0.0048 [0.0788]                      0.1437 ± 0.0131 [0.1279]
+      NoAttn-PINN                  0.0560 ± 0.0105 [0.0369]                       0.0705 ± 0.0053 [0.0549]                      0.1048 ± 0.0139 [0.1032]
+      Data-Transformer             0.0572 ± 0.0212 [0.0347]                       0.0665 ± 0.0174 [0.0486]                      0.0932 ± 0.0079 [0.0916]
+      Data-MLP                     0.0408 ± 0.0201 [0.0181]                       0.0761 ± 0.0237 [0.0497]                      0.1342 ± 0.0158 [0.1170]
+      DDE-LS                 (1.11 ± 1.26) × 10−5 [1.74 × 10−6 ]            (1.66 ± 1.83) × 10−5 [2.78 × 10−6 ]           (3.21 ± 3.36) × 10−5 [5.93 × 10−6 ]
+       Mismatch in media decay
+      TransPINN                  0.0630 ± 0.0088 [0.0486]                         0.0742 ± 0.0045 [0.0622]                      0.1017 ± 0.0072 [0.0945]
+      Matched-PINN               0.0716 ± 0.0049 [0.0634]                         0.0973 ± 0.0051 [0.0875]                      0.1462 ± 0.0136 [0.1387]
+      NoAttn-PINN                0.0569 ± 0.0097 [0.0396]                         0.0719 ± 0.0048 [0.0577]                      0.1075 ± 0.0144 [0.1082]
+      Data-Transformer           0.0602 ± 0.0221 [0.0360]                         0.0698 ± 0.0178 [0.0503]                      0.0964 ± 0.0051 [0.0941]
+      Data-MLP                   0.0417 ± 0.0204 [0.0179]                         0.0777 ± 0.0238 [0.0500]                      0.1374 ± 0.0158 [0.1194]
+      DDE-LS               (5.17 ± 0.15) × 10−4 [5.00 × 10−4 ]              (6.42 ± 0.17) × 10−4 [6.23 × 10−4 ]           (9.17 ± 0.18) × 10−4 [8.97 × 10−4 ]
+      We average NRMSE over 10 trajectories per scenario. Values report the mean and sample standard deviation (SD) across three seeds. Brackets show results
+      after validation selection. Paired scenarios share trajectory parameters. In the mismatch scenario, the data generator uses a media decay rate of 1.2. Models
+      with physics constraints and numerical DDE fits fix this rate at 1. DDE-LS independently estimates eight coefficients under a known history with fixed
+      nuisance terms. Numerical fits use a different optimization budget from neural models.
+
+                                                                 TABLE XI
+           R ECOVERY OF PARAMETERS AND LATENT STATES ON INDEPENDENT SYNTHETIC TEST TRAJECTORIES UNDER FIXED HISTORY AND NUISANCE
+                                                               COEFFICIENTS .
+
+
+      Model                                                        Parameter log RMSE                                                     Latent state NRMSE
+       Data consistent with the model
+      TransPINN                                                1.0332 ± 0.0222 [1.0115]                                               0.7743 ± 0.3387     [0.3165]
+      Matched-PINN                                             0.9969 ± 0.0359 [1.0146]                                               1.6430 ± 1.3343     [1.9356]
+      NoAttn-PINN                                              1.0238 ± 0.0375 [0.9949]                                               0.4584 ± 0.3223     [0.3050]
+      DDE-LS                                                   0.1887 ± 0.1713 [0.0653]                                               0.0073 ± 0.0094     [0.0013]
+       Mismatch in media decay
+      TransPINN                                                1.0277 ± 0.0127 [1.0298]                                               0.9709 ± 0.1132     [1.6386]
+      Matched-PINN                                             0.9971 ± 0.0357 [1.0256]                                               1.6615 ± 1.3299     [2.5092]
+      NoAttn-PINN                                              1.0226 ± 0.0319 [0.9968]                                               0.4706 ± 0.2996     [0.3068]
+      DDE-LS                                                   1.4081 ± 0.0127 [1.4228]                                               0.0926 ± 0.0035     [0.0967]
+      We first average errors over 10 test trajectories. Values report the mean and sample standard deviation (SD) across three seeds. Brackets show results after
+      validation selection. Parameter log RMSE is the square root of the mean of log2 (θbj /θj ) over eight coefficients. Reporting gains use raw units. For latent
+      states, we evaluate errors at the right endpoints of 80 test bins. Each state error is normalized by its true RMS over the training interval. We then average
+      across E, H, U, M1 , M2 . History and nuisance coefficients remain fixed. Models without physics constraints do not estimate these quantities.
+
+
+
+                                 TABLE XII
+                                                                                                            qD χM1 [ϖ2 Z + (1 + ϖ2 M2 )]
+                                                                                                 ΓD,M2 = −                               ,                            790
+      D ELAY ABLATION . NRMSE ACROSS ALL SEEDS IS THE MEAN ± SAMPLE                                              (1 + ϖ2 M2 )2 Z 2
+      SD OF THE THREE SEED AVERAGES . S ELECTED ERRORS USE VALIDATION                                             qU χ
+               ALONE . RUNTIME IS MEAN CPU SECONDS PER FIT.                                       ΓU,M1 = ΓU,M2 = 2 .                                                 791
+                                                                                                                    Z
+         Metric                     Full TransPINN               τ =0                                                                                                 792
+
+         NRMSE across seeds     0.506937 ± 0.058693      0.509882 ± 0.056192             Moreover, ΓuR,Mi = (1 − u1 )ΓR,Mi , ΓuD,Mi = (1 +                            793
+         Selected NRMSE               0.436389                 0.436566
+         Selected NMAE                0.366302                 0.366548               u2 )ΓD,Mi , and                                                                 794
+         Seconds per fit                16.40                    16.34
+                                                                                                           ρM2                                ρM1
+                                                                                           pM1 =                     ,         pM2 =                    .             795
+                                                                                                      (1 + ρM1 M2 )2                     (1 + ρM1 M2 )2
+785   C. Required derivatives and optimal controls                                                                                                                    796
+
+786      All fatigue and product-rule terms are retained:                                Thus ∇g = p∇I + I∇p, which completely specifies the                          797
+
+
+                            qR χM2 [ϖ1 Z + (1 + ϖ1 M1 )]                              advanced term in all nine adjoints. The stationarity derivatives                798
+
+787               ΓR,M1 = −                              ,                            are                                                                             799
+                                  (1 + ϖ1 M1 )2 Z 2
+                           qR χ(χ + M1 )                                                               Hu1 = B1 u1 − H(WR − WH )ΓR ,
+788               ΓR,M2 =                 ,                                                                                                                           800
+                          (1 + ϖ1 M1 )Z 2
+                                                                                                       Hu2 = B2 u2 + H(WD − WH )ΓD .                                  801
+                           qD χ(χ + M2 )
+789               ΓD,M1 =                 .
+                          (1 + ϖ2 M2 )Z 2                                                                                                                             802
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                            16
+
+
+
+                                                                   TABLE XIII
+        S EPARATE MECHANISM ABLATIONS . A LL - SEED NRMSE IS THE MACRO MEAN ± SAMPLE SD ACROSS THREE SEEDS . S ELECTED METRICS USE THE
+       COMMON VALIDATION - ONLY RULE . ∆ = NRMSEablated − NRMSEfull . P OSITIVE VALUES FAVOR THE FULL MODEL . I NTERVALS USE 5000 PAIRED
+         HIERARCHICAL BLOCK - BOOTSTRAP REPLICATES . E XTRA DECIMAL PLACES DISTINGUISH THE SMALL EFFECTS , NOT MEASUREMENT PRECISION .
+
+
+        Variant                          All-seed NRMSE       Selected NRMSE      Selected NMAE             ∆             95% interval for ∆
+        Full TransPINN                  0.506937 ± 0.058693      0.436389             0.366302            —                      —
+        Without cognitive fatigue       0.508392 ± 0.057084      0.436042             0.366169         −0.000347       [−0.001521, 0.000208]
+        Without antagonistic function   0.508711 ± 0.057339      0.436661             0.366613         +0.000272        [0.000001, 0.000934]
+
+
+
+803      Let Proj[a,b] z = min{b, max{a, z}}. The optimal controls       state transitions to recorded activity. Across four events, Tran-               845
+
+804   are                                                                sPINN achieves the lowest NRMSE of 0.436, compared with                         846
+                                     
+                                       H(WR − WH )ΓR
+                                                                        0.455–0.499 for the baselines. However, paired comparison                       847
+
+805            u∗1 = Proj[0,u1,max ]                    ,    (32)        intervals include zero, and mechanism ablations show limited                    848
+                                            B1
+                                                                       forecasting gains. Identifiability analysis also reveals media-                 849
+                                       H(WH − WD )ΓD
+806            u∗2 = Proj[0,u2,max ]                    .    (33)        scale ambiguity and weak parameter constraints, so inference                    850
+                                            B2                           remains conditional on fixed assumptions.                                       851
+
+807   Both expressions include the fatigue factor through ΓR , ΓD .         Regarding intervention strategies, we derive optimal-control                 852
+
+                                                                         conditions that balance rumor suppression and corrective pro-                   853
+
+                                                                         motion against intervention costs. The formulation accounts                     854
+808   D. Numerical solution and limits of the evidence
+                                                                         for fatigue and delayed effects. Numerical validation remains                   855
+809      A reproducible numerical solution requires four steps. First,   necessary to assess the resulting policies.                                     856
+810   solve the state DDE using the method of steps with the                In summary, this framework connects rumor dynamics,                          857
+811   specified history. Second, integrate (28) backward using (29).     data-driven forecasting, and intervention design. Future work                   858
+812   Third, update the controls through (32)–(33) with relaxation.      aims to incorporate network structure, distributed delays, and                  859
+813   Repeat these steps until the relative change in the supremum       platform effects, and to validate inference and control with                    860
+814   norm falls below 10−6 for states, costates, and controls.          richer data.                                                                    861
+815      The report must specify AR , AE , AH , Bi , ui,max . It must
+816   also provide the DDE solver tolerances, time grid, and iteration
+                                                                                          DATA AND C ODE AVAILABILITY                                    862
+817   count. Objective values must cover three cases: no control,
+818   constant control, and optimal control. A sensitivity analysis         The source code is available at https://github.com/                          863
+
+
+819   must assess the effect of Bi .                                     DavidJamesBen/model. The accompanying revision package                          864
+
+
+820      The earlier control figure relies on the former model with      includes processed data, model settings, random seeds, fitted                   865
+
+
+821   delayed stocks and incomplete derivatives. It therefore pro-       checkpoints, predictions, and instructions to reproduce the                     866
+
+
+822   vides no valid evidence for the corrected system. Numerical        reported analyses and figures. Supplementary Material con-                      867
+
+
+823   policy conclusions require a new figure based on the corrected     tains the full identifiability analysis and parameter tables. The               868
+
+
+824   optimality system.                                                 original CSDC-Rumor and RumourEval data remain subject to                       869
+
+
+825      Small values of Bi can keep controls at their upper bounds      their source terms. The Harvey aggregation has no tweet-level                   870
+
+
+826   for most of the time horizon. This behavior alone does not         provenance, as disclosed in Section IV.                                         871
+
+
+827   establish the need for intervention at the maximum level.
+                                                                                                 ACKNOWLEDGMENTS                                         872
+
+828                         VI. C ONCLUSIONS                               This work was supported by the National Natural Science                       873
+
+829      This study develops a framework for rumor propagation           Foundation of China (NSFC) under Project No. 62473115                           874
+
+830   under information delays and cognitive overload. The model         and the Fundamental Research Plan of Shenzhen Government                        875
+
+831   separates information reception from active cognitive pro-         under Project No. JCYJ20240813105202004.                                        876
+
+832   cessing. It combines competing media influences, Holling-II
+833   fatigue, and a survival-weighted exposure cohort to describe                                    R EFERENCES                                        877
+
+834   delayed behavioral transitions.                                     [1] C. Shen, P. He, Z. Song, and Y. Zhang, “Cognitive disparity in online      878
+835      From a theoretical perspective, we establish well-posedness,         rumor perception: a group analysis during covid-19,” BMC Public            879
+
+836   positivity, and boundedness under compatible histories. We              Health, vol. 24, no. 1, p. 3049, 2024.                                     880
+                                                                          [2] Z. Xia and L. Huang, “Emergence of social rumor: Modeling, anal-           881
+837   derive the delay-dependent threshold R0 (τ ) and conditions for         ysis, and simulations,” in International Conference on Computational       882
+838   local stability and Hopf bifurcation. Delays affect both expo-          Science. Springer, 2007, pp. 90–97.                                        883
+
+839   sure duration and survival into active processing. Their effect     [3] R. H. Knapp, “A psychology of rumor,” Public opinion quarterly, vol. 8,    884
+                                                                              no. 1, pp. 22–37, 1944.                                                    885
+840   on stability therefore depends on the model parameters, and         [4] W. Lv, W. Zhou, B. Gao, Y. Han, and H. Fang, “New insights into            886
+841   transient rebounds alone do not establish a Hopf bifurcation.           the social rumor characteristics during the covid-19 pandemic in china,”   887
+
+842      Methodologically, TransPINN combines Transformer atten-              Frontiers in public health, vol. 10, p. 864955, 2022.                      888
+                                                                          [5] W. Dong, Y. Wang, and F. Li, “Rumor management in public health:           889
+843   tion with physics-informed learning to estimate rumor dy-               a system dynamics analysis based on social trust,” Frontiers in Public     890
+844   namics from sparse observations. An observation model links             Health, vol. 13, p. 1713731, 2025.                                         891
+      IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                                                                                                           17
+
+
+
+892    [6] X. Mou, W. Xu, Y. Zhu, Q. Li, and Y. Xiao, “A social topic diffusion        [28] S. Wang, S. Sankaran, and P. Perdikaris, “Respecting causality for train-    968
+893        model based on rumor, anti-rumor, and motivation-rumor,” IEEE Trans-             ing physics-informed neural networks,” Computer Methods in Applied           969
+894        actions on Computational Social Systems, vol. 10, no. 5, pp. 2644–2659,          Mechanics and Engineering, vol. 421, p. 116813, 2024.                        970
+895        2022.                                                                       [29] S. Saini, R. K. Vats, and A. K. Sahoo, “A-PINN: Auxiliary physics-           971
+896    [7] Q. Li, L. Gao, X. Guo, X. Wu, R. Wang, and Y. Xiao, “Information                 informed neural networks for structural vibration analysis in continuous     972
+897        propagation dynamic model based on rumors, antirumors, prom-rumors,              euler–bernoulli beam,” Applied Soft Computing, p. 115852, 2026.              973
+898        and the dynamic game,” IEEE Transactions on Computational Social            [30] Y. Kumar, R. K. Vats, A. K. Nain, and S. Yadav, “Robust deep learn-          974
+899        Systems, vol. 12, no. 1, pp. 376–389, 2024.                                      ing framework using hermite interpolation for time-dependent caputo          975
+900    [8] Y. Xiao, W. Yuan, X. Yue, T. Li, and Q. Li, “A diffusion model for               fractional differential equations,” Mathematical Methods in the Applied      976
+901        multimessage multidimensional complex game based on rumor and anti-              Sciences, vol. 49, no. 7, pp. 6398–6427, 2026.                               977
+902        rumor,” IEEE Transactions on Computational Social Systems, vol. 10,         [31] Y. Kumar and R. K. Vats, “A deep kolmogorov–arnold network frame-            978
+903        no. 5, pp. 2672–2685, 2022.                                                      work for solving time-fractional partial differential equations,” Applied    979
+
+904    [9] X. Zhong, Y. Yang, F. Deng, and G. Liu, “Rumor propagation control               Soft Computing, vol. 188, p. 114379, 2026.                                   980
+
+905        with anti-rumor mechanism and intermittent control strategies,” IEEE        [32] Y. Kumar and R. K. Vats, “Deep wavelet neural network with lateral           981
+
+906        Transactions on Computational Social Systems, vol. 11, no. 2, pp. 2397–          connections for solving fractional differential equations arising in oil     982
+
+907        2409, 2023.                                                                      pollution dynamics,” International Journal of Computer Mathematics,          983
+
+908   [10] Y. Jiang, R. Wang, J. Sun, Y. Wang, H. You, and Y. Zhang, “Rumor                 2026, published online.                                                      984
+
+909        localization, detection and prediction in social network,” IEEE Transac-    [33] M. Jiang, Q. Gao, and J. Zhuang, “Reciprocal spreading and debunking         985
+
+910        tions on Computational Social Systems, vol. 11, no. 3, pp. 3168–3178,            processes of online misinformation: A new rumor spreading–debunking          986
+
+911        2022.                                                                            model with a case study,” Physica A: Statistical Mechanics and its           987
+
+912   [11] D. J. Daley and D. G. Kendall, “Epidemics and rumours,” Nature, vol.             Applications, vol. 565, p. 125572, 2021.                                     988
+
+913        204, no. 4963, pp. 1118–1118, 1964.                                         [34] THUNLP, “CSDC-Rumor: COVID-19-related rumor data,” COVID-19                  989
+
+914   [12] D. P. Maki and M. Thompson, “Mathematical models and applications                Social Data Sharing Platform, Tsinghua University Natural Language           990
+
+915        prentice-hall,” Englewood Cliffs (NJ), 1973.                                     Processing and Social Humanities Computing Laboratory, 2021,                 991
+
+916   [13] J. Gani, “The maki–thompson rumour model: a detailed analysis,”                  data available at https://data.thunlp.org/covid19/rumor.zip. [Online].       992
+
+917        Environmental Modelling & Software, vol. 15, no. 8, pp. 721–725, 2000.           Available: https://covid19.thunlp.org/archives/5/                           993
+
+918   [14] C. Fu, G. Liu, X. Yang, Y. Qin, and L. Yang, “A rumor-spreading model       [35] A. Zubiaga, M. Liakata, R. Procter, G. Wong Sak Hoi, and P. Tolmie,          994
+
+919        with three identical time delays,” Mathematics, vol. 13, no. 9, p. 1421,         “Analysing how people orient to and spread rumours in social media           995
+
+920        2025.                                                                            by looking at conversational threads,” PLOS ONE, vol. 11, no. 3, p.          996
+
+921   [15] C. Wei, C. Fu, X. Yang, Y. Qin, and L. Yang, “Stability analysis of              e0150989, 2016.                                                              997
+
+922        a rumor-spreading model with two time delays and saturation effect,”        [36] G. Gorrell, E. Kochkina, M. Liakata, A. Aker, A. Zubiaga, K. Bontcheva,      998
+
+923        Mathematics, vol. 13, no. 11, p. 1729, 2025.                                     and L. Derczynski, “SemEval-2019 task 7: RumourEval, determining             999
+                                                                                            rumour veracity and support for rumours,” in Proceedings of the 13th        1000
+924   [16] T. Sheng, C. Fu, X. Yang, Y. Qin, and L. Yang, “Asymptotic stability
+                                                                                            International Workshop on Semantic Evaluation. Minneapolis, MN,             1001
+925        of a rumor spreading model with three time delays and two saturation
+                                                                                            USA: Association for Computational Linguistics, 2019, pp. 845–854.          1002
+926        functions,” Mathematics, vol. 13, no. 12, p. 2015, 2025.
+                                                                                            [Online]. Available: https://aclanthology.org/S19-2147/                     1003
+927   [17] N. Zhang, Z. Wang, J. H. Park, and W. Li, “Semi-global synchronization
+                                                                                       [37] L. Derczynski, G. Gorrell, A. Zubiaga, A. Aker, K. Bontcheva,               1004
+928        of stochastic mixed time-delay systems with lévy noise under aperiodic
+                                                                                            M. Liakata, and E. Kochkina, “RumourEval 2019 data,” 2019. [Online].        1005
+929        intermittent delayed sampled-data control,” Automatica, vol. 171, p.
+                                                                                            Available: https://figshare.com/articles/dataset/RumourEval 2019 data/      1006
+930        111963, 2025.
+                                                                                            8845580                                                                     1007
+931   [18] N. Zhang, Q. Hu, J. H. Park, and W. Li, “Exponential stability of           [38] S. Belhdid, O. Balatif, and B. Khajji, “Optimal control and cost-           1008
+932        stochastic highly nonlinear delayed systems with regime-switching dif-           effectiveness analysis of scam rumor propagation over social networks,”     1009
+933        fusion under asynchronous intermittent control,” IEEE Transactions on            Results in Control and Optimization, vol. 16, p. 100441, 2024.              1010
+934        Automatic Control, vol. 70, no. 12, pp. 8375–8381, 2025.                    [39] P. van den Driessche and J. Watmough, “Reproduction numbers and             1011
+935   [19] N. Zhang, X. Wang, and W. Li, “Stability for multi-linked stochastic             sub-threshold endemic equilibria for compartmental models of disease        1012
+936        delayed complex networks with stochastic hybrid impulses by dupire               transmission,” Mathematical Biosciences, vol. 180, no. 1–2, pp. 29–48,      1013
+937        itô’s formula,” Nonlinear Analysis: Hybrid Systems, vol. 45, p. 101200,         2002.                                                                       1014
+938        2022.                                                                       [40] J. K. Hale and S. M. Verduyn Lunel, Introduction to Functional              1015
+939   [20] L. Huo, J. Jiang, S. Gong, and B. He, “Dynamical behavior of a                   Differential Equations, ser. Applied Mathematical Sciences. New York:       1016
+940        rumor transmission model with holling-type ii functional response in             Springer, 1993, vol. 99.                                                    1017
+941        emergency event,” Physica A: Statistical Mechanics and its Applications,    [41] G. Ansmann, “Efficiently and easily integrating differential equations      1018
+942        vol. 450, pp. 228–240, 2016.                                                     with JiTCODE, JiTCDDE, and JiTCSDE,” Chaos, vol. 28, no. 4, p.              1019
+943   [21] L. Huo and X. Chen, “Dynamical analysis of a stochastic rumor-                   043116, 2018.                                                               1020
+944        spreading model with holling II functional response function and time       [42] A. F. Villaverde and G. Massonis, “On testing structural identifiability    1021
+945        delay,” Advances in Difference Equations, vol. 2020, no. 1, p. 651, 2020.        by a simple scaling method: Relying on scaling symmetries can be            1022
+946   [22] M. Huang, Y. Xiao, W. He, X. Mou, and Q. Li, “Dissecting the                     misleading,” PLOS Computational Biology, vol. 17, no. 10, p. e1009032,      1023
+947        rumor landscape: A framework for modeling topic evolution games and              2021.                                                                       1024
+948        information resonance,” IEEE Transactions on Big Data, 2026, early          [43] A. Raue, C. Kreutz, T. Maiwald, J. Bachmann, M. Schilling, U. Kling-        1025
+949        access.                                                                          muller, and J. Timmer, “Structural and practical identifiability analysis   1026
+950   [23] W. He, Y. Xiao, M. Huang, X. Mou, R. Wang, and Q. Li, “Directing                 of partially observed dynamical models by exploiting the profile likeli-    1027
+951        uncertainty-aware information flow for robust diffusion prediction,” in          hood,” Bioinformatics, vol. 25, no. 15, pp. 1923–1929, 2009.                1028
+952        Proceedings of the AAAI Conference on Artificial Intelligence, vol. 40,     [44] S. Lenhart and J. T. Workman, Optimal control applied to biological         1029
+953        no. 1, 2026, pp. 381–389.                                                        models. Chapman and Hall/CRC, 2007.                                         1030
+954   [24] J. He and A. T. Tiamiyu, “Physics-informed neural networks in iterative
+955        form of nonlinear equations for numerical algorithms and simulations
+956        of delay differential equations,” Physica A: Statistical Mechanics and
+957        its Applications, vol. 660, p. 130368, 2025.
+958   [25] S. Yao, V. Kumar, and R. Guglielmi, “Physics informed neural
+959        networks for nonlinear delay differential equations,” arXiv preprint
+960        arXiv:2607.00380, 2026.
+961   [26] Z. Zhao, X. Ding, and B. A. Prakash, “PINNsFormer: A transformer-
+962        based framework for physics-informed neural networks,” in The Twelfth
+963        International Conference on Learning Representations, 2024. [Online].
+964        Available: https://openreview.net/forum?id=DO2WFXU1Be
+965   [27] R. Zhang, Y. Liu, and H. Sun, “Physics-informed multi-LSTM networks
+966        for metamodeling of nonlinear structures,” Computer Methods in Applied
+967        Mechanics and Engineering, vol. 369, p. 113226, 2020.
+       IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS                          18
+
+
+
+1031                      Deliang Li received the B.S. degree from South
+1032                      China Normal University, Guangzhou, China, and is
+1033                      working toward the Ph.D. degree at Harbin Institute
+1034                      of Technology, Shenzhen, China. His research inter-
+1035                      ests include deep-learning model design and analy-
+1036                      sis, biomathematics, ordinary differential equations,
+1037                      and physics-informed neural networks.
+
+
+1038
+
+
+
+
+1039                      Yi Zhao received the Ph.D. degree from Hong
+1040                      Kong Polytechnic University, Hong Kong, China,
+1041                      in 2007. Since graduating, he has been with the
+1042                      Harbin Institute of Technology, Shenzhen, China,
+1043                      and is currently a Professor. His research interests
+1044                      include nonlinear dynamics, nonlinear time series
+1045                      analysis, and complex system modeling. His recent
+1046                      works have been on the application of mathematical
+1047                      methods to a diverse range of application problems.
+1048
+
+
+
+
+1049                      Yifeng Wang received the Ph.D. degree from Harbin
+1050                      Institute of Technology, Shenzhen, China. He is
+1051                      currently a postdoctoral researcher at Tsinghua Uni-
+1052                      versity. His research interests include deep learning
+1053                      model design and analysis, inertial navigation, mo-
+1054                      tion tracking, human activity recognition, and time
+1055                      series analysis.
+
+
+1056
+

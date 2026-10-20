@@ -1,0 +1,7 @@
+{
+  "fits": 360,
+  "channels": 720,
+  "prediction_files_checked": 360,
+  "selection": "minimum validation score; seed breaks ties",
+  "runs_sha256": "aedec75b4bf824f0a56f530145308ddd4ea5cf1b1bd0c34c52c45bc7609fae1f"
+}

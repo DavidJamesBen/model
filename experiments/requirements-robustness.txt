@@ -1,0 +1,11 @@
+# Follow-up benchmark runtime: Python 3.12.10, Windows, CUDA 12.8 wheel.
+# Keep separate from the earlier CPU benchmark environment.
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+numpy==2.4.6
+pandas==3.0.3
+scipy==1.17.1
+matplotlib==3.10.9
+numba==0.67.0
+llvmlite==0.49.0
+sympy==1.14.0

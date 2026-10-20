@@ -1,0 +1,122 @@
+[
+  {
+    "event": "harvey",
+    "model": "PINN",
+    "path": "output\\full_window_reconstruction\\runs\\harvey_pinn_seed11.csv",
+    "sha256": "248905cdf57f4b12e84bc063c671611e3927722b357d322bc28d238dda8c8b0f"
+  },
+  {
+    "event": "harvey",
+    "model": "LSTM-PINN",
+    "path": "output\\full_window_reconstruction\\runs\\harvey_lstm_pinn_seed11.csv",
+    "sha256": "ea59da962c8dc00f2b0a2f2b5d37fcd4323edc69c3c8c0230b91dab571223d66"
+  },
+  {
+    "event": "harvey",
+    "model": "TimePINN",
+    "path": "output\\full_window_reconstruction\\runs\\harvey_timepinn_seed11.csv",
+    "sha256": "8d2f4a618d3203a043b9536d0257531399b5b5eeb37a23b4cba10d88fbec0b3b"
+  },
+  {
+    "event": "harvey",
+    "model": "NoAttn-PINN",
+    "path": "output\\full_window_reconstruction\\runs\\harvey_noattn_pinn_seed11.csv",
+    "sha256": "e98d3f02e240d1442a7311e0bc287bc17aabe96a03d8a542a42e806b3aaa4e5b"
+  },
+  {
+    "event": "harvey",
+    "model": "TransPINN",
+    "path": "output\\full_window_reconstruction\\runs\\harvey_transpinn_seed11.csv",
+    "sha256": "c6431d0c916a5ea8075818514f3c74d4ad6ea74bbe881747722fccc2faab37bc"
+  },
+  {
+    "event": "csdc",
+    "model": "PINN",
+    "path": "output\\full_window_reconstruction\\runs\\csdc_pinn_seed11.csv",
+    "sha256": "de0284744ad60ebff2b3b9201b49c2351e23d1ad71343b25cc838495da9ea9f9"
+  },
+  {
+    "event": "csdc",
+    "model": "LSTM-PINN",
+    "path": "output\\full_window_reconstruction\\runs\\csdc_lstm_pinn_seed11.csv",
+    "sha256": "6935fe410e74ec4259cbbe02b904b9beb5b70338ab095765626f5a0d7bc18a4b"
+  },
+  {
+    "event": "csdc",
+    "model": "TimePINN",
+    "path": "output\\full_window_reconstruction\\runs\\csdc_timepinn_seed11.csv",
+    "sha256": "5be4b2329a880b6cc2953f4adc5fa2a0ac9cb8ec4be446f83003cf5e1abb28e7"
+  },
+  {
+    "event": "csdc",
+    "model": "NoAttn-PINN",
+    "path": "output\\full_window_reconstruction\\runs\\csdc_noattn_pinn_seed11.csv",
+    "sha256": "4315d7d1a94076d8b0747343b9bfb8a6f84a940c6b15fe780e0f00177e7e3de8"
+  },
+  {
+    "event": "csdc",
+    "model": "TransPINN",
+    "path": "output\\full_window_reconstruction\\runs\\csdc_transpinn_seed11.csv",
+    "sha256": "b551fae6ff8bb9d4161f3a18abf002f9bdfd69c44ca05a3d600523bbb19610c2"
+  },
+  {
+    "event": "ottawa",
+    "model": "PINN",
+    "path": "output\\full_window_reconstruction\\runs\\ottawa_pinn_seed11.csv",
+    "sha256": "19b3e77d485e9b08cce33050d2e8e9c9905a9f2fe51936bdcb898ae9620961ab"
+  },
+  {
+    "event": "ottawa",
+    "model": "LSTM-PINN",
+    "path": "output\\full_window_reconstruction\\runs\\ottawa_lstm_pinn_seed11.csv",
+    "sha256": "9687339ba589f1f42fd7ae611d42693b6ae3378f1264d8432dde83ae92d705e6"
+  },
+  {
+    "event": "ottawa",
+    "model": "TimePINN",
+    "path": "output\\full_window_reconstruction\\runs\\ottawa_timepinn_seed11.csv",
+    "sha256": "7db0e6080761a293ca410dc6a4c386b7f1bbd08387782a8b5e4a4c1b3c8a87e0"
+  },
+  {
+    "event": "ottawa",
+    "model": "NoAttn-PINN",
+    "path": "output\\full_window_reconstruction\\runs\\ottawa_noattn_pinn_seed11.csv",
+    "sha256": "8235410cbd4094eb783e137e14c109c142ef4a705910473624e3c9941140b18c"
+  },
+  {
+    "event": "ottawa",
+    "model": "TransPINN",
+    "path": "output\\full_window_reconstruction\\runs\\ottawa_transpinn_seed11.csv",
+    "sha256": "d7dfd4863a35d49f78addcd1f24eaefcaddbd7b1710a4aecdf85ee8faa0c3ca9"
+  },
+  {
+    "event": "sydney",
+    "model": "PINN",
+    "path": "output\\full_window_reconstruction\\runs\\sydney_pinn_seed11.csv",
+    "sha256": "3f3440643fbe0e2eb6065fe101030951690f301ecaaa9e14da2393f43617a429"
+  },
+  {
+    "event": "sydney",
+    "model": "LSTM-PINN",
+    "path": "output\\full_window_reconstruction\\runs\\sydney_lstm_pinn_seed11.csv",
+    "sha256": "b1744a7d9332af9ceeb71594302a1876b9c00e75d63d30845eba5e46f047d20c"
+  },
+  {
+    "event": "sydney",
+    "model": "TimePINN",
+    "path": "output\\full_window_reconstruction\\runs\\sydney_timepinn_seed11.csv",
+    "sha256": "978bbe760bc7397c18b0a8cdff3d848db1c68661523c8d848dc0a190c09ee689"
+  },
+  {
+    "event": "sydney",
+    "model": "NoAttn-PINN",
+    "path": "output\\full_window_reconstruction\\runs\\sydney_noattn_pinn_seed11.csv",
+    "sha256": "5774a32cfe8ec538dee43f85bb4a0d75cb38d68433fbab07416e7e373b4c8b6e"
+  },
+  {
+    "event": "sydney",
+    "model": "TransPINN",
+    "path": "output\\full_window_reconstruction\\runs\\sydney_transpinn_seed11.csv",
+    "sha256": "56288842ffb3a54e80a0d0d473ab1e1fa7f614520cecb08ac05d7031da47e681"
+  }
+]

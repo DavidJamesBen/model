@@ -1,0 +1,36 @@
+{
+  "complete": true,
+  "fit_count": 54,
+  "expected_fits": 54,
+  "models": [
+    "TransPINN",
+    "Matched-PINN",
+    "NoAttn-PINN",
+    "Data-Transformer",
+    "Data-MLP",
+    "DDE-LS"
+  ],
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "events": [
+    "development_20260921_decay_mismatch",
+    "development_20260922_decay_mismatch",
+    "development_20260923_decay_mismatch"
+  ],
+  "paired_observations_and_denominators": true,
+  "validation_score_recomputations": 54,
+  "bootstrap_replicates": 50000,
+  "primary_family_size": 24,
+  "weighting": "equal channels, then folds, then events; seed SD uses ddof=1",
+  "normalization": "saved available-training RMS, lower bounded by 1",
+  "selection": "validation macro incremental NRMSE only; lowest seed breaks ties",
+  "runtime_kinds": [
+    "amortized_gpu_batch",
+    "serial_cpu_numerical_inverse"
+  ],
+  "bootstrap_limitations": "3 outer trajectory/event clusters. Percentile bootstrap is an approximation; intervals are not prediction coverage.",
+  "source_sha256": "37b2fe48a3114edede42736758ea4342bc7ee354eb25b5767a8f995f15574722"
+}

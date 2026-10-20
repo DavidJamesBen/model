@@ -1,0 +1,124 @@
+{
+  "diagnostic": "Independent computational batch-size check, no experimental outcomes read",
+  "device": "cuda",
+  "torch": "2.11.0+cu128",
+  "batch_sizes": [
+    32,
+    64
+  ],
+  "shared_initialization_seeds": [
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009,
+    1010,
+    1011,
+    1012,
+    1013,
+    1014,
+    1015,
+    1016,
+    1017,
+    1018,
+    1019,
+    1020,
+    1021,
+    1022,
+    1023,
+    1024,
+    1025,
+    1026,
+    1027,
+    1028,
+    1029,
+    1030,
+    1031,
+    1032
+  ],
+  "training_points": 100,
+  "input": "Fixed artificial positive training labels and75% observation masks; no dataset files or test metrics",
+  "objective": "12*normalized masked data MSE +0.2*full DDE residual MSE +4*history MSE, where applicable",
+  "optimizer": "One Adam update at0.002 after per-model norm clipping5; foreach=False",
+  "comparison_tolerance": {
+    "rtol": 0.0003,
+    "atol": 3e-06
+  },
+  "key_bias_exception": "Only analytically invariant MHA key-bias update slices are excluded. Their gradients and+0.125 output perturbation are checked separately.",
+  "claim_scope": "Numerical agreement within stated tolerances, not bitwise identity or equivalence of all long optimization trajectories",
+  "models": {
+    "TransPINN": {
+      "max_state_absolute_difference": 0.0,
+      "max_theta_absolute_difference": 0.0,
+      "max_losses_absolute_difference": 0.0,
+      "max_updated_state_absolute_difference": 3.5762786865234375e-07,
+      "max_updated_theta_absolute_difference": 0.0,
+      "max_updated_losses_absolute_difference": 2.2649765014648438e-06,
+      "max_preclip_norm_absolute_difference": 0.0,
+      "max_initial_parameter_difference": 0.0,
+      "max_gradient_absolute_difference": 2.86102294921875e-06,
+      "max_adam_parameter_difference_all": 8.263828931376338e-05,
+      "max_adam_parameter_difference_excluding_invariant_key_bias": 1.4901161193847656e-08,
+      "max_batch32_key_bias_perturbation_output_error": 3.5762786865234375e-07,
+      "max_batch64_key_bias_perturbation_output_error": 3.5762786865234375e-07,
+      "attention_key_bias_gradient_noise": {
+        "core.backbone.encoder.attention.in_proj_bias": {
+          "max_key_gradient_noise": 3.725290298461914e-09,
+          "max_noise_to_roundoff_bound": 0.010418938472867012
+        },
+        "core.backbone.decoder.attention.in_proj_bias": {
+          "max_key_gradient_noise": 2.0372681319713593e-08,
+          "max_noise_to_roundoff_bound": 0.06770423799753189
+        }
+      },
+      "named_adam_parameter_differences_over_1e-7": {
+        "core.backbone.encoder.attention.in_proj_bias": 1.7904867490869947e-05,
+        "core.backbone.decoder.attention.in_proj_bias": 8.263828931376338e-05
+      },
+      "failures": [],
+      "passed": true
+    },
+    "Data-Transformer": {
+      "max_state_absolute_difference": 0.0,
+      "max_theta_absolute_difference": 0.0,
+      "max_losses_absolute_difference": 0.0,
+      "max_updated_state_absolute_difference": 1.1175870895385742e-08,
+      "max_updated_theta_absolute_difference": 0.0,
+      "max_updated_losses_absolute_difference": 2.384185791015625e-07,
+      "max_preclip_norm_absolute_difference": 0.0,
+      "max_initial_parameter_difference": 0.0,
+      "max_gradient_absolute_difference": 9.5367431640625e-07,
+      "max_adam_parameter_difference_all": 5.484386292664567e-06,
+      "max_adam_parameter_difference_excluding_invariant_key_bias": 1.4901161193847656e-08,
+      "max_batch32_key_bias_perturbation_output_error": 1.30385160446167e-08,
+      "max_batch64_key_bias_perturbation_output_error": 1.1175870895385742e-08,
+      "attention_key_bias_gradient_noise": {
+        "core.backbone.encoder.attention.in_proj_bias": {
+          "max_key_gradient_noise": 1.862645149230957e-08,
+          "max_noise_to_roundoff_bound": 0.0021147143561393023
+        },
+        "core.backbone.decoder.attention.in_proj_bias": {
+          "max_key_gradient_noise": 1.8204900698037818e-08,
+          "max_noise_to_roundoff_bound": 0.003791612572968006
+        }
+      },
+      "named_adam_parameter_differences_over_1e-7": {
+        "core.backbone.encoder.attention.in_proj_bias": 5.066382072982378e-06,
+        "core.backbone.decoder.attention.in_proj_bias": 5.484386292664567e-06
+      },
+      "failures": [],
+      "passed": true
+    }
+  },
+  "source_sha256": {
+    "check_batch_schedule.py": "b21092fa84596b72b96e7c997c5a76b768deb0ebdfb70dc3099b80505def72ac",
+    "run_robustness.py": "14552aa653c4823e5da27dce097773165c08e5f10fc278c3af1528e0c5215ea0",
+    "robustness_models.py": "e0be68b1238c79dbc27e85576f3fcd7f91cfdb649bfef3a5aa9357ac98ec07c4",
+    "run_multievent_baselines.py": "6a853f1769e1c79743752fb5bf08ad5f33d5c99559d49f113b3e240f4885eda1"
+  },
+  "passed": true
+}

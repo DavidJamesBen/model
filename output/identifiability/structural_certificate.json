@@ -1,0 +1,24 @@
+{
+  "verified_identities": 16,
+  "all_residuals_zero": true,
+  "transformation": {
+    "M1": "M1*c",
+    "M2": "M2*c",
+    "chi": "c*chi",
+    "rho": "rho/c**2",
+    "w1": "w1/c",
+    "w2": "w2/c",
+    "k1": "k1/c",
+    "k2": "k2/c",
+    "de1": "de1/c",
+    "de2": "de2/c",
+    "qr": "qr/c",
+    "qd": "qd/c",
+    "eta1": "c*eta1",
+    "eta2": "c*eta2",
+    "v1": "c*v1",
+    "v2": "c*v2"
+  },
+  "history": "Media history is multiplied by c; human history, tau, and reporting scales are unchanged.",
+  "conclusion": "Unrestricted model is structurally nonidentifiable. Fixing the media scale removes this symmetry but does not prove global identifiability."
+}

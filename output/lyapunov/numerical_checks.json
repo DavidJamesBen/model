@@ -1,0 +1,38 @@
+{
+  "jvp_max_error": 1.4323875419108845e-11,
+  "analytic_dde": [
+    {
+      "requested_step": 0.005,
+      "expected": -0.19854010334771913,
+      "measured": -0.19854009551218957
+    },
+    {
+      "requested_step": 0.0025,
+      "expected": -0.19854010334771913,
+      "measured": -0.19854010138883774
+    },
+    {
+      "requested_step": 0.00125,
+      "expected": -0.19854010334771913,
+      "measured": -0.19854010284125723
+    }
+  ],
+  "positive_exponent_check": {
+    "expected": 0.19856095959982187,
+    "measured": 0.19856096150353275
+  },
+  "independent_state_solver": [
+    {
+      "step": 0.004866666666666667,
+      "max_error": 3.804535667409348e-09
+    },
+    {
+      "step": 0.0024333333333333334,
+      "max_error": 9.476517938422635e-10
+    },
+    {
+      "step": 0.0012372881355932203,
+      "max_error": 2.4533336820398155e-10
+    }
+  ]
+}

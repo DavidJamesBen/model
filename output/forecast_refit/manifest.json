@@ -1,0 +1,42 @@
+{
+  "epochs": 800,
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "models": [
+    "PINN",
+    "LSTM-PINN",
+    "TimePINN",
+    "NoAttn-PINN",
+    "TransPINN"
+  ],
+  "events": [
+    "harvey",
+    "csdc",
+    "ottawa",
+    "sydney"
+  ],
+  "fold": 2,
+  "device": "cuda",
+  "torch": "2.11.0+cu128",
+  "loss": "12*(train_rms_normalized_activity_MSE + log1p_activity_MSE + 0.1*train_sum_normalized_cumulative_MSE) + original physics/history penalties",
+  "selection": "validation normalized activity MSE + log1p MSE; shared rule for all methods; original seeds included as fallback candidates",
+  "test_use": "final evaluation only",
+  "source_sha256": "629d26af528ecb06399556893217a33df9800cade5c872845346f4c05d3fb686",
+  "base_model_source_sha256": "6a853f1769e1c79743752fb5bf08ad5f33d5c99559d49f113b3e240f4885eda1",
+  "processed_data_sha256": {
+    "data\\processed\\csdc.csv": "f3baebcc8a0544716cf3a78e15626b94c276ba7ebe182848f6476cce21c4346b",
+    "data\\processed\\harvey.csv": "02f36301e5dbcfdec13a9df9c8fbbe1d67197ad0c703cff3dd2719fbe18fd659",
+    "data\\processed\\ottawa.csv": "e60136fdd65843e1df2a77714115787361f514395782953fff4898159ed547ce",
+    "data\\processed\\sydney.csv": "e9d98578a6ba586a16f0a34c3327fe15df5c1af22ea3e115e204ae5f340dab1f"
+  },
+  "completed_runs": 60,
+  "source_snapshots": {
+    "base_model_source.py": "6a853f1769e1c79743752fb5bf08ad5f33d5c99559d49f113b3e240f4885eda1",
+    "training_source_batched.py": "629d26af528ecb06399556893217a33df9800cade5c872845346f4c05d3fb686",
+    "training_source_initial.py": "621d1bbf972a8ec7979daa9e96d0be6856cb868a49296961d89e1c2fa7741d2b",
+    "training_source_worker.py": "aa92a5dd7555bcf7df1449445010ffae8f907c06fa6d8e94a5f2447367cf0ce8"
+  }
+}

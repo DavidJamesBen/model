@@ -1,0 +1,1 @@
+Metric-aligned forecasting under two prespecified optimization budgets. Macro test NRMSE is averaged equally over channels, folds and events. Mean and sample SD span three seeds. Selected uses validation-based seed selection per event/fold. Each model has 18,619 parameters. Error bars show sample SD, not confidence intervals.

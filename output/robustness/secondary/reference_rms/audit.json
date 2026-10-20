@@ -1,0 +1,74 @@
+{
+  "complete": true,
+  "fits_scored": 5400,
+  "per_run_channel_records": 10800,
+  "conditions": 9,
+  "models": [
+    "TransPINN",
+    "Matched-PINN",
+    "NoAttn-PINN",
+    "Data-Transformer",
+    "Data-MLP"
+  ],
+  "summary_rows": 90,
+  "original_primary_values_reproduced": true,
+  "original_selections_unchanged": true,
+  "new_training": false,
+  "new_significance_claims": false,
+  "primary_provenance": [
+    {
+      "condition": "r100_n0",
+      "primary_selection_sha256": "3bbd590390301bbcd03ed86de322094bce6ab227eae22c1c522a8652f2ea83df",
+      "primary_summary_sha256": "e15cdeb4919bab417bc3a42391731aae7031fc0d21cd25bcb1b5d6939598ef8c",
+      "audited_fits": 600
+    },
+    {
+      "condition": "r100_n5",
+      "primary_selection_sha256": "40784f256d3a4dbde2f14cf2c948b0a75ef3d6d3d762bfca89cd571728a710fe",
+      "primary_summary_sha256": "3117b4005f56bb41ba0d15428d7b5a0cb81ba42f89fea26f5939b3b6aac93a13",
+      "audited_fits": 600
+    },
+    {
+      "condition": "r100_n10",
+      "primary_selection_sha256": "ceadcddf86c9afb66c4270dce2143c18c5b197a4a65dd3952166cdf05c91fa98",
+      "primary_summary_sha256": "6593c81e0c7dd197d5c6a245e1f6dc8fabc50e09236bc0f5a4d82252191b2cbd",
+      "audited_fits": 600
+    },
+    {
+      "condition": "r50_n0",
+      "primary_selection_sha256": "173ae0045b1ab3ddfcb8a3495b0a2c5ce48dca52c196024a72ca53338aa9b69b",
+      "primary_summary_sha256": "40489df518563d884b4dc0bf5a2292d396004f687cde9b96b82e5bafaacc5532",
+      "audited_fits": 600
+    },
+    {
+      "condition": "r50_n5",
+      "primary_selection_sha256": "f15fa663d2efae9030bd859da798d41caaf9bf724893195c4764bf89da3ba7db",
+      "primary_summary_sha256": "5d8ca95169ed7a3aa10f31f30a47995c726f4ecdaf5b59e5d140556f6d4e1fe4",
+      "audited_fits": 600
+    },
+    {
+      "condition": "r50_n10",
+      "primary_selection_sha256": "1464f0881adae2442a496340d5f1aa2c0d6b417ff73c4f6306831f4101cb536f",
+      "primary_summary_sha256": "515d722c247e7685d17d4ad0a1dbaf3eaf6360e9b815af690a6c8a6004587923",
+      "audited_fits": 600
+    },
+    {
+      "condition": "r25_n0",
+      "primary_selection_sha256": "0928885ef5cf7242868434eb1cfe30af6ce887ce09bcdff9d0bf0aa1a50f170c",
+      "primary_summary_sha256": "0f2a10184eb9d2dc790912ca2c9ee6f3807267e4f6dfdf175737464ee5dd9538",
+      "audited_fits": 600
+    },
+    {
+      "condition": "r25_n5",
+      "primary_selection_sha256": "7ae893ec762472cf0760d29fe4578edaf94764eb299f9cbb9344405ef4ad8337",
+      "primary_summary_sha256": "0d6d4933a22220ad993d3ab25a1302d11e27c99e10a8d53f1088e2aa4beea6be",
+      "audited_fits": 600
+    },
+    {
+      "condition": "r25_n10",
+      "primary_selection_sha256": "9b8a730016a22227a836811c14254ca29e2de797e71c1174a5aeaeb7a32036c4",
+      "primary_summary_sha256": "d5d922c0d50ceb7987862a24d5182bf04c613f12a4fd8cebc5b22659515e00d1",
+      "audited_fits": 600
+    }
+  ]
+}

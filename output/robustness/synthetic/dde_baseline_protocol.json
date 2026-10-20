@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "method": "RK4 method of steps + bounded log-parameter least squares",
+  "unknown_parameters": [
+    "beta_1",
+    "beta_2",
+    "tau_normalized",
+    "q_R",
+    "q_D",
+    "chi",
+    "reporting_R",
+    "reporting_D"
+  ],
+  "lower": [
+    0.1,
+    0.05,
+    0.01,
+    0.05,
+    0.05,
+    0.05,
+    0.25,
+    0.25
+  ],
+  "upper": [
+    8.0,
+    5.0,
+    0.22,
+    4.0,
+    4.0,
+    3.0,
+    12.0,
+    12.0
+  ],
+  "fixed_history": [
+    0.93,
+    0.03,
+    0.015,
+    0.005,
+    0.01,
+    0.005,
+    0.005,
+    0.2,
+    0.2
+  ],
+  "fixed_media_decay": 1.0,
+  "count_scale": 10000.0,
+  "fit_mesh": 2000,
+  "evaluation_mesh": 4000,
+  "refinement_mesh": 8000,
+  "initialization_seeds": [
+    11,
+    22,
+    33
+  ],
+  "initialization": "Independent PCG64 log-uniform draw in 5%-95% of each bounded log range; no true parameters or neural estimates",
+  "training_bins": [
+    0,
+    100
+  ],
+  "validation_bins": [
+    100,
+    120
+  ],
+  "test_bins": [
+    120,
+    200
+  ],
+  "test_horizons": [
+    20,
+    40,
+    80
+  ],
+  "max_nfev_per_start": 400,
+  "least_squares": {
+    "method": "trf",
+    "ftol": 1e-09,
+    "xtol": 1e-09,
+    "gtol": 1e-08,
+    "diff_step": 0.0001,
+    "jac": "2-point"
+  },
+  "loss": "Training two-channel mean squared error divided by training RMS (floored at 1)",
+  "selection": "Minimum validation macro NRMSE among all three fitted starts",
+  "record_failures": "Retain finite budget-limited results with convergence status; never restart according to test error",
+  "budgets": "400 residual evaluations reported by scipy per start, plus numerical Jacobian calls counted separately. Not equivalent to Adam updates.",
+  "source_sha256": "5f070edb7b9bd49692e072cd48a93576af72a9192850b0d125e56b2b1cc503e8"
+}

@@ -1,0 +1,142 @@
+{
+  "device": "cuda",
+  "torch": "2.11.0+cu128",
+  "models": {
+    "TransPINN": {
+      "parameters_per_model": 18619,
+      "max_output_absolute_error": 2.384185791015625e-07,
+      "max_gradient_absolute_error": 9.5367431640625e-07,
+      "max_adam_update_absolute_error": 7.300402648979798e-05,
+      "max_noninvariant_adam_update_absolute_error": 6.332993507385254e-07,
+      "named_adam_update_errors_over_1e-7": {
+        "run0:core.backbone.encoder.attention.in_proj_weight": 1.5273690223693848e-07,
+        "run0:core.backbone.encoder.attention.in_proj_bias": 6.798458798584761e-06,
+        "run0:core.backbone.encoder.feed_forward.net.2.weight": 1.7136335372924805e-07,
+        "run0:core.backbone.encoder.feed_forward.net.4.weight": 1.2665987014770508e-07,
+        "run0:core.backbone.decoder.attention.in_proj_weight": 1.0617077350616455e-07,
+        "run0:core.backbone.decoder.attention.in_proj_bias": 1.3589485206466634e-05,
+        "run0:core.backbone.decoder.feed_forward.net.2.weight": 1.471489667892456e-07,
+        "run0:core.backbone.head.2.weight": 6.332993507385254e-07,
+        "run1:core.backbone.encoder.attention.in_proj_bias": 4.106841515749693e-06,
+        "run1:core.backbone.encoder.feed_forward.net.2.weight": 1.5925616025924683e-07,
+        "run1:core.backbone.decoder.attention.in_proj_weight": 1.8998980522155762e-07,
+        "run1:core.backbone.decoder.attention.in_proj_bias": 7.300402648979798e-05
+      },
+      "attention_key_bias_gradient_noise": {
+        "run0:core.backbone.encoder.attention.in_proj_bias": 1.5279510989785194e-10,
+        "run0:core.backbone.decoder.attention.in_proj_bias": 4.0745362639427185e-10,
+        "run1:core.backbone.encoder.attention.in_proj_bias": 1.8917489796876907e-10,
+        "run1:core.backbone.decoder.attention.in_proj_bias": 2.2846506908535957e-09
+      },
+      "max_post_update_output_absolute_error": 1.1920928955078125e-07,
+      "max_key_bias_perturbation_output_error": 1.1920928955078125e-07,
+      "preclip_gradient_norms": [
+        24.545063018798828,
+        37.092201232910156
+      ],
+      "all_parameters_gradient_connected": true,
+      "distinct_reporting_bounds_preserved": true
+    },
+    "Matched-PINN": {
+      "parameters_per_model": 18619,
+      "max_output_absolute_error": 0.0,
+      "max_gradient_absolute_error": 2.9802322387695312e-08,
+      "max_adam_update_absolute_error": 2.3096799850463867e-07,
+      "max_noninvariant_adam_update_absolute_error": 2.3096799850463867e-07,
+      "named_adam_update_errors_over_1e-7": {
+        "run0:core.backbone.net.2.weight": 2.3096799850463867e-07
+      },
+      "attention_key_bias_gradient_noise": {},
+      "max_post_update_output_absolute_error": 5.960464477539063e-08,
+      "max_key_bias_perturbation_output_error": 0.0,
+      "preclip_gradient_norms": [
+        19.028820037841797,
+        18.553686141967773
+      ],
+      "all_parameters_gradient_connected": true,
+      "distinct_reporting_bounds_preserved": true
+    },
+    "NoAttn-PINN": {
+      "parameters_per_model": 18619,
+      "max_output_absolute_error": 1.1920928955078125e-07,
+      "max_gradient_absolute_error": 4.76837158203125e-07,
+      "max_adam_update_absolute_error": 3.0249357223510742e-06,
+      "max_noninvariant_adam_update_absolute_error": 3.0249357223510742e-06,
+      "named_adam_update_errors_over_1e-7": {
+        "run0:core.backbone.encoder.attention.output.weight": 3.0249357223510742e-06,
+        "run0:core.backbone.encoder.feed_forward.net.2.weight": 1.1920928955078125e-07,
+        "run1:core.backbone.encoder.feed_forward.net.2.weight": 1.341104507446289e-07,
+        "run1:core.backbone.decoder.attention.key.weight": 3.725290298461914e-07,
+        "run1:core.backbone.decoder.attention.value.weight": 3.650784492492676e-07,
+        "run1:core.backbone.decoder.feed_forward.net.2.weight": 1.94646418094635e-07
+      },
+      "attention_key_bias_gradient_noise": {},
+      "max_post_update_output_absolute_error": 1.1920928955078125e-07,
+      "max_key_bias_perturbation_output_error": 0.0,
+      "preclip_gradient_norms": [
+        41.10082244873047,
+        22.483366012573242
+      ],
+      "all_parameters_gradient_connected": true,
+      "distinct_reporting_bounds_preserved": true
+    },
+    "Data-Transformer": {
+      "parameters_per_model": 18619,
+      "max_output_absolute_error": 7.450580596923828e-09,
+      "max_gradient_absolute_error": 1.1920928955078125e-07,
+      "max_adam_update_absolute_error": 4.768658254761249e-05,
+      "max_noninvariant_adam_update_absolute_error": 3.4421682357788086e-06,
+      "named_adam_update_errors_over_1e-7": {
+        "run0:core.backbone.encoder.attention.in_proj_weight": 3.725290298461914e-07,
+        "run0:core.backbone.encoder.attention.in_proj_bias": 5.436193077912321e-06,
+        "run0:core.backbone.decoder.attention.in_proj_weight": 4.6193599700927734e-07,
+        "run0:core.backbone.decoder.attention.in_proj_bias": 1.46787515404867e-05,
+        "run0:core.backbone.decoder.feed_forward.net.4.weight": 1.7508864402770996e-07,
+        "run1:core.backbone.encoder.attention.in_proj_bias": 5.979734851280227e-06,
+        "run1:core.backbone.encoder.feed_forward.net.0.weight": 2.689659595489502e-06,
+        "run1:core.backbone.decoder.attention.in_proj_weight": 2.5331974029541016e-07,
+        "run1:core.backbone.decoder.attention.in_proj_bias": 4.768658254761249e-05,
+        "run1:core.backbone.decoder.feed_forward.net.4.weight": 3.4421682357788086e-06
+      },
+      "attention_key_bias_gradient_noise": {
+        "run0:core.backbone.encoder.attention.in_proj_bias": 3.2741809263825417e-11,
+        "run0:core.backbone.decoder.attention.in_proj_bias": 7.275957614183426e-11,
+        "run1:core.backbone.encoder.attention.in_proj_bias": 2.1827872842550278e-11,
+        "run1:core.backbone.decoder.attention.in_proj_bias": 2.546585164964199e-10
+      },
+      "max_post_update_output_absolute_error": 1.1175870895385742e-08,
+      "max_key_bias_perturbation_output_error": 1.1175870895385742e-08,
+      "preclip_gradient_norms": [
+        2.7778358459472656,
+        5.466366767883301
+      ],
+      "all_parameters_gradient_connected": true,
+      "distinct_reporting_bounds_preserved": true
+    },
+    "Data-MLP": {
+      "parameters_per_model": 18619,
+      "max_output_absolute_error": 0.0,
+      "max_gradient_absolute_error": 3.725290298461914e-09,
+      "max_adam_update_absolute_error": 2.158805727958679e-06,
+      "max_noninvariant_adam_update_absolute_error": 2.158805727958679e-06,
+      "named_adam_update_errors_over_1e-7": {
+        "run1:core.net.2.weight": 2.158805727958679e-06
+      },
+      "attention_key_bias_gradient_noise": {},
+      "max_post_update_output_absolute_error": 0.0,
+      "max_key_bias_perturbation_output_error": 0.0,
+      "preclip_gradient_norms": [
+        0.4983122944831848,
+        0.606751561164856
+      ],
+      "all_parameters_gradient_connected": true,
+      "distinct_reporting_bounds_preserved": true
+    }
+  },
+  "adam_parameter_tolerance": {
+    "rtol": 0.0003,
+    "atol": 3e-06
+  },
+  "key_bias_exception": "Only the key slice of MultiheadAttention.in_proj_bias is excluded from parameter-update equality. It adds a source-independent logit shift, which cancels in softmax. Its near-zero gradient is checked against floating-point precision, a +0.125 perturbation must leave outputs unchanged, and post-update outputs must still match. Adam epsilon can amplify tiny roundoff gradients in this invariant slice.",
+  "passed": true
+}

@@ -1,0 +1,16 @@
+strategy,model,nrmse
+inverse_validation_weighted,PINN,0.4529211459249272
+inverse_validation_weighted,TimePINN,0.4557402540113681
+inverse_validation_weighted,TransPINN,0.4639610977588851
+inverse_validation_weighted,NoAttn-PINN,0.4659738576582644
+inverse_validation_weighted,LSTM-PINN,0.5172726076273377
+uniform_seed_mean,PINN,0.45283303823607274
+uniform_seed_mean,TimePINN,0.4590746986048533
+uniform_seed_mean,NoAttn-PINN,0.4723789954124187
+uniform_seed_mean,TransPINN,0.48898226726774086
+uniform_seed_mean,LSTM-PINN,0.5223596160960932
+validation_best_seed,TransPINN,0.4363886608130696
+validation_best_seed,NoAttn-PINN,0.4545831028472802
+validation_best_seed,PINN,0.455692187262704
+validation_best_seed,TimePINN,0.459864287546144
+validation_best_seed,LSTM-PINN,0.49859889749249653

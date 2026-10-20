@@ -1,0 +1,25 @@
+{
+  "event": "harvey",
+  "model": "NoAttn-PINN",
+  "seed": 11,
+  "observed_bins": 315,
+  "reconstruction_score": 0.009683659703779124,
+  "best_step": "lbfgs_300",
+  "physics_residual_rms": 0.0746975839138031,
+  "metrics": [
+    {
+      "channel": "rumor",
+      "nrmse": 0.054002834866864115,
+      "log_rmse": 0.10110010705065982
+    },
+    {
+      "channel": "debunk",
+      "nrmse": 0.04826743848069456,
+      "log_rmse": 0.06245026797987293
+    }
+  ],
+  "adam_updates": 1200,
+  "lbfgs_max_iterations": 300,
+  "objective_evaluations": 1518,
+  "runtime_seconds": 41.20621910004411
+}

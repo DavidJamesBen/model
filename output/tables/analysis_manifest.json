@@ -1,0 +1,541 @@
+{
+  "created_utc": "2026-09-18T17:53:06.248627+00:00",
+  "analysis_script": "experiments/analyze_multievent_results.py",
+  "script_sha256": {
+    "prepare_multievent_data.py": "92744e1a811ed39c52e27280cefefa1180d366d3da9f5790a70b5e17f3b8e1d0",
+    "run_multievent_baselines.py": "6a853f1769e1c79743752fb5bf08ad5f33d5c99559d49f113b3e240f4885eda1",
+    "analyze_multievent_results.py": "ebb94686bf3fe7fdc021af22894c827e6b05b8f22318a31fcca6c806afab99b3"
+  },
+  "processed_metadata_sha256": "ff33b1b97495e75074db80010a7ddc01eb87313c442a9b3ea60bbf092fbaa5f7",
+  "requirements_sha256": "3b68f7cf64a08d4b9f3859807c46ac530830b05b967ef82acd5bacc65d3d0f8b",
+  "software": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "matplotlib": "3.10.9",
+    "torch": "not installed"
+  },
+  "source_run_table": "output/tables/baseline_runs.csv",
+  "source_run_table_sha256": "6baa0540b33d8a05cb43b4ca942dfa332eb10219bbb8991d4a8d953e2283f822",
+  "source_run_manifest": "output/tables/baseline_run_manifest.json",
+  "source_run_manifest_sha256": "2cc7f5cf98c8489b99c253dca85ef1aeff50fb3721fc281a7167e6868e510494",
+  "prediction_pattern": "output/predictions/{event}_fold{fold}_{model_slug}_seed{seed}.csv",
+  "legacy_nonfold_predictions_used": false,
+  "events": [
+    "harvey",
+    "csdc",
+    "ottawa",
+    "sydney"
+  ],
+  "models": [
+    "PINN",
+    "LSTM-PINN",
+    "TimePINN",
+    "NoAttn-PINN",
+    "TransPINN"
+  ],
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "folds_by_event": {
+    "harvey": [
+      1,
+      2,
+      3
+    ],
+    "csdc": [
+      1,
+      2,
+      3
+    ],
+    "ottawa": [
+      1,
+      2,
+      3
+    ],
+    "sydney": [
+      1,
+      2,
+      3
+    ]
+  },
+  "audited_event_fold_model_seed_channel_rows": 360,
+  "aggregation": "equal channels within fold; equal folds within event; equal events for each seed; mean and sample SD (ddof=1) across seeds",
+  "validation_selected_deployment": {
+    "rule": "for every event-fold-model, choose the smallest-validation-loss member of the same three prespecified seeds; break exact ties by smaller seed; never consult test predictions or errors",
+    "aggregation": "equal channels within fold; equal folds within event; equal events",
+    "candidate_count_per_event_fold_model": 3,
+    "selected_initializations": [
+      {
+        "selected_seed": 22,
+        "validation_score": 1.1944917440414429,
+        "event": "csdc",
+        "fold": 1,
+        "model": "LSTM-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.8873199224472046,
+        "event": "csdc",
+        "fold": 1,
+        "model": "NoAttn-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.5966081619262695,
+        "event": "csdc",
+        "fold": 1,
+        "model": "PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.5922406911849976,
+        "event": "csdc",
+        "fold": 1,
+        "model": "TimePINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.47150781750679016,
+        "event": "csdc",
+        "fold": 1,
+        "model": "TransPINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.009648600593209267,
+        "event": "csdc",
+        "fold": 2,
+        "model": "LSTM-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.00470734154805541,
+        "event": "csdc",
+        "fold": 2,
+        "model": "NoAttn-PINN"
+      },
+      {
+        "selected_seed": 11,
+        "validation_score": 0.0012629636330530047,
+        "event": "csdc",
+        "fold": 2,
+        "model": "PINN"
+      },
+      {
+        "selected_seed": 11,
+        "validation_score": 0.0013495698804035783,
+        "event": "csdc",
+        "fold": 2,
+        "model": "TimePINN"
+      },
+      {
+        "selected_seed": 11,
+        "validation_score": 0.002968145301565528,
+        "event": "csdc",
+        "fold": 2,
+        "model": "TransPINN"
+      },
+      {
+        "selected_seed": 11,
+        "validation_score": 0.005855221301317215,
+        "event": "csdc",
+        "fold": 3,
+        "model": "LSTM-PINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.0018156802980229259,
+        "event": "csdc",
+        "fold": 3,
+        "model": "NoAttn-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0005990027566440403,
+        "event": "csdc",
+        "fold": 3,
+        "model": "PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0006188536062836647,
+        "event": "csdc",
+        "fold": 3,
+        "model": "TimePINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0009926644852384925,
+        "event": "csdc",
+        "fold": 3,
+        "model": "TransPINN"
+      },
+      {
+        "selected_seed": 11,
+        "validation_score": 0.6311736702919006,
+        "event": "harvey",
+        "fold": 1,
+        "model": "LSTM-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.9854885935783386,
+        "event": "harvey",
+        "fold": 1,
+        "model": "NoAttn-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.8327909708023071,
+        "event": "harvey",
+        "fold": 1,
+        "model": "PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.5849722027778625,
+        "event": "harvey",
+        "fold": 1,
+        "model": "TimePINN"
+      },
+      {
+        "selected_seed": 11,
+        "validation_score": 0.20033153891563416,
+        "event": "harvey",
+        "fold": 1,
+        "model": "TransPINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.00999545119702816,
+        "event": "harvey",
+        "fold": 2,
+        "model": "LSTM-PINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.0052732303738594055,
+        "event": "harvey",
+        "fold": 2,
+        "model": "NoAttn-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0006577845779247582,
+        "event": "harvey",
+        "fold": 2,
+        "model": "PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0014219314325600863,
+        "event": "harvey",
+        "fold": 2,
+        "model": "TimePINN"
+      },
+      {
+        "selected_seed": 11,
+        "validation_score": 0.0008229158702306449,
+        "event": "harvey",
+        "fold": 2,
+        "model": "TransPINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.010404039174318314,
+        "event": "harvey",
+        "fold": 3,
+        "model": "LSTM-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0006202519871294498,
+        "event": "harvey",
+        "fold": 3,
+        "model": "NoAttn-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0020948422607034445,
+        "event": "harvey",
+        "fold": 3,
+        "model": "PINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.004208092577755451,
+        "event": "harvey",
+        "fold": 3,
+        "model": "TimePINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.00042175783892162144,
+        "event": "harvey",
+        "fold": 3,
+        "model": "TransPINN"
+      },
+      {
+        "selected_seed": 11,
+        "validation_score": 0.005418648011982441,
+        "event": "ottawa",
+        "fold": 1,
+        "model": "LSTM-PINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.005434258840978146,
+        "event": "ottawa",
+        "fold": 1,
+        "model": "NoAttn-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.002290629781782627,
+        "event": "ottawa",
+        "fold": 1,
+        "model": "PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.002264264039695263,
+        "event": "ottawa",
+        "fold": 1,
+        "model": "TimePINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.0044244276359677315,
+        "event": "ottawa",
+        "fold": 1,
+        "model": "TransPINN"
+      },
+      {
+        "selected_seed": 11,
+        "validation_score": 0.005115761887282133,
+        "event": "ottawa",
+        "fold": 2,
+        "model": "LSTM-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.004713777918368578,
+        "event": "ottawa",
+        "fold": 2,
+        "model": "NoAttn-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.001403189729899168,
+        "event": "ottawa",
+        "fold": 2,
+        "model": "PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0006285147974267602,
+        "event": "ottawa",
+        "fold": 2,
+        "model": "TimePINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.0034352631773799658,
+        "event": "ottawa",
+        "fold": 2,
+        "model": "TransPINN"
+      },
+      {
+        "selected_seed": 11,
+        "validation_score": 0.0028928685933351517,
+        "event": "ottawa",
+        "fold": 3,
+        "model": "LSTM-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0037582083605229855,
+        "event": "ottawa",
+        "fold": 3,
+        "model": "NoAttn-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0010316972620785236,
+        "event": "ottawa",
+        "fold": 3,
+        "model": "PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0005936832167208195,
+        "event": "ottawa",
+        "fold": 3,
+        "model": "TimePINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.0014663091860711575,
+        "event": "ottawa",
+        "fold": 3,
+        "model": "TransPINN"
+      },
+      {
+        "selected_seed": 11,
+        "validation_score": 0.018716109916567802,
+        "event": "sydney",
+        "fold": 1,
+        "model": "LSTM-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.007830786518752575,
+        "event": "sydney",
+        "fold": 1,
+        "model": "NoAttn-PINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.0019243445713073015,
+        "event": "sydney",
+        "fold": 1,
+        "model": "PINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.001732709351927042,
+        "event": "sydney",
+        "fold": 1,
+        "model": "TimePINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0036590874660760164,
+        "event": "sydney",
+        "fold": 1,
+        "model": "TransPINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.017281141132116318,
+        "event": "sydney",
+        "fold": 2,
+        "model": "LSTM-PINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.00435851514339447,
+        "event": "sydney",
+        "fold": 2,
+        "model": "NoAttn-PINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.004304295405745506,
+        "event": "sydney",
+        "fold": 2,
+        "model": "PINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.0037640584632754326,
+        "event": "sydney",
+        "fold": 2,
+        "model": "TimePINN"
+      },
+      {
+        "selected_seed": 11,
+        "validation_score": 0.0028299628756940365,
+        "event": "sydney",
+        "fold": 2,
+        "model": "TransPINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.003533782670274377,
+        "event": "sydney",
+        "fold": 3,
+        "model": "LSTM-PINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.0007491937140002847,
+        "event": "sydney",
+        "fold": 3,
+        "model": "NoAttn-PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0007407982484437525,
+        "event": "sydney",
+        "fold": 3,
+        "model": "PINN"
+      },
+      {
+        "selected_seed": 33,
+        "validation_score": 0.0005174041725695133,
+        "event": "sydney",
+        "fold": 3,
+        "model": "TimePINN"
+      },
+      {
+        "selected_seed": 22,
+        "validation_score": 0.00012790346227120608,
+        "event": "sydney",
+        "fold": 3,
+        "model": "TransPINN"
+      }
+    ]
+  },
+  "normalization": "test RMSE or MAE divided by max(training-channel RMS, 1.0)",
+  "bootstrap": {
+    "replicates": 5000,
+    "base_seed": 20260822,
+    "outer_unit": "event (equal-event macro)",
+    "inner_resampling": "folds and seeds with replacement",
+    "time_resampling": "paired circular blocks of ceil(sqrt(n_test))"
+  },
+  "checks": {
+    "complete_cartesian_grid": true,
+    "manifest_matches_grid": true,
+    "fold_qualified_predictions_only": true,
+    "identical_actuals_and_splits_across_models_and_seeds": true,
+    "positive_validation_and_test_activity_in_both_channels": true,
+    "reported_nrmse_matches_prediction_recomputation": true
+  },
+  "training_fold_rule": "L=max(channel-specific 99% cumulative-activity prefix); h=max(2,floor(0.1L)); expanding origins start at ceil(0.5L) and advance by h; retain first three candidates with positive validation and test totals in both channels",
+  "outputs": [
+    "output/tables/baseline_runs_verified.csv",
+    "output/tables/dataset_statistics.csv",
+    "output/tables/baseline_event_channel_summary.csv",
+    "output/tables/baseline_event_summary.csv",
+    "output/tables/baseline_event_seed_summary.csv",
+    "output/tables/baseline_macro_seed_summary.csv",
+    "output/tables/baseline_summary.csv",
+    "output/tables/model_resources.csv",
+    "output/tables/baseline_paired_block_bootstrap.csv",
+    "output/tables/validation_selected_initializations.csv",
+    "output/tables/validation_selected_runs.csv",
+    "output/tables/validation_selected_event_channel_summary.csv",
+    "output/tables/validation_selected_event_summary.csv",
+    "output/tables/validation_selected_summary.csv",
+    "output/tables/validation_selected_paired_block_bootstrap.csv",
+    "output/figures/baseline_rolling_nrmse.png",
+    "output/figures/baseline_rolling_nrmse.pdf",
+    "output/figures/multievent_rolling_forecasts.png",
+    "output/figures/multievent_rolling_forecasts.pdf",
+    "output/figures/validation_selected_overview.png",
+    "output/figures/validation_selected_overview.pdf",
+    "output/figures/validation_selected_event_channel_heatmap.png",
+    "output/figures/validation_selected_event_channel_heatmap.pdf",
+    "output/figures/all_seed_error_distribution.png",
+    "output/figures/all_seed_error_distribution.pdf",
+    "output/figures/validation_selected_forecasts.png",
+    "output/figures/validation_selected_forecasts.pdf",
+    "output/tables/analysis_manifest.json"
+  ]
+}

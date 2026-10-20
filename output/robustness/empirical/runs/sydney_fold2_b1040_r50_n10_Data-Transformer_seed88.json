@@ -1,0 +1,44 @@
+{
+  "run": {
+    "event": "sydney",
+    "fold": 2,
+    "model": "Data-Transformer",
+    "seed": 88,
+    "epochs_completed": 1040,
+    "parameter_count": 18619,
+    "best_epoch": 280,
+    "validation_score": 0.18462440371513367,
+    "runtime_seconds": 1.3669854062500235,
+    "runtime_kind": "amortized_gpu_batch",
+    "batch_id": "recovery_20260918T144718417634Z_stage2_sydney_fold2_b1040_Data-Transformer_batch130",
+    "batch_size": 32,
+    "batch_runtime_seconds": 43.74353300000075,
+    "test_nrmse": 0.32336685624662165,
+    "test_nmae": 0.256688113578598,
+    "parameters": null
+  },
+  "split": [
+    46,
+    53,
+    60
+  ],
+  "metric_denominator": [
+    5.9927492420641855,
+    2.377430106868229
+  ],
+  "scales": [
+    192.0,
+    76.0
+  ],
+  "retention": 0.5,
+  "noise": 0.1,
+  "budget": 1040,
+  "condition": "r50_n10",
+  "mask_seed": 1656498773,
+  "noise_seed": 856554470,
+  "input_sha256": "83711459511c7edc94e19a001f3abe933c947dd996f7932e699fd60425f29672",
+  "quadrature": [
+    1.0
+  ],
+  "reporting_bounds": null
+}

@@ -1,0 +1,69 @@
+{
+  "protocol": "metric-aligned-v1",
+  "torch": "2.11.0+cu128",
+  "python": "3.12.10",
+  "device": "cuda",
+  "gpu_name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+  "maximum_independent_batch_size": 64,
+  "models": [
+    "TransPINN",
+    "Matched-PINN",
+    "NoAttn-PINN",
+    "Data-Transformer",
+    "Data-MLP"
+  ],
+  "parameters": 18619,
+  "stage1_seeds": [
+    11,
+    22,
+    33
+  ],
+  "stage2_seeds": [
+    11,
+    22,
+    33,
+    44,
+    55,
+    66,
+    77,
+    88,
+    99,
+    110
+  ],
+  "retentions": [
+    100,
+    50,
+    25
+  ],
+  "noises": [
+    0,
+    5,
+    10
+  ],
+  "empirical_unique_fits": 5580,
+  "synthetic_neural_fits": 390,
+  "optimizer": "Adam 0.002 cosine->0.0001, per-model clip5",
+  "data_weight": 12,
+  "physics_weight": "0.2*min(1,epoch/120)",
+  "history_weight": 4,
+  "collocation_points": 96,
+  "normalization": "retained clean training RMS; total estimated as n_train/n_retained * retained clean sum",
+  "noise": "clipped additive Gaussian; clean training normalization fixed before corruption",
+  "validation": "macro incremental NRMSE, checked every10updates; no early stopping",
+  "source_sha256": {
+    "experiments\\run_robustness.py": "14552aa653c4823e5da27dce097773165c08e5f10fc278c3af1528e0c5215ea0",
+    "experiments\\robustness_models.py": "e0be68b1238c79dbc27e85576f3fcd7f91cfdb649bfef3a5aa9357ac98ec07c4",
+    "experiments\\run_fair_benchmark.py": "544ad397d1db566af9672050b83280b85fac642db1a12196b01fd1472444fd28",
+    "experiments\\run_multievent_baselines.py": "6a853f1769e1c79743752fb5bf08ad5f33d5c99559d49f113b3e240f4885eda1"
+  },
+  "protocol_sha256": {
+    "output\\benchmark_design\\experiment_protocol.md": "8e462c022eb181ca2befec66b2943c852d7625d92d7beca3486b69beee8f1863",
+    "output\\robustness\\execution_addendum.md": "6aa16c11de6152b58a8e4c711d2ae200ed35bc44a9f0db933b089e36381f8d86"
+  },
+  "data_sha256": {
+    "csdc.csv": "f3baebcc8a0544716cf3a78e15626b94c276ba7ebe182848f6476cce21c4346b",
+    "harvey.csv": "02f36301e5dbcfdec13a9df9c8fbbe1d67197ad0c703cff3dd2719fbe18fd659",
+    "ottawa.csv": "e60136fdd65843e1df2a77714115787361f514395782953fff4898159ed547ce",
+    "sydney.csv": "e9d98578a6ba586a16f0a34c3327fe15df5c1af22ea3e115e204ae5f340dab1f"
+  }
+}

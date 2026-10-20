@@ -1,0 +1,67 @@
+{
+  "device": "cpu",
+  "torch": "2.13.0+cpu",
+  "models": {
+    "TransPINN": {
+      "parameters_per_model": 18619,
+      "max_output_absolute_error": 0.0,
+      "max_gradient_absolute_error": 9.5367431640625e-07,
+      "max_adam_update_absolute_error": 1.7881393432617188e-07,
+      "preclip_gradient_norms": [
+        24.545061111450195,
+        37.092201232910156
+      ],
+      "all_parameters_gradient_connected": true,
+      "distinct_reporting_bounds_preserved": true
+    },
+    "Matched-PINN": {
+      "parameters_per_model": 18619,
+      "max_output_absolute_error": 0.0,
+      "max_gradient_absolute_error": 5.960464477539063e-08,
+      "max_adam_update_absolute_error": 2.9802322387695312e-08,
+      "preclip_gradient_norms": [
+        19.028820037841797,
+        18.553686141967773
+      ],
+      "all_parameters_gradient_connected": true,
+      "distinct_reporting_bounds_preserved": true
+    },
+    "NoAttn-PINN": {
+      "parameters_per_model": 18619,
+      "max_output_absolute_error": 0.0,
+      "max_gradient_absolute_error": 4.76837158203125e-07,
+      "max_adam_update_absolute_error": 1.4901161193847656e-08,
+      "preclip_gradient_norms": [
+        41.10082244873047,
+        22.483366012573242
+      ],
+      "all_parameters_gradient_connected": true,
+      "distinct_reporting_bounds_preserved": true
+    },
+    "Data-Transformer": {
+      "parameters_per_model": 18619,
+      "max_output_absolute_error": 1.862645149230957e-09,
+      "max_gradient_absolute_error": 2.9802322387695312e-08,
+      "max_adam_update_absolute_error": 5.732847057515755e-06,
+      "preclip_gradient_norms": [
+        2.7778356075286865,
+        5.466366767883301
+      ],
+      "all_parameters_gradient_connected": true,
+      "distinct_reporting_bounds_preserved": true
+    },
+    "Data-MLP": {
+      "parameters_per_model": 18619,
+      "max_output_absolute_error": 1.862645149230957e-09,
+      "max_gradient_absolute_error": 3.725290298461914e-09,
+      "max_adam_update_absolute_error": 2.4586915969848633e-07,
+      "preclip_gradient_norms": [
+        0.4983123242855072,
+        0.606751561164856
+      ],
+      "all_parameters_gradient_connected": true,
+      "distinct_reporting_bounds_preserved": true
+    }
+  },
+  "passed": true
+}

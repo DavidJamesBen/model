@@ -1,0 +1,25 @@
+{
+  "event": "ottawa",
+  "model": "LSTM-PINN",
+  "seed": 11,
+  "observed_bins": 34,
+  "reconstruction_score": 0.0003163852700382749,
+  "best_step": "lbfgs_20",
+  "physics_residual_rms": 0.05116374045610428,
+  "metrics": [
+    {
+      "channel": "rumor",
+      "nrmse": 0.0034116776670635525,
+      "log_rmse": 0.016681434501276543
+    },
+    {
+      "channel": "debunk",
+      "nrmse": 0.006221479971858857,
+      "log_rmse": 0.01744000933233665
+    }
+  ],
+  "adam_updates": 1200,
+  "lbfgs_max_iterations": 300,
+  "objective_evaluations": 1314,
+  "runtime_seconds": 31.86261569999624
+}

@@ -1,0 +1,22 @@
+{
+  "task": "Full observed-window offline reconstruction, not forecasting",
+  "window": "Same timestamp range as former fold 2; all bins are fitted",
+  "models": [
+    "PINN",
+    "LSTM-PINN",
+    "TimePINN",
+    "NoAttn-PINN",
+    "TransPINN"
+  ],
+  "seeds": [
+    11
+  ],
+  "adam_updates": 400,
+  "lbfgs_max_iterations": 0,
+  "loss": "12*(full-window RMS-normalized activity MSE + log1p activity MSE + 0.1*full-window sum-normalized cumulative MSE) + 2.0*physics + 4*history",
+  "checkpoint_selection": "Minimum complete training objective including physics and history, same rule for all models",
+  "source_sha256": "e987c4c21312cff2eac9552e2fd205af6acadb3d41db177f0f4be51de8feed49",
+  "device": "cuda",
+  "physics_weight": 2.0,
+  "select_total": true
+}

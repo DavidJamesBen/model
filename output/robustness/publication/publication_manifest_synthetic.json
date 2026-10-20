@@ -1,0 +1,17 @@
+{
+  "stage": "synthetic",
+  "font": "Times New Roman",
+  "font_file": "C:\\Windows\\Fonts\\times.ttf",
+  "source_sha256": {
+    "output\\robustness\\synthetic\\analysis\\test_consistent_h20\\summary.csv": "08647e8a6344e267dafca69c9a9cb57c14a0e1bec994e4cb7cfdefe081d0549f",
+    "output\\robustness\\synthetic\\analysis\\test_consistent_h40\\summary.csv": "1e4d7e4a48ce93ee4cf5b04c032a9709f31e77243bcaaf6fcba8c0c99b2e4015",
+    "output\\robustness\\synthetic\\analysis\\test_consistent_h80\\summary.csv": "4c7057dbf82df241b04627e014a606b947bebd43921b5518512a3e063ec038cc",
+    "output\\robustness\\synthetic\\analysis\\test_decay_mismatch_h20\\summary.csv": "c71e3f66da85bd30bf82ccd81238f08d6a9b12788a0b8f527d3212daa1b435fb",
+    "output\\robustness\\synthetic\\analysis\\test_decay_mismatch_h40\\summary.csv": "817ae674f617207dc5686ff59dd6bc3e56d48429513a93398e28c2126856b636",
+    "output\\robustness\\synthetic\\analysis\\test_decay_mismatch_h80\\summary.csv": "ac693dba086282517df48729aff63e21f0c5dbc8472f4540faa08a2187dc30a7",
+    "output\\robustness\\synthetic\\analysis\\test_consistent_h80\\recovery_summary.csv": "0da6e56b3bb410709cb4ad5395855a823d63307ed8251f3297847d997177ee63",
+    "output\\robustness\\synthetic\\analysis\\test_decay_mismatch_h80\\recovery_summary.csv": "076a222fc122c6597e780bd3f26a63769cce56c18a4adc1a98d6bb4be6b7a482"
+  },
+  "publication_script_sha256": "19b65d045670b5b4bd0e4056185ca85f7697e63173dbc1a49973dbd7895a8917",
+  "note": "Only complete audited groups are rendered. No training or analysis results are modified."
+}

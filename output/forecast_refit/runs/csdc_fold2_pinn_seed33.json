@@ -1,0 +1,13 @@
+{
+  "event": "csdc",
+  "fold": 2,
+  "model": "PINN",
+  "seed": 33,
+  "best_epoch": 20,
+  "validation_score": 0.9822543263435364,
+  "physics_residual_rms": 1.6526259183883667,
+  "runtime_seconds": 16.65518930001417,
+  "training_source_sha256": "629d26af528ecb06399556893217a33df9800cade5c872845346f4c05d3fb686",
+  "execution": "combined forward batch",
+  "epochs_budget": 800
+}

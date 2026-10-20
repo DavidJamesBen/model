@@ -1,0 +1,13 @@
+{
+  "event": "sydney",
+  "fold": 2,
+  "model": "NoAttn-PINN",
+  "seed": 11,
+  "best_epoch": 40,
+  "validation_score": 0.24458056688308716,
+  "physics_residual_rms": 0.620479941368103,
+  "runtime_seconds": 20.011907700041775,
+  "training_source_sha256": "629d26af528ecb06399556893217a33df9800cade5c872845346f4c05d3fb686",
+  "execution": "combined forward batch",
+  "epochs_budget": 800
+}

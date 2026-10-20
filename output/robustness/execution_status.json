@@ -1,0 +1,28 @@
+{
+  "updated_utc": "2026-09-18T17:55:16.962199+00:00",
+  "stage1": {
+    "completed": 360,
+    "expected": 360
+  },
+  "stage2": {
+    "completed": 5400,
+    "expected": 5400
+  },
+  "empirical_unique": {
+    "completed": 5580,
+    "expected": 5580
+  },
+  "synthetic_neural": {
+    "completed": 390,
+    "expected": 390
+  },
+  "synthetic_dde": {
+    "completed": 78,
+    "expected": 78
+  },
+  "neural_total": {
+    "completed": 5970,
+    "expected": 5970
+  },
+  "note": "Stage1 and Stage2 share 180 clean, 1040-update fits."
+}

@@ -1,0 +1,253 @@
+{
+  "passed": true,
+  "created_utc": "2026-09-18T13:41:23.670541+00:00",
+  "torch": "2.11.0+cu128",
+  "device": "cpu",
+  "threads": 2,
+  "selection": "First and last completed empirical JSON in lexical order per model, snapshotted before checking",
+  "available_empirical_counts_at_selection": {
+    "TransPINN": 63,
+    "Matched-PINN": 63,
+    "NoAttn-PINN": 63,
+    "Data-Transformer": 63,
+    "Data-MLP": 63
+  },
+  "empirical_checkpoints_checked": 10,
+  "synthetic_smoke_checkpoints_checked": 2,
+  "maximum_allowed_RMS_normalized_difference": 3e-05,
+  "maximum_RMS_normalized_difference": 4.761932819627306e-06,
+  "synthetic_scope": "Both existing smoke checkpoints use the same development dataset, with distinct channel bounds. Different inter-case bounds were checked separately by the serial/batched parity tests.",
+  "source_sha256": {
+    "check_robustness_checkpoints.py": "f489bea57ea00536930b3617199867a7ac4c83ccef403bbb73c8924a5c268de8",
+    "run_robustness.py": "14552aa653c4823e5da27dce097773165c08e5f10fc278c3af1528e0c5215ea0",
+    "robustness_models.py": "e0be68b1238c79dbc27e85576f3fcd7f91cfdb649bfef3a5aa9357ac98ec07c4",
+    "run_multievent_baselines.py": "6a853f1769e1c79743752fb5bf08ad5f33d5c99559d49f113b3e240f4885eda1",
+    "run_fair_benchmark.py": "544ad397d1db566af9672050b83280b85fac642db1a12196b01fd1472444fd28"
+  },
+  "records": [
+    {
+      "record": "output\\robustness\\empirical\\runs\\csdc_fold1_b1040_r100_n0_TransPINN_seed11.json",
+      "model": "TransPINN",
+      "event": "csdc",
+      "seed": 11,
+      "budget": 1040,
+      "smoke_run": false,
+      "max_absolute_prediction_difference": 0.0005756020545959473,
+      "max_prediction_difference_over_training_RMS": 9.123775064679836e-07,
+      "max_relative_bounds_difference": 0.0,
+      "checkpoint_sha256": "62ba1ff16d42fcdc7b9d03e8ccc853d1590ed128dac0e81da2d63abfcfc31f3e",
+      "prediction_sha256": "b2b5a1e7bf4aa2c49022418e93e4545d776869dd197b904c8bb822b89cd9bbd8",
+      "record_sha256": "a7ec2ee5af8b17ac4ca44f21fb0fa1efcbfa9486b5d9e11ad51d0c129754bd1b",
+      "saved_physical_coefficients_reproduced": true
+    },
+    {
+      "record": "output\\robustness\\empirical\\runs\\sydney_fold2_b260_r100_n0_TransPINN_seed33.json",
+      "model": "TransPINN",
+      "event": "sydney",
+      "seed": 33,
+      "budget": 260,
+      "smoke_run": false,
+      "max_absolute_prediction_difference": 4.976987840521474e-06,
+      "max_prediction_difference_over_training_RMS": 1.5007326303357944e-06,
+      "max_relative_bounds_difference": 0.0,
+      "checkpoint_sha256": "60a6da143e245649f442428a107fd0b12c0bed005d8ba4f08155743ecb1cb06a",
+      "prediction_sha256": "f2665c78efb0f390067cf8d6883e3000680566da4aeab70dc377146694de8055",
+      "record_sha256": "cb2a19c8448d99a3832ab7914fe03813f830862fb8adfe79f7e19bdc224c587d",
+      "saved_physical_coefficients_reproduced": true
+    },
+    {
+      "record": "output\\robustness\\empirical\\runs\\csdc_fold1_b1040_r100_n0_Matched-PINN_seed11.json",
+      "model": "Matched-PINN",
+      "event": "csdc",
+      "seed": 11,
+      "budget": 1040,
+      "smoke_run": false,
+      "max_absolute_prediction_difference": 0.0012951046228408813,
+      "max_prediction_difference_over_training_RMS": 1.530621263451634e-06,
+      "max_relative_bounds_difference": 0.0,
+      "checkpoint_sha256": "23450801b445d287c12986084ab7009acb2eecb8cc94ed70f503cda425108d25",
+      "prediction_sha256": "3af3836d31af1e1f6771135680fd5743cfb880e8c06980e7d870aac9efd912bc",
+      "record_sha256": "78c195616f7bc9e202bccce90d772961cdd1811824e43b9cb97b7da37d8652fb",
+      "saved_physical_coefficients_reproduced": true
+    },
+    {
+      "record": "output\\robustness\\empirical\\runs\\sydney_fold2_b260_r100_n0_Matched-PINN_seed33.json",
+      "model": "Matched-PINN",
+      "event": "sydney",
+      "seed": 33,
+      "budget": 260,
+      "smoke_run": false,
+      "max_absolute_prediction_difference": 4.3548643589019775e-06,
+      "max_prediction_difference_over_training_RMS": 8.46658473636861e-07,
+      "max_relative_bounds_difference": 0.0,
+      "checkpoint_sha256": "c85b875185b2ba6033e3f58285e02e6fe824dee8e6ea697c9b7b384aa4852b27",
+      "prediction_sha256": "f91bcfbb8dcae80576f7b7a1f951958c35722960c66b8181402f6cf0b453b5d6",
+      "record_sha256": "cefa08d5e3083b642ee40409a042a56e6ef1f0ce1ed28cc8a74e26c05a7a64dc",
+      "saved_physical_coefficients_reproduced": true
+    },
+    {
+      "record": "output\\robustness\\empirical\\runs\\csdc_fold1_b1040_r100_n0_NoAttn-PINN_seed11.json",
+      "model": "NoAttn-PINN",
+      "event": "csdc",
+      "seed": 11,
+      "budget": 1040,
+      "smoke_run": false,
+      "max_absolute_prediction_difference": 0.0017268061637878418,
+      "max_prediction_difference_over_training_RMS": 2.040828351268845e-06,
+      "max_relative_bounds_difference": 0.0,
+      "checkpoint_sha256": "006af5466deffc5ce15cdee65e0ca1ed9f8c1e59a8af29dca27cdc921653ce8d",
+      "prediction_sha256": "519656da309648fcacd06fa20e72f703a118ca82d20d69b8092cadc417f52f19",
+      "record_sha256": "7e4c3777dbd377d32984ddec758f9d79d8a45eb87bd5d7599cc6d8442faae6ea",
+      "saved_physical_coefficients_reproduced": true
+    },
+    {
+      "record": "output\\robustness\\empirical\\runs\\sydney_fold2_b260_r100_n0_NoAttn-PINN_seed33.json",
+      "model": "NoAttn-PINN",
+      "event": "sydney",
+      "seed": 33,
+      "budget": 260,
+      "smoke_run": false,
+      "max_absolute_prediction_difference": 7.465481758117676e-06,
+      "max_prediction_difference_over_training_RMS": 1.4514145262346188e-06,
+      "max_relative_bounds_difference": 0.0,
+      "checkpoint_sha256": "843d4064bdd5cf3dbc8b52d74e32f4a8c9faf6ca9eed9f52151d4aa95ba02261",
+      "prediction_sha256": "e33668bb3ff2fc9828aa76a2f8a77b1557980974da281d9666c9423287c1a518",
+      "record_sha256": "e225b88374caa346e53b947b92a9520bc23b99351777881d40c6e370e66fcc69",
+      "saved_physical_coefficients_reproduced": true
+    },
+    {
+      "record": "output\\robustness\\empirical\\runs\\csdc_fold1_b1040_r100_n0_Data-Transformer_seed11.json",
+      "model": "Data-Transformer",
+      "event": "csdc",
+      "seed": 11,
+      "budget": 1040,
+      "smoke_run": false,
+      "max_absolute_prediction_difference": 0.004029214382171631,
+      "max_prediction_difference_over_training_RMS": 4.761932819627306e-06,
+      "max_relative_bounds_difference": 0.0,
+      "checkpoint_sha256": "f0927c9274bc7cc8f22bfc58e33531bdd89557ff56503313411ed505365a7a12",
+      "prediction_sha256": "a143ef96d92bbca972a7a04a7f57d5ae1c3000ca44c19ccb6a8f38cd42acb303",
+      "record_sha256": "097184e2b6cb2d41aeb5a9872b1ee247efb5d25da2b4916a9175a4c159405b83"
+    },
+    {
+      "record": "output\\robustness\\empirical\\runs\\sydney_fold2_b260_r100_n0_Data-Transformer_seed33.json",
+      "model": "Data-Transformer",
+      "event": "sydney",
+      "seed": 33,
+      "budget": 260,
+      "smoke_run": false,
+      "max_absolute_prediction_difference": 3.732740879058838e-06,
+      "max_prediction_difference_over_training_RMS": 7.503663151678972e-07,
+      "max_relative_bounds_difference": 0.0,
+      "checkpoint_sha256": "eb045c56764cd77c401beed23db8f888961bb3b148fd46c92a8a7b4903393961",
+      "prediction_sha256": "f2a2dbee50c0f82d2bb425ba58359def46835b5f550de65b0eadb5c3f4e50d4d",
+      "record_sha256": "b1f166fdf2ed06d75679aebbb18be25cb43a4bc3df6e49313c017c63d3b49eef"
+    },
+    {
+      "record": "output\\robustness\\empirical\\runs\\csdc_fold1_b1040_r100_n0_Data-MLP_seed11.json",
+      "model": "Data-MLP",
+      "event": "csdc",
+      "seed": 11,
+      "budget": 1040,
+      "smoke_run": false,
+      "max_absolute_prediction_difference": 0.0027341097593307495,
+      "max_prediction_difference_over_training_RMS": 3.2313115561756715e-06,
+      "max_relative_bounds_difference": 0.0,
+      "checkpoint_sha256": "fd5eaad9904e1096a83d8ef49908a652dd6f9f6d15eb799b28ed501e3dd3286d",
+      "prediction_sha256": "6d570a67f64bce685a3412b01b87846491ba6ac912560e5a417a13d7bfd7367e",
+      "record_sha256": "465978aa859066de864d0ac7e3201aaa1560f4f095269989f8c9f1d6a1e579fd"
+    },
+    {
+      "record": "output\\robustness\\empirical\\runs\\sydney_fold2_b260_r100_n0_Data-MLP_seed33.json",
+      "model": "Data-MLP",
+      "event": "sydney",
+      "seed": 33,
+      "budget": 260,
+      "smoke_run": false,
+      "max_absolute_prediction_difference": 2.4884939193725586e-06,
+      "max_prediction_difference_over_training_RMS": 8.575615030490255e-07,
+      "max_relative_bounds_difference": 0.0,
+      "checkpoint_sha256": "d070ab41543f1d2dfe27b441fecaba08becf7d7f1171c3f232616ffdad926e7a",
+      "prediction_sha256": "451bc3f7ac1ec14de4289c3c246b7cecc320f6e783e04ed7a80028c4dc16e20d",
+      "record_sha256": "b1e39b4fa4ffd606a6d22aa92f48aa59345cf03bbb6d378be7da29c86d533c9e"
+    },
+    {
+      "record": "tmp\\robustness_cuda_smoke\\synthetic_neural\\runs\\development_20260921_consistent_fold1_b10_r100_n0_TransPINN_seed1.json",
+      "model": "TransPINN",
+      "event": "development_20260921_consistent",
+      "seed": 1,
+      "budget": 10,
+      "smoke_run": true,
+      "max_absolute_prediction_difference": 9.134450584813436e-07,
+      "max_prediction_difference_over_training_RMS": 3.259462075830802e-07,
+      "max_relative_bounds_difference": 2.517746600094739e-08,
+      "checkpoint_sha256": "b8e9175c097ec1b8a1e5e9ec4982390441b7a1ad39f28e1b06c81767536bbe71",
+      "prediction_sha256": "43abb1c8fbf1eba94c79911d454058b4da82c498ede6a1b3f45a8f98913e78b4",
+      "record_sha256": "b5a9bf9a9e75d6301f57de1c1e39c4cf49e88eeac1c4b116d75b5df98082b5a7",
+      "saved_physical_coefficients_reproduced": true,
+      "reporting_bounds": [
+        [
+          0.04460625438735378,
+          2.1411002105929815
+        ],
+        [
+          0.21741691779128305,
+          10.436012053981587
+        ]
+      ],
+      "raw_reporting_coefficients": [
+        0.8439119919206994,
+        0.8400663448566369
+      ],
+      "normalized_reporting_coefficients": [
+        0.15057501196861267,
+        0.7305785417556763
+      ],
+      "raw_to_normalized_factors": [
+        0.17842501754941512,
+        0.8696676711651322
+      ],
+      "checkpoint_bounds_override_constructor_bounds": true,
+      "raw_coefficient_round_trip_verified": true
+    },
+    {
+      "record": "tmp\\robustness_cuda_smoke\\synthetic_neural\\runs\\development_20260921_consistent_fold1_b10_r100_n0_Matched-PINN_seed1.json",
+      "model": "Matched-PINN",
+      "event": "development_20260921_consistent",
+      "seed": 1,
+      "budget": 10,
+      "smoke_run": true,
+      "max_absolute_prediction_difference": 1.0439372095660815e-06,
+      "max_prediction_difference_over_training_RMS": 3.7250995147824446e-07,
+      "max_relative_bounds_difference": 2.517746600094739e-08,
+      "checkpoint_sha256": "a72874fd883617f7d940c62fdbcb3368c342f15a72b2e7af62cc887ce1c25a13",
+      "prediction_sha256": "7a6db3e5acd48c42b05d259d1001f671f3fde3e04d47f51c372572eb0445558d",
+      "record_sha256": "45227368ce4ee85922852c83bf59406c6615ac2023435d03654a6d69e66a5618",
+      "saved_physical_coefficients_reproduced": true,
+      "reporting_bounds": [
+        [
+          0.04460625438735378,
+          2.1411002105929815
+        ],
+        [
+          0.21741691779128305,
+          10.436012053981587
+        ]
+      ],
+      "raw_reporting_coefficients": [
+        0.8439225148077711,
+        0.8404058784739112
+      ],
+      "normalized_reporting_coefficients": [
+        0.1505768895149231,
+        0.7308738231658936
+      ],
+      "raw_to_normalized_factors": [
+        0.17842501754941512,
+        0.8696676711651322
+      ],
+      "checkpoint_bounds_override_constructor_bounds": true,
+      "raw_coefficient_round_trip_verified": true
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "fits": 72,
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "device": "cpu",
+  "threads": 4,
+  "torch": "2.13.0+cpu",
+  "source_sha256": {
+    "experiments\\run_delay_ablation.py": "823238f3bcdb0beba359002b718e3dca2dc31466281550ac6fddfdf862b0c247",
+    "experiments\\run_multievent_baselines.py": "c83ef5854f266af6bdea25e80e1652ca8427c1b9d2277f5b1b62f70525b4f28e"
+  },
+  "selection": "validation only",
+  "intervention": "tau=0, exp(-a_E*tau)=1, retain instantaneous cohort transfer"
+}

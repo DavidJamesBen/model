@@ -1,0 +1,13 @@
+{
+  "analysis_role": "Secondary post-hoc scoring-scale diagnostic, authorized after stage1 results",
+  "reference_denominator": "max(RMS(all original unperturbed training bins),1), per event/fold/channel",
+  "metric": "Incremental test NRMSE only",
+  "training_information": "Full original training labels enter diagnostic scoring only; no training or checkpoint changes",
+  "selection": "Reuse original validation-selected complete replicate for every event/fold/model",
+  "aggregation": "Equal channels, then folds, then events; sample SD across ten paired replicate seeds",
+  "selected_SD": "Not defined across seeds after selecting one replicate; left missing",
+  "coverage": "All9 retention/noise conditions, all5 models, both all-seed and original-selected views",
+  "inference": "Point estimates and sample SD only; no new intervals, p-values, or significance claims",
+  "limitation": "Shared scoring scales do not remove selection of different mask/noise realizations",
+  "source_sha256": "9d65f0d09703e4a5f6cae9d84819584a9346dbadf32956360de342d2d189802c"
+}

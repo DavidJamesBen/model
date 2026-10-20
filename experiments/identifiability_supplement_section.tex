@@ -1,0 +1,83 @@
+\section{Structural and practical parameter identifiability}
+\label{sec:identifiability}
+The observations in Eq.~\eqref{main-eq:binned_observation} of the main article are two activity series, not direct measurements of the seven human compartments or either media state. We therefore examine the observation map before interpreting any inverse estimate. A product in one transition rate does not by itself prove that its factors are unidentifiable: those factors may enter other equations differently. Here, non-identifiability follows from an explicit symmetry of the complete delay model.
+
+\begin{theorem}[Unidentifiable media scale]
+\label{thm:media_scale}
+Suppose the media scale, its history, and its associated coefficients are unknown. For any $c>0$, define
+\begin{equation}
+\begin{aligned}
+\widetilde M_i&=cM_i,\quad\widetilde\chi=c\chi,\quad\widetilde\rho=\rho/c^2,\\
+(\widetilde\varpi_i,\widetilde\kappa_i,\widetilde\delta_i)
+  &=(\varpi_i,\kappa_i,\delta_i)/c,\\
+(\widetilde q_R,\widetilde q_D)&=(q_R,q_D)/c,\\
+(\widetilde\eta_i,\widetilde v_i)&=c(\eta_i,v_i),
+\end{aligned}
+\label{eq:media_symmetry}
+\end{equation}
+for $i=1,2$, with media history multiplied by $c$. Leave the human states, their history, $\tau$, $q_U$, decay rates, and reporting scales unchanged. These distinct parameter vectors generate identical observations. Thus the unrestricted inverse problem is structurally non-identifiable.
+\end{theorem}
+\begin{proof}
+The transformation leaves $\rho M_1M_2$, $\varpi_iM_i$, $\kappa_iM_i$, $\delta_iM_i$, $q_RM_2$, and $q_DM_1$ unchanged. It also preserves $\chi/(\chi+M_1+M_2)$ and $\Gamma_U$. Hence $p$, all three $\Gamma$ rates, the incidence, and $Q_\tau$ are unchanged at both current and delayed times. Each human equation is identical, whereas each media equation and its left-hand side are multiplied by $c$. Both entry fluxes and their bin integrals are consequently identical. The same transformation preserves the history-compatibility inequality. This constructs a continuous family of indistinguishable solutions, including arbitrarily close parameter vectors.
+\end{proof}
+
+Writing $m_i=M_i/\chi$ exposes invariant combinations such as $q_R\chi$, $q_D\chi$, $\varpi_i\chi$, $\kappa_i\chi$, $\delta_i\chi$, $\rho\chi^2$, $\eta_i/\chi$, and $v_i/\chi$. These combinations remove this scale ambiguity; their individual identifiability does not follow automatically. Finding one symmetry proves non-identifiability, but removing it does not exclude other symmetries~\cite{villaverde2021scaling}. Our symbolic audit verifies all nine transformed state equations, both observation fluxes, and the intermediate rate identities exactly.
+
+\subsection{Conditional estimation and complete parameter specification}
+Table~\ref{tab:empirical_parameters} specifies every fixed value, estimated range, and initialization used in the empirical code. Fixed values are modeling assumptions, not independent measurements or fitted values with zero uncertainty. The common media history and fixed media coefficients choose a scale and remove the family in Theorem~\ref{thm:media_scale}. Only
+\[
+\vartheta=(\beta_1,\beta_2,\tau_s,q_R,q_D,\chi,
+\widetilde s_R,\widetilde s_D)
+\]
+is adjusted. The last two quantities are the implementation's reporting gains after bin width and training-count normalization are absorbed. All rates in this table use normalized time: for a fold of duration $T_e$ hours, $k_{\rm hourly}=k_{\rm normalized}/T_e$ and $\tau_{\rm hours}=T_e\tau_s$. No Bayesian priors are used. Table~\ref{tab:neural_parameters} reports the actual validation-selected neural estimates across all four events; its fold ranges describe variability, not confidence intervals.
+
+\input{experiments/identifiability_parameter_tables.tex}
+
+\subsection{Local sensitivity of the DDE observation map}
+We integrate the DDE independently of the neural network and form the training-only elasticity matrix
+\begin{equation}
+S_{(j,k),\ell}=\frac{\partial\log g_k(s_j;\vartheta)}
+ {\partial\log\vartheta_\ell},\qquad k\in\{R,D\},
+\label{eq:ident_sensitivity}
+\end{equation}
+where $g$ uses the same right-endpoint observation convention as the empirical solver. Central log-parameter perturbations of $10^{-3}$ are applied at each of the 12 validation-selected event--fold parameter vectors. At relative singular-value cutoff $10^{-6}$, all 12 matrices have rank eight. However, their condition numbers range from $2.38\times10^5$ to $4.93\times10^5$; only four or five singular directions exceed $10^{-3}$ of the largest singular value. Halving the perturbation and integration step changes the sensitivity matrix by less than $1.5\times10^{-7}$ in relative Frobenius norm. The full rank is therefore numerically reproducible but coexists with strong practical confounding. It is a local diagnostic under fixed history and nuisance coefficients, not a proof of global structural identifiability.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=.98\columnwidth]{output/identifiability/sensitivity_spectrum.pdf}
+\caption{Training-only sensitivity spectra for the prespecified middle fold. All eight singular values exceed the $10^{-6}$ relative cutoff, but several directions are weak. Dashed and dotted lines mark $10^{-3}$ and $10^{-6}$.}
+\label{fig:ident_spectrum}
+\end{figure}
+
+\subsection{Profile likelihood and parameter uncertainty}
+A neural parameter estimate is not automatically a likelihood estimate for the DDE. We therefore fit the independently integrated model to the training block of the prespecified middle fold of each event. Only training observations enter the likelihood. These four diagnostic fits are separate from the forecasting benchmark. With $A_k$ the training total, $d_k=\max\{1,\operatorname{RMS}(Y_{k,\mathrm{train}})\}$, and $n=2n_{\rm tr}$, define
+\begin{equation}
+\operatorname{RSS}(\vartheta)=\sum_{j,k}
+\left[\frac{g_k(s_j;\vartheta)-Y_{k,j}/A_k}{d_k/A_k}\right]^2.
+\label{eq:ident_rss}
+\end{equation}
+We use a working Gaussian error model with a common unknown variance for these standardized residuals. Six starting points are optimized within the declared bounds: the archived neural estimate, the geometric midpoint of the bounds, and four log-uniform draws with seed 20260918. For each parameter value $a$, all seven remaining parameters are re-optimized, giving $\operatorname{RSS}_{\ell}(a)$. Following the profile-likelihood approach~\cite{raue2009identifiability}, the nominal 95\% support interval containing the best fit satisfies
+\begin{equation}
+n\log\!\left[\frac{\operatorname{RSS}_{\ell}(a)}
+ {\operatorname{RSS}(\widehat\vartheta)}\right]\leq3.841.
+\label{eq:ident_profile}
+\end{equation}
+We evaluate 17 log-spaced values plus the optimum, use two nuisance-parameter starts at each value, and refine threshold crossings numerically. A fixed RK4 method of steps uses spacing $1/4000$ and linear interpolation of past states. Step refinement and an independent adaptive integrator check the observation map. These are conditional, pointwise, asymptotic intervals. They are not neural prediction bands or Bayesian credible intervals. Their coverage is not calibrated for serial dependence, sparse counts, or boundary estimates.
+
+\begin{table*}[t]
+\centering\scriptsize
+\caption{Independent DDE diagnostic estimates and nominal 95\% profile support intervals, using training data from fold 2 only. All values use the normalized units in Table~\ref{tab:empirical_parameters}. An asterisk marks an endpoint imposed by the search bound because no likelihood crossing was found. An interval spanning both bounds is not evidence that the parameter is well determined. These intervals belong to the DDE fits, not the neural estimates in Table~\ref{tab:neural_parameters}.}
+\label{tab:profile_parameters}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lcccc}
+\toprule Parameter & Harvey & CSDC & Ottawa & Sydney\\\midrule
+\input{output/identifiability/profile_rows.tex}
+\\[-6pt]\bottomrule
+\end{tabular}
+\end{table*}
+
+The profile curves are shown in Fig.~\ref{main-fig:ident_profiles} of the main article.
+
+\input{output/identifiability/results_discussion.tex}
+
+These results answer different identifiability questions. The unrestricted model fails structural identifiability by an exact symmetry. Fixing the media scale makes the eight-parameter numerical sensitivity map locally full rank at the evaluated points, but does not make its weak directions practically estimable. We retain the archived neural fits as forecasting models conditional on the stated assumptions; we do not interpret their latent parameters as uniquely recovered mechanisms. Hidden trajectories $E,H,U,M_1,M_2$ require independent exposure logs, fact-check records, surveys, or media measurements. Direct media-scale observations and informative exposure/history data would help remove the identified ambiguity.

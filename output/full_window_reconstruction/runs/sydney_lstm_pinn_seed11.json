@@ -1,0 +1,25 @@
+{
+  "event": "sydney",
+  "model": "LSTM-PINN",
+  "seed": 11,
+  "observed_bins": 60,
+  "reconstruction_score": 0.0009518253844308368,
+  "best_step": "lbfgs_140",
+  "physics_residual_rms": 0.11627824604511261,
+  "metrics": [
+    {
+      "channel": "rumor",
+      "nrmse": 0.011890768586078456,
+      "log_rmse": 0.037528111430569645
+    },
+    {
+      "channel": "debunk",
+      "nrmse": 0.008863991608306034,
+      "log_rmse": 0.01659309785774288
+    }
+  ],
+  "adam_updates": 1200,
+  "lbfgs_max_iterations": 300,
+  "objective_evaluations": 1429,
+  "runtime_seconds": 24.78160539997043
+}

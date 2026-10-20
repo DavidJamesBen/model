@@ -1,0 +1,27 @@
+{
+  "stage": "stage2",
+  "font": "Times New Roman",
+  "font_file": "C:\\Windows\\Fonts\\times.ttf",
+  "source_sha256": {
+    "output\\robustness\\empirical\\analysis\\stage2_r100_n0\\paired_intervals.csv": "0bdaf2bdc6b684f55ce6932738e9d18135558a94dca5513b2ce47b8b4e33f24c",
+    "output\\robustness\\empirical\\analysis\\stage2_r100_n0\\summary.csv": "e15cdeb4919bab417bc3a42391731aae7031fc0d21cd25bcb1b5d6939598ef8c",
+    "output\\robustness\\empirical\\analysis\\stage2_r100_n5\\paired_intervals.csv": "cae1edc8c722ad46fdd7db00aff5b5dfcdbebf009cb612beb2e033e3543d4282",
+    "output\\robustness\\empirical\\analysis\\stage2_r100_n5\\summary.csv": "3117b4005f56bb41ba0d15428d7b5a0cb81ba42f89fea26f5939b3b6aac93a13",
+    "output\\robustness\\empirical\\analysis\\stage2_r100_n10\\paired_intervals.csv": "90781e78d1be244c24c7e1911a1f77ba1b5d4c89a07703325c8ee0baa8f1890e",
+    "output\\robustness\\empirical\\analysis\\stage2_r100_n10\\summary.csv": "6593c81e0c7dd197d5c6a245e1f6dc8fabc50e09236bc0f5a4d82252191b2cbd",
+    "output\\robustness\\empirical\\analysis\\stage2_r50_n0\\paired_intervals.csv": "4611b7a7778113d45f85134896c637d30999603db1231a0eadc6cad184805fe8",
+    "output\\robustness\\empirical\\analysis\\stage2_r50_n0\\summary.csv": "40489df518563d884b4dc0bf5a2292d396004f687cde9b96b82e5bafaacc5532",
+    "output\\robustness\\empirical\\analysis\\stage2_r50_n5\\paired_intervals.csv": "4cded2dd875191a7a4e163bef823f9ce8ea22e92fad45fd8be790fe287e6459d",
+    "output\\robustness\\empirical\\analysis\\stage2_r50_n5\\summary.csv": "5d8ca95169ed7a3aa10f31f30a47995c726f4ecdaf5b59e5d140556f6d4e1fe4",
+    "output\\robustness\\empirical\\analysis\\stage2_r50_n10\\paired_intervals.csv": "a6fc1c2195aaa43066837ac2ca8004209a09eb8ef1bf9952cd33d302b05d9d7e",
+    "output\\robustness\\empirical\\analysis\\stage2_r50_n10\\summary.csv": "515d722c247e7685d17d4ad0a1dbaf3eaf6360e9b815af690a6c8a6004587923",
+    "output\\robustness\\empirical\\analysis\\stage2_r25_n0\\paired_intervals.csv": "20c1066bad45d0f14dceb1a64dc9e0d1ef898784c8efc3b1ea15f022c6da64f7",
+    "output\\robustness\\empirical\\analysis\\stage2_r25_n0\\summary.csv": "0f2a10184eb9d2dc790912ca2c9ee6f3807267e4f6dfdf175737464ee5dd9538",
+    "output\\robustness\\empirical\\analysis\\stage2_r25_n5\\paired_intervals.csv": "88d30cbb9e4f4b5754487aa0dea73c335d3ea3e5f7caa7fe9f07e9360f87e016",
+    "output\\robustness\\empirical\\analysis\\stage2_r25_n5\\summary.csv": "0d6d4933a22220ad993d3ab25a1302d11e27c99e10a8d53f1088e2aa4beea6be",
+    "output\\robustness\\empirical\\analysis\\stage2_r25_n10\\paired_intervals.csv": "730296276d69681da77dd8a14b8b33f76c49d754110d77b12e3d2c3c3fb46602",
+    "output\\robustness\\empirical\\analysis\\stage2_r25_n10\\summary.csv": "d5d922c0d50ceb7987862a24d5182bf04c613f12a4fd8cebc5b22659515e00d1"
+  },
+  "publication_script_sha256": "19b65d045670b5b4bd0e4056185ca85f7697e63173dbc1a49973dbd7895a8917",
+  "note": "Only complete audited groups are rendered. No training or analysis results are modified."
+}

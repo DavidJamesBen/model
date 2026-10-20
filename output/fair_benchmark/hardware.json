@@ -1,0 +1,6 @@
+{
+  "cpu": "AMD Ryzen 9 7845HX with Radeon Graphics",
+  "logical_processors": 24,
+  "os": "Microsoft Windows NT 10.0.26100.0",
+  "torch_threads": 4
+}

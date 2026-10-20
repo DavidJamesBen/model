@@ -1,0 +1,28 @@
+{
+  "event": "harvey",
+  "model": "NoAttn-PINN",
+  "seed": 11,
+  "observed_bins": 315,
+  "reconstruction_score": 0.052910873535132213,
+  "selection_score": 0.644151508808136,
+  "physics_weight": 2.0,
+  "select_total": true,
+  "best_step": "adam_400",
+  "physics_residual_rms": 0.0581270232796669,
+  "metrics": [
+    {
+      "channel": "rumor",
+      "nrmse": 0.11978797561544921,
+      "log_rmse": 0.20348868892829547
+    },
+    {
+      "channel": "debunk",
+      "nrmse": 0.14485478642089059,
+      "log_rmse": 0.17053454869151458
+    }
+  ],
+  "adam_updates": 400,
+  "lbfgs_max_iterations": 0,
+  "objective_evaluations": 420,
+  "runtime_seconds": 9.854930400033481
+}

@@ -1,0 +1,7 @@
+{
+  "representative_inputs_checked": 1080,
+  "noise_levels_share_masks": true,
+  "retention_masks_nested": true,
+  "unobserved_labels_excluded": true,
+  "clean_observed_labels_match_source": true
+}

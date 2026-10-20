@@ -1,0 +1,38 @@
+{
+  "seed": 11,
+  "parameters": {
+    "beta_1": 1.8626526528005203,
+    "beta_2": 0.2533582717448479,
+    "tau_normalized": 0.045448972867912586,
+    "q_R": 0.27378515807315146,
+    "q_D": 0.539897083500785,
+    "chi": 1.2877773919868187,
+    "reporting_R": 4.648650084633245,
+    "reporting_D": 1.5621328752358916
+  },
+  "initial_parameters": {
+    "beta_1": 0.20671267082924843,
+    "beta_2": 0.49850573243173135,
+    "tau_normalized": 0.062207058797540786,
+    "q_R": 0.06970476892023672,
+    "q_D": 0.11155511519864177,
+    "chi": 1.8764076671588998,
+    "reporting_R": 0.38775432397486487,
+    "reporting_D": 0.47683184765613706
+  },
+  "runtime_seconds": 1.183269799919799,
+  "success": true,
+  "status": 1,
+  "message": "`gtol` termination condition is satisfied.",
+  "nfev": 266,
+  "njev": 203,
+  "actual_residual_calls": 1890,
+  "optimality": 7.612672025569373e-09,
+  "training_rss": 1.2506857587877358e-18,
+  "training_nrmse": 1.1344625365082447e-10,
+  "validation_nrmse": 5.256889021310347e-10,
+  "relative_observation_mesh_refinement": 1.684800554810159e-10,
+  "maximum_state_mesh_refinement": 2.7481133688112003e-12,
+  "minimum_predicted_state": 0.005,
+  "mass_error": 5.551115123125783e-15
+}

@@ -1,0 +1,11 @@
+{
+  "selected_seed": 11,
+  "criterion": "Validation-only macro NRMSE",
+  "training_bins": 100,
+  "validation_bins": 20,
+  "horizons": [
+    20,
+    40,
+    80
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "run": {
+    "event": "sydney",
+    "fold": 3,
+    "model": "TransPINN",
+    "seed": 88,
+    "epochs_completed": 1040,
+    "parameter_count": 18619,
+    "best_epoch": 160,
+    "validation_score": 0.16930842399597168,
+    "runtime_seconds": 5.307188056520713,
+    "runtime_kind": "amortized_gpu_batch",
+    "batch_id": "recovery_20260918T144718417634Z_stage2_sydney_fold3_b1040_TransPINN_batch137",
+    "batch_size": 23,
+    "batch_runtime_seconds": 122.0653252999764,
+    "test_nrmse": 0.41625406896741013,
+    "test_nmae": 0.3148028647705775,
+    "parameters": [
+      1.9914300441741943,
+      1.0389111042022705,
+      0.06519069522619247,
+      1.0140964984893799,
+      1.0798771381378174,
+      1.1085728406906128,
+      0.8385534882545471,
+      0.839917778968811
+    ]
+  },
+  "split": [
+    53,
+    60,
+    67
+  ],
+  "metric_denominator": [
+    6.273527146441853,
+    3.525417908358019
+  ],
+  "scales": [
+    246.07142857142858,
+    113.57142857142857
+  ],
+  "retention": 0.25,
+  "noise": 0.1,
+  "budget": 1040,
+  "condition": "r25_n10",
+  "mask_seed": 323593987,
+  "noise_seed": 1968677614,
+  "input_sha256": "ffb3f334c039b38090e6ea845bda11e7b5e840b18a376fa9b602c42c772a94fc",
+  "quadrature": [
+    1.0
+  ],
+  "reporting_bounds": null
+}

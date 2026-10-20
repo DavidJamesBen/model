@@ -1,0 +1,44 @@
+\begin{table*}[t]
+\centering\scriptsize
+\caption{Complete empirical parameter specification. Time unit $\mathsf T$ denotes one normalized event horizon; media indices and human proportions are dimensionless. Bounds are hard constraints, not priors. Fixed quantities have no fitted uncertainty interval. Estimated values are reported in Tables~\ref{tab:neural_parameters} and~\ref{tab:profile_parameters}.}
+\label{tab:empirical_parameters}
+\begin{tabular}{lllll}
+\toprule Quantity & Role & Normalized unit & Fixed value or allowed range & Neural initialization\\\midrule
+$\beta_1$ & estimated exposure rate & $\mathsf T^{-1}$ & $[0.10,8.00]$ & 2.4700\\
+$\beta_2$ & estimated exposure rate & $\mathsf T^{-1}$ & $[0.05,5.00]$ & 1.2875\\
+$\tau_s$ & estimated processing delay & $\mathsf T$ & $[0.01,0.22]$ & 0.0730\\
+$q_R,q_D$ & estimated adoption coefficients & $\mathsf T^{-1}$ & each $[0.05,4.00]$ & each 1.0375\\
+$\chi$ & estimated fatigue threshold & 1 & $[0.05,3.00]$ & 1.0825\\
+$\widetilde s_R,\widetilde s_D$ & estimated normalized reporting gains & 1 & each $[0.25,12.00]$ & each 0.8375\\\midrule
+$\Lambda,d_h$ & closed-event recruitment and exit & $\mathsf T^{-1}$ & both 0 & fixed\\
+$\lambda$ & recruitment allocation & 1 & inactive because $\Lambda=0$ & not fitted\\
+$N$ & human population normalization & 1 & 1 & fixed\\
+$\varepsilon$ & relative exposure susceptibility & 1 & 0.55 & fixed\\
+$\kappa_1,\kappa_2$ & media-driven susceptibility transitions & $\mathsf T^{-1}$ & 0.40, 0.25 & fixed\\
+$\xi_E,\sigma_E,\gamma_E$ & direct exits from exposure & $\mathsf T^{-1}$ & 0.80, 0.40, 0.20 & fixed\\
+$a_E$ & total competing exit rate & $\mathsf T^{-1}$ & 1.40 (derived) & not fitted\\
+$\rho$ & cohort-pathway gate coefficient & 1 & 5.00 & fixed\\
+$\mu,\alpha$ & withdrawal rates & $\mathsf T^{-1}$ & both 0.25 & fixed\\
+$\delta_1,\delta_2$ & media-driven $R/D$ conversion & $\mathsf T^{-1}$ & 0.50, 0.25 & fixed\\
+$\eta_1,\eta_2$ & media generation & $\mathsf T^{-1}$ & both 0.60 & fixed\\
+$v_1,v_2$ & external media input & $\mathsf T^{-1}$ & both 0.20 & fixed\\
+$d_{M_1},d_{M_2}$ & media decay & $\mathsf T^{-1}$ & both 1.00 & fixed\\
+$\varpi_1,\varpi_2$ & cross-media inhibition & 1 & both 1.00 & fixed\\
+$q_U$ & fatigue withdrawal coefficient & $\mathsf T^{-1}$ & 0.30 & fixed\\
+$\phi_{S_u,S_e,E,H,R,D,U}$ & constant human history on $[-\tau_s,0]$ & 1 & $(.93,.03,.015,.005,.010,.005,.005)$ & fixed\\
+$\phi_{M_1,M_2}$ & constant media history on $[-\tau_s,0]$ & 1 & $(.20,.20)$ & fixed\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering\scriptsize
+\caption{Validation-selected TransPINN parameter values: median [minimum, maximum] over the three rolling folds of each event. These describe the fitted neural coefficients in the forecasting experiment, not physical parameter confidence intervals. All 12 vectors and all eight quantities are archived.}
+\label{tab:neural_parameters}
+\setlength{\tabcolsep}{7pt}
+\begin{tabular}{lcccc}
+\toprule Parameter & Harvey & CSDC & Ottawa & Sydney\\\midrule
+\input{output/identifiability/neural_rows.tex}
+\\[-6pt]\bottomrule
+\end{tabular}
+\end{table*}

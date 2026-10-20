@@ -1,0 +1,75 @@
+{
+  "parameters": [
+    "beta_1",
+    "beta_2",
+    "tau_normalized",
+    "q_R",
+    "q_D",
+    "chi",
+    "reporting_R",
+    "reporting_D"
+  ],
+  "bounds": [
+    [
+      0.1,
+      8.0
+    ],
+    [
+      0.05,
+      5.0
+    ],
+    [
+      0.01,
+      0.22
+    ],
+    [
+      0.05,
+      4.0
+    ],
+    [
+      0.05,
+      4.0
+    ],
+    [
+      0.05,
+      3.0
+    ],
+    [
+      0.25,
+      12.0
+    ],
+    [
+      0.25,
+      12.0
+    ]
+  ],
+  "history": [
+    0.93,
+    0.03,
+    0.015,
+    0.005,
+    0.01,
+    0.005,
+    0.005,
+    0.2,
+    0.2
+  ],
+  "events": [
+    "harvey",
+    "csdc",
+    "ottawa",
+    "sydney"
+  ],
+  "profile_fold": 2,
+  "mesh": 4000,
+  "seed": 20260918,
+  "global_starts": 6,
+  "profile_grid": 17,
+  "profile_nuisance_starts": 2,
+  "source_hashes": {
+    "experiments/run_identifiability.py": "d385226337a6d472f41271ebfd3465100f5fcd280f5a6aad52f96de1196bbea5",
+    "experiments/identifiability_solver.py": "4a468d35183da13160751514daa4ddc83a0ced8c8871688a58c4648162fe5da5",
+    "experiments/revision_dde.py": "ca6e4e7de576285d83af10864b4f654ea241e13554fec7439b16c4a74f464fa9",
+    "experiments/run_multievent_baselines.py": "9fe970d5d6b02d32e950f7c9d3122e49ee2674c077720c44e47792f349a9fa2c"
+  }
+}

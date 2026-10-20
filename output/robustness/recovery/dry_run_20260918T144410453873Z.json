@@ -1,0 +1,1336 @@
+{
+  "execution_id": "20260918T144410453873Z",
+  "created_utc": "2026-09-18T14:44:10.453873+00:00",
+  "dry_run": true,
+  "reason": "Resource-only reduction from at most 64 to at most 32 independent fits: the Harvey fold 3 batch showed unexpected throughput collapse at about 7674/8151 MiB dedicated GPU memory, 225 MHz SM clock, 100% reported utilization and about 11 W. Memory/driver pressure is suspected, not established. No forecast result or model ranking determines this scheduling change.",
+  "stage": "all",
+  "model_filter": null,
+  "frozen_maximum_independent_batch_size": 64,
+  "actual_scheduling_cap": 32,
+  "environment": {
+    "neural_protocol_sha256": "a524d55dd7180845c9cec55432c65729499584831a5bea1a6d41c8d2c64790f7",
+    "verified_hashes": {
+      "experiments\\run_robustness.py": "14552aa653c4823e5da27dce097773165c08e5f10fc278c3af1528e0c5215ea0",
+      "experiments\\robustness_models.py": "e0be68b1238c79dbc27e85576f3fcd7f91cfdb649bfef3a5aa9357ac98ec07c4",
+      "experiments\\run_fair_benchmark.py": "544ad397d1db566af9672050b83280b85fac642db1a12196b01fd1472444fd28",
+      "experiments\\run_multievent_baselines.py": "6a853f1769e1c79743752fb5bf08ad5f33d5c99559d49f113b3e240f4885eda1",
+      "output\\benchmark_design\\experiment_protocol.md": "8e462c022eb181ca2befec66b2943c852d7625d92d7beca3486b69beee8f1863",
+      "output\\robustness\\execution_addendum.md": "6aa16c11de6152b58a8e4c711d2ae200ed35bc44a9f0db933b089e36381f8d86",
+      "processed_data/csdc.csv": "f3baebcc8a0544716cf3a78e15626b94c276ba7ebe182848f6476cce21c4346b",
+      "processed_data/harvey.csv": "02f36301e5dbcfdec13a9df9c8fbbe1d67197ad0c703cff3dd2719fbe18fd659",
+      "processed_data/ottawa.csv": "e60136fdd65843e1df2a77714115787361f514395782953fff4898159ed547ce",
+      "processed_data/sydney.csv": "e9d98578a6ba586a16f0a34c3327fe15df5c1af22ea3e115e204ae5f340dab1f"
+    },
+    "recovery_scheduler_sha256": "327c8656f52ebdbb6a37ae6922204ce97d402043d4afe65368d5ad3645267db1",
+    "torch": "2.11.0+cu128",
+    "python": "3.12.10"
+  },
+  "initial_coverage": {
+    "groups": [
+      {
+        "group": "stage1_harvey_fold1_b260",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold1_b260",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold1_b260",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold1_b260",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold1_b260",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold1_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold1_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold1_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold1_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold1_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold2_b260",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold2_b260",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold2_b260",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold2_b260",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold2_b260",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold2_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold2_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold2_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold2_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold2_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold3_b260",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold3_b260",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold3_b260",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold3_b260",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold3_b260",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold3_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold3_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold3_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold3_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_harvey_fold3_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold1_b260",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold1_b260",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold1_b260",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold1_b260",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold1_b260",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold1_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold1_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold1_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold1_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold1_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold2_b260",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold2_b260",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold2_b260",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold2_b260",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold2_b260",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold2_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold2_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold2_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold2_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold2_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold3_b260",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold3_b260",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold3_b260",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold3_b260",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold3_b260",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold3_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold3_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold3_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold3_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_csdc_fold3_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold1_b260",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold1_b260",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold1_b260",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold1_b260",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold1_b260",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold1_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold1_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold1_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold1_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold1_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold2_b260",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold2_b260",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold2_b260",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold2_b260",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold2_b260",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold2_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold2_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold2_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold2_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold2_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold3_b260",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold3_b260",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold3_b260",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold3_b260",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold3_b260",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold3_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold3_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold3_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold3_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_ottawa_fold3_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold1_b260",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold1_b260",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold1_b260",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold1_b260",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold1_b260",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold1_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold1_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold1_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold1_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold1_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold2_b260",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold2_b260",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold2_b260",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold2_b260",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold2_b260",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold2_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold2_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold2_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold2_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold2_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold3_b260",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold3_b260",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold3_b260",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold3_b260",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold3_b260",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold3_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold3_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold3_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold3_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage1_sydney_fold3_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold1_b1040",
+        "model": "TransPINN",
+        "complete": 90,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold1_b1040",
+        "model": "Matched-PINN",
+        "complete": 90,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold1_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 90,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold1_b1040",
+        "model": "Data-Transformer",
+        "complete": 90,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold1_b1040",
+        "model": "Data-MLP",
+        "complete": 90,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold2_b1040",
+        "model": "TransPINN",
+        "complete": 90,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold2_b1040",
+        "model": "Matched-PINN",
+        "complete": 90,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold2_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 90,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold2_b1040",
+        "model": "Data-Transformer",
+        "complete": 90,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold2_b1040",
+        "model": "Data-MLP",
+        "complete": 90,
+        "pending": 0,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold3_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold3_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold3_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold3_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_harvey_fold3_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold1_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold1_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold1_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold1_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold1_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold2_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold2_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold2_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold2_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold2_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold3_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold3_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold3_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold3_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_csdc_fold3_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold1_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold1_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold1_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold1_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold1_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold2_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold2_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold2_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold2_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold2_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold3_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold3_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold3_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold3_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_ottawa_fold3_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold1_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold1_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold1_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold1_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold1_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold2_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold2_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold2_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold2_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold2_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold3_b1040",
+        "model": "TransPINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold3_b1040",
+        "model": "Matched-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold3_b1040",
+        "model": "NoAttn-PINN",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold3_b1040",
+        "model": "Data-Transformer",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "stage2_sydney_fold3_b1040",
+        "model": "Data-MLP",
+        "complete": 3,
+        "pending": 87,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "synthetic",
+        "model": "TransPINN",
+        "complete": 0,
+        "pending": 78,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "synthetic",
+        "model": "Matched-PINN",
+        "complete": 0,
+        "pending": 78,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "synthetic",
+        "model": "NoAttn-PINN",
+        "complete": 0,
+        "pending": 78,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "synthetic",
+        "model": "Data-Transformer",
+        "complete": 0,
+        "pending": 78,
+        "maximum_new_batch_size": 32
+      },
+      {
+        "group": "synthetic",
+        "model": "Data-MLP",
+        "complete": 0,
+        "pending": 78,
+        "maximum_new_batch_size": 32
+      }
+    ],
+    "unique_expected_fits": 5970,
+    "unique_completed_fits": 1230,
+    "unique_pending_fits": 4740,
+    "orphan_artifacts_without_completion_json": [],
+    "counts_note": "Stage 1 and stage 2 share clean 1040-update fits; unique counts remove that overlap."
+  },
+  "executed_batches": [],
+  "runtime_scope": "Unchanged frozen train_batch timing: synchronized batch wall time divided by actual batch size; not isolated model latency.",
+  "numerical_scope": "Grouping independent fits changes resource use and can change floating-point ordering. It does not change data, initial seeds, per-fit objectives, optimizer budgets or selection rules; bitwise-identical weights are not promised.",
+  "cuda_environment_verification": "not queried in dry run"
+}

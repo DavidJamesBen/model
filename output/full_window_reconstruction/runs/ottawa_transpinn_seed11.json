@@ -1,0 +1,25 @@
+{
+  "event": "ottawa",
+  "model": "TransPINN",
+  "seed": 11,
+  "observed_bins": 34,
+  "reconstruction_score": 3.570225917145521e-07,
+  "best_step": "lbfgs_300",
+  "physics_residual_rms": 0.04159293696284294,
+  "metrics": [
+    {
+      "channel": "rumor",
+      "nrmse": 0.00023942554686861054,
+      "log_rmse": 0.0006204476805688299
+    },
+    {
+      "channel": "debunk",
+      "nrmse": 0.00024296720405500094,
+      "log_rmse": 0.0004612290150957827
+    }
+  ],
+  "adam_updates": 1200,
+  "lbfgs_max_iterations": 300,
+  "objective_evaluations": 1517,
+  "runtime_seconds": 42.81132620002609
+}

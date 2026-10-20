@@ -1,0 +1,44 @@
+{
+  "run": {
+    "event": "ottawa",
+    "fold": 2,
+    "model": "Data-MLP",
+    "seed": 66,
+    "epochs_completed": 1040,
+    "parameter_count": 18619,
+    "best_epoch": 20,
+    "validation_score": 0.47204726934432983,
+    "runtime_seconds": 0.22267321304357407,
+    "runtime_kind": "amortized_gpu_batch",
+    "batch_id": "recovery_20260918T144718417634Z_stage2_ottawa_fold2_b1040_Data-MLP_batch89",
+    "batch_size": 23,
+    "batch_runtime_seconds": 5.121483900002204,
+    "test_nrmse": 0.6141270450917515,
+    "test_nmae": 0.4982549744787814,
+    "parameters": null
+  },
+  "split": [
+    26,
+    30,
+    34
+  ],
+  "metric_denominator": [
+    5.644213218610974,
+    3.605551275463989
+  ],
+  "scales": [
+    122.57142857142857,
+    70.57142857142857
+  ],
+  "retention": 0.25,
+  "noise": 0.1,
+  "budget": 1040,
+  "condition": "r25_n10",
+  "mask_seed": 533389818,
+  "noise_seed": 1916263520,
+  "input_sha256": "191fb714cf5f1ceed95a056aff7ec86d4ce49471b7735c983efdc68832be1b12",
+  "quadrature": [
+    1.0
+  ],
+  "reporting_bounds": null
+}
